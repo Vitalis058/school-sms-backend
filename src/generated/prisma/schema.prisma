@@ -1,0 +1,165 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  username  String   @unique
+  image     String?
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  role      Role     @default(STUDENT)
+
+  @@map("user")
+}
+
+model Student {
+  id          String   @id @default(cuid())
+  firstName   String
+  lastName    String
+  dateOfBirth String
+  gender      String
+  Guardian    Guardian @relation(fields: [guardianId], references: [id])
+  guardianId  String
+
+  // Contact Info
+  email       String? @unique
+  phoneNumber String?
+
+  // Address Info
+  streetAddress String
+  city          String
+  state         String
+  zipCode       String?
+
+  // Academic Info
+  admissionNumber String @unique
+  enrollmentDate  String
+  password        String
+
+  // grade stream Info
+  gradeId  String
+  Grade    Grade  @relation(fields: [gradeId], references: [id])
+  streamId String
+  Stream   Stream @relation(fields: [streamId], references: [id])
+
+  message   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Teacher {
+  id             String   @id @default(uuid())
+  firstName      String
+  lastName       String
+  dateOfBirth    DateTime
+  gender         Gender
+  email          String   @unique
+  phone          String
+  alternatePhone String?
+  address        String
+  city           String
+  state          String
+  zipCode        String
+
+  // Emergency Contact
+  emergencyContactName         String
+  emergencyContactPhone        String
+  emergencyContactRelationship String
+
+  // Professional Information
+  highestQualification String
+  specialization       String
+  teachingExperience   String
+  subjectsCanTeach     String[]
+  gradesCanTeach       String[]
+
+  // Employment Details
+  employmentType EmploymentType
+  joiningDate    DateTime
+  position       String
+  department     String
+
+  // Previous Employment
+  previousEmployments Json
+
+  // Additional Information
+  certifications  String?
+  skills          String?
+  languages       String?
+  additionalNotes String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Stream    Stream?
+}
+
+model Guardian {
+  id                     String        @id @default(uuid())
+  name                   String
+  relationship           String
+  phone                  String
+  email                  String?       @unique
+  address                String
+  occupation             String?
+  dateOfBirth            DateTime?
+  educationLevel         String?
+  preferredContactMethod ContactMethod @default(both)
+  notes                  String?
+  students               Student[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Stream {
+  id        String    @id @default(cuid())
+  name      String    @unique()
+  slug      String
+  Grade     Grade     @relation(fields: [gradeId], references: [id])
+  gradeId   String
+  teacherId String?   @unique()
+  Teacher   Teacher?  @relation(fields: [teacherId], references: [id])
+  students  Student[]
+}
+
+model Grade {
+  id       String    @id @default(cuid())
+  slug     String
+  name     String    @unique
+  streams  Stream[]
+  students Student[]
+}
+
+enum ContactMethod {
+  phone
+  email
+  both
+}
+
+enum Gender {
+  male
+  female
+  other
+}
+
+enum EmploymentType {
+  full_time
+  part_time
+  contract
+}
+
+enum Role {
+  ADMIN
+  TEACHER
+  STUDENT
+  STAFF
+}
