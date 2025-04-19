@@ -35,7 +35,14 @@ export const createTeacher = catchAsync(
     }
 
     const teacher = await prisma.teacher.create({
-      data: validatedData.data,
+      data: {
+        ...validatedData.data,
+        subjects: {
+          connect: validatedData.data.subjects.map((id: string) => ({
+            id,
+          })),
+        },
+      },
     });
 
     res.status(201).json({

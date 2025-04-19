@@ -79,7 +79,6 @@ model Teacher {
   highestQualification String
   specialization       String
   teachingExperience   String
-  subjectsCanTeach     String[]
   gradesCanTeach       String[]
 
   // Employment Details
@@ -101,8 +100,7 @@ model Teacher {
   updatedAt DateTime @updatedAt
   Stream    Stream?
 
-  Subject      Subject?    @relation(fields: [subjectId], references: [id])
-  subjectId    String?
+  subjects     Subject[]
   Department   Department? @relation(fields: [departmentId], references: [id])
   departmentId String?
 }

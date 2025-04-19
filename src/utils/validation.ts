@@ -41,7 +41,7 @@ export const TeacherEnrollmentSchema = z.object({
   highestQualification: z.string().min(1, "Highest qualification is required"),
   specialization: z.string().min(1, "Specialization is required"),
   teachingExperience: z.string().min(1, "Teaching experience is required"),
-  subjectsCanTeach: z.array(z.string()).min(1, "Select at least one subject"),
+  subjects: z.array(z.string()).min(1, "Select at least one subject"),
   gradesCanTeach: z.array(z.string()).min(1, "Select at least one grade"),
 
   employmentType: z.enum(["full_time", "part_time", "contract"], {
