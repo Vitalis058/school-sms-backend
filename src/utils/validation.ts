@@ -126,3 +126,9 @@ export const ParentsEnrollmentSchema = z.object({
   preferredContactMethod: z.enum(["phone", "email", "both"]).default("both"),
   notes: z.string().optional().or(z.literal("")),
 });
+
+//department schema
+export const DepartmentCreationSchema = z.object({
+  name: z.string().min(1, { message: "Department name is required" }),
+  description: z.string().optional(),
+});

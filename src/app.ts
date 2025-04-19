@@ -9,6 +9,8 @@ import streamRoutes from "./routes/stream.route";
 import gradeRoutes from "./routes/grade.route";
 import studentRoutes from "./routes/student.route";
 import parentRoutes from "./routes/parent.route";
+import subjectRoutes from "./routes/subject.route";
+import departmentRoutes from "./routes/department.routes";
 import { errorController } from "./controllers/error.controller";
 import { AppError } from "./utils/AppError";
 import cors from "cors";
@@ -36,6 +38,8 @@ app.use("/api/v1/grades", gradeRoutes);
 app.use("/api/v1/streams", streamRoutes);
 app.use("/api/v1/students", studentRoutes);
 app.use("/api/v1/parents", parentRoutes);
+app.use("/api/v1/subjects", subjectRoutes);
+app.use("/api/v1/departments", departmentRoutes);
 
 //handle unhanded routes
 app.all("/*splat", (req: Request, res: Response, next: NextFunction) => {

@@ -100,6 +100,11 @@ model Teacher {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   Stream    Stream?
+
+  Subject      Subject?    @relation(fields: [subjectId], references: [id])
+  subjectId    String?
+  Department   Department? @relation(fields: [departmentId], references: [id])
+  departmentId String?
 }
 
 model Guardian {
@@ -137,6 +142,38 @@ model Grade {
   name     String    @unique
   streams  Stream[]
   students Student[]
+}
+
+model Department {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String
+  description String?
+  teachers    Teacher[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  subjects    Subject[]
+}
+
+model Subject {
+  id          String @id @default(cuid())
+  name        String @unique()
+  slug        String
+  subjectCode String @unique()
+  shortname   String
+
+  teachers Teacher[]
+
+  Department   Department @relation(fields: [departmentId], references: [id])
+  departmentId String
+
+  active      Boolean @default(true)
+  optional    Boolean @default(false)
+  fieldtrips  Boolean @default(false)
+  labRequired Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 enum ContactMethod {
