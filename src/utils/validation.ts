@@ -132,3 +132,28 @@ export const DepartmentCreationSchema = z.object({
   name: z.string().min(1, { message: "Department name is required" }),
   description: z.string().optional(),
 });
+
+//lesson schema
+export const lessonSchema = z.object({
+  name: z.string().min(1, "Lesson name is required"),
+  description: z.string().optional(),
+  materials: z.any().optional(), // or use z.record(z.any()) if it's expected to be an object
+  assignment: z.any().optional(),
+  teacherId: z.string().min(1, "Teacher ID is required"),
+  subjectId: z.string().min(1, "Subject ID is required"),
+  streamId: z.string().min(1, "Stream ID is required"),
+});
+
+//time slot schema
+
+const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
+
+export const timeSlotSchema = z.object({
+  name: z.string().min(1, "Slot name is required"),
+  startTime: z
+    .string()
+    .regex(timeRegex, { message: "Invalid time format (expected HH:mm)" }),
+  endTime: z
+    .string()
+    .regex(timeRegex, { message: "Invalid time format (expected HH:mm)" }),
+});

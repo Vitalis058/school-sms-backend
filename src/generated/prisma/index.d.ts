@@ -43,6 +43,26 @@ export type Stream = $Result.DefaultSelection<Prisma.$StreamPayload>
  * 
  */
 export type Grade = $Result.DefaultSelection<Prisma.$GradePayload>
+/**
+ * Model Department
+ * 
+ */
+export type Department = $Result.DefaultSelection<Prisma.$DepartmentPayload>
+/**
+ * Model Subject
+ * 
+ */
+export type Subject = $Result.DefaultSelection<Prisma.$SubjectPayload>
+/**
+ * Model Lesson
+ * 
+ */
+export type Lesson = $Result.DefaultSelection<Prisma.$LessonPayload>
+/**
+ * Model TimeSlot
+ * 
+ */
+export type TimeSlot = $Result.DefaultSelection<Prisma.$TimeSlotPayload>
 
 /**
  * Enums
@@ -286,6 +306,46 @@ export class PrismaClient<
     * ```
     */
   get grade(): Prisma.GradeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.department`: Exposes CRUD operations for the **Department** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Departments
+    * const departments = await prisma.department.findMany()
+    * ```
+    */
+  get department(): Prisma.DepartmentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.subject`: Exposes CRUD operations for the **Subject** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Subjects
+    * const subjects = await prisma.subject.findMany()
+    * ```
+    */
+  get subject(): Prisma.SubjectDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.lesson`: Exposes CRUD operations for the **Lesson** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Lessons
+    * const lessons = await prisma.lesson.findMany()
+    * ```
+    */
+  get lesson(): Prisma.LessonDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.timeSlot`: Exposes CRUD operations for the **TimeSlot** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TimeSlots
+    * const timeSlots = await prisma.timeSlot.findMany()
+    * ```
+    */
+  get timeSlot(): Prisma.TimeSlotDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -344,8 +404,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.6.0
-   * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
+   * Prisma Client JS version: 6.7.0
+   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
    */
   export type PrismaVersion = {
     client: string
@@ -731,7 +791,11 @@ export namespace Prisma {
     Teacher: 'Teacher',
     Guardian: 'Guardian',
     Stream: 'Stream',
-    Grade: 'Grade'
+    Grade: 'Grade',
+    Department: 'Department',
+    Subject: 'Subject',
+    Lesson: 'Lesson',
+    TimeSlot: 'TimeSlot'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -750,7 +814,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "student" | "teacher" | "guardian" | "stream" | "grade"
+      modelProps: "user" | "student" | "teacher" | "guardian" | "stream" | "grade" | "department" | "subject" | "lesson" | "timeSlot"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1198,6 +1262,302 @@ export namespace Prisma {
           }
         }
       }
+      Department: {
+        payload: Prisma.$DepartmentPayload<ExtArgs>
+        fields: Prisma.DepartmentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DepartmentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DepartmentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
+          }
+          findFirst: {
+            args: Prisma.DepartmentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DepartmentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
+          }
+          findMany: {
+            args: Prisma.DepartmentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>[]
+          }
+          create: {
+            args: Prisma.DepartmentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
+          }
+          createMany: {
+            args: Prisma.DepartmentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DepartmentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>[]
+          }
+          delete: {
+            args: Prisma.DepartmentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
+          }
+          update: {
+            args: Prisma.DepartmentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
+          }
+          deleteMany: {
+            args: Prisma.DepartmentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DepartmentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DepartmentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>[]
+          }
+          upsert: {
+            args: Prisma.DepartmentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DepartmentPayload>
+          }
+          aggregate: {
+            args: Prisma.DepartmentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDepartment>
+          }
+          groupBy: {
+            args: Prisma.DepartmentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DepartmentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DepartmentCountArgs<ExtArgs>
+            result: $Utils.Optional<DepartmentCountAggregateOutputType> | number
+          }
+        }
+      }
+      Subject: {
+        payload: Prisma.$SubjectPayload<ExtArgs>
+        fields: Prisma.SubjectFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SubjectFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubjectPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SubjectFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubjectPayload>
+          }
+          findFirst: {
+            args: Prisma.SubjectFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubjectPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SubjectFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubjectPayload>
+          }
+          findMany: {
+            args: Prisma.SubjectFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubjectPayload>[]
+          }
+          create: {
+            args: Prisma.SubjectCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubjectPayload>
+          }
+          createMany: {
+            args: Prisma.SubjectCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SubjectCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubjectPayload>[]
+          }
+          delete: {
+            args: Prisma.SubjectDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubjectPayload>
+          }
+          update: {
+            args: Prisma.SubjectUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubjectPayload>
+          }
+          deleteMany: {
+            args: Prisma.SubjectDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SubjectUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SubjectUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubjectPayload>[]
+          }
+          upsert: {
+            args: Prisma.SubjectUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubjectPayload>
+          }
+          aggregate: {
+            args: Prisma.SubjectAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSubject>
+          }
+          groupBy: {
+            args: Prisma.SubjectGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SubjectGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SubjectCountArgs<ExtArgs>
+            result: $Utils.Optional<SubjectCountAggregateOutputType> | number
+          }
+        }
+      }
+      Lesson: {
+        payload: Prisma.$LessonPayload<ExtArgs>
+        fields: Prisma.LessonFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LessonFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LessonPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LessonFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LessonPayload>
+          }
+          findFirst: {
+            args: Prisma.LessonFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LessonPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LessonFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LessonPayload>
+          }
+          findMany: {
+            args: Prisma.LessonFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LessonPayload>[]
+          }
+          create: {
+            args: Prisma.LessonCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LessonPayload>
+          }
+          createMany: {
+            args: Prisma.LessonCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LessonCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LessonPayload>[]
+          }
+          delete: {
+            args: Prisma.LessonDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LessonPayload>
+          }
+          update: {
+            args: Prisma.LessonUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LessonPayload>
+          }
+          deleteMany: {
+            args: Prisma.LessonDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LessonUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.LessonUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LessonPayload>[]
+          }
+          upsert: {
+            args: Prisma.LessonUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LessonPayload>
+          }
+          aggregate: {
+            args: Prisma.LessonAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLesson>
+          }
+          groupBy: {
+            args: Prisma.LessonGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LessonGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LessonCountArgs<ExtArgs>
+            result: $Utils.Optional<LessonCountAggregateOutputType> | number
+          }
+        }
+      }
+      TimeSlot: {
+        payload: Prisma.$TimeSlotPayload<ExtArgs>
+        fields: Prisma.TimeSlotFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TimeSlotFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeSlotPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TimeSlotFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeSlotPayload>
+          }
+          findFirst: {
+            args: Prisma.TimeSlotFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeSlotPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TimeSlotFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeSlotPayload>
+          }
+          findMany: {
+            args: Prisma.TimeSlotFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeSlotPayload>[]
+          }
+          create: {
+            args: Prisma.TimeSlotCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeSlotPayload>
+          }
+          createMany: {
+            args: Prisma.TimeSlotCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TimeSlotCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeSlotPayload>[]
+          }
+          delete: {
+            args: Prisma.TimeSlotDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeSlotPayload>
+          }
+          update: {
+            args: Prisma.TimeSlotUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeSlotPayload>
+          }
+          deleteMany: {
+            args: Prisma.TimeSlotDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TimeSlotUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TimeSlotUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeSlotPayload>[]
+          }
+          upsert: {
+            args: Prisma.TimeSlotUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TimeSlotPayload>
+          }
+          aggregate: {
+            args: Prisma.TimeSlotAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTimeSlot>
+          }
+          groupBy: {
+            args: Prisma.TimeSlotGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TimeSlotGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TimeSlotCountArgs<ExtArgs>
+            result: $Utils.Optional<TimeSlotCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1288,6 +1648,10 @@ export namespace Prisma {
     guardian?: GuardianOmit
     stream?: StreamOmit
     grade?: GradeOmit
+    department?: DepartmentOmit
+    subject?: SubjectOmit
+    lesson?: LessonOmit
+    timeSlot?: TimeSlotOmit
   }
 
   /* Types for Logging */
@@ -1378,6 +1742,46 @@ export namespace Prisma {
 
 
   /**
+   * Count Type TeacherCountOutputType
+   */
+
+  export type TeacherCountOutputType = {
+    subjects: number
+    Lesson: number
+  }
+
+  export type TeacherCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subjects?: boolean | TeacherCountOutputTypeCountSubjectsArgs
+    Lesson?: boolean | TeacherCountOutputTypeCountLessonArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TeacherCountOutputType without action
+   */
+  export type TeacherCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherCountOutputType
+     */
+    select?: TeacherCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TeacherCountOutputType without action
+   */
+  export type TeacherCountOutputTypeCountSubjectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubjectWhereInput
+  }
+
+  /**
+   * TeacherCountOutputType without action
+   */
+  export type TeacherCountOutputTypeCountLessonArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LessonWhereInput
+  }
+
+
+  /**
    * Count Type GuardianCountOutputType
    */
 
@@ -1414,10 +1818,12 @@ export namespace Prisma {
 
   export type StreamCountOutputType = {
     students: number
+    Lesson: number
   }
 
   export type StreamCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     students?: boolean | StreamCountOutputTypeCountStudentsArgs
+    Lesson?: boolean | StreamCountOutputTypeCountLessonArgs
   }
 
   // Custom InputTypes
@@ -1436,6 +1842,13 @@ export namespace Prisma {
    */
   export type StreamCountOutputTypeCountStudentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: StudentWhereInput
+  }
+
+  /**
+   * StreamCountOutputType without action
+   */
+  export type StreamCountOutputTypeCountLessonArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LessonWhereInput
   }
 
 
@@ -1476,6 +1889,117 @@ export namespace Prisma {
    */
   export type GradeCountOutputTypeCountStudentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: StudentWhereInput
+  }
+
+
+  /**
+   * Count Type DepartmentCountOutputType
+   */
+
+  export type DepartmentCountOutputType = {
+    teachers: number
+    subjects: number
+  }
+
+  export type DepartmentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    teachers?: boolean | DepartmentCountOutputTypeCountTeachersArgs
+    subjects?: boolean | DepartmentCountOutputTypeCountSubjectsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DepartmentCountOutputType without action
+   */
+  export type DepartmentCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DepartmentCountOutputType
+     */
+    select?: DepartmentCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DepartmentCountOutputType without action
+   */
+  export type DepartmentCountOutputTypeCountTeachersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TeacherWhereInput
+  }
+
+  /**
+   * DepartmentCountOutputType without action
+   */
+  export type DepartmentCountOutputTypeCountSubjectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubjectWhereInput
+  }
+
+
+  /**
+   * Count Type SubjectCountOutputType
+   */
+
+  export type SubjectCountOutputType = {
+    teachers: number
+    Lesson: number
+  }
+
+  export type SubjectCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    teachers?: boolean | SubjectCountOutputTypeCountTeachersArgs
+    Lesson?: boolean | SubjectCountOutputTypeCountLessonArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * SubjectCountOutputType without action
+   */
+  export type SubjectCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubjectCountOutputType
+     */
+    select?: SubjectCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * SubjectCountOutputType without action
+   */
+  export type SubjectCountOutputTypeCountTeachersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TeacherWhereInput
+  }
+
+  /**
+   * SubjectCountOutputType without action
+   */
+  export type SubjectCountOutputTypeCountLessonArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LessonWhereInput
+  }
+
+
+  /**
+   * Count Type TimeSlotCountOutputType
+   */
+
+  export type TimeSlotCountOutputType = {
+    lessons: number
+  }
+
+  export type TimeSlotCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    lessons?: boolean | TimeSlotCountOutputTypeCountLessonsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TimeSlotCountOutputType without action
+   */
+  export type TimeSlotCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeSlotCountOutputType
+     */
+    select?: TimeSlotCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TimeSlotCountOutputType without action
+   */
+  export type TimeSlotCountOutputTypeCountLessonsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LessonWhereInput
   }
 
 
@@ -3859,6 +4383,7 @@ export namespace Prisma {
     additionalNotes: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    departmentId: string | null
   }
 
   export type TeacherMaxAggregateOutputType = {
@@ -3890,6 +4415,7 @@ export namespace Prisma {
     additionalNotes: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    departmentId: string | null
   }
 
   export type TeacherCountAggregateOutputType = {
@@ -3911,7 +4437,6 @@ export namespace Prisma {
     highestQualification: number
     specialization: number
     teachingExperience: number
-    subjectsCanTeach: number
     gradesCanTeach: number
     employmentType: number
     joiningDate: number
@@ -3924,6 +4449,7 @@ export namespace Prisma {
     additionalNotes: number
     createdAt: number
     updatedAt: number
+    departmentId: number
     _all: number
   }
 
@@ -3957,6 +4483,7 @@ export namespace Prisma {
     additionalNotes?: true
     createdAt?: true
     updatedAt?: true
+    departmentId?: true
   }
 
   export type TeacherMaxAggregateInputType = {
@@ -3988,6 +4515,7 @@ export namespace Prisma {
     additionalNotes?: true
     createdAt?: true
     updatedAt?: true
+    departmentId?: true
   }
 
   export type TeacherCountAggregateInputType = {
@@ -4009,7 +4537,6 @@ export namespace Prisma {
     highestQualification?: true
     specialization?: true
     teachingExperience?: true
-    subjectsCanTeach?: true
     gradesCanTeach?: true
     employmentType?: true
     joiningDate?: true
@@ -4022,6 +4549,7 @@ export namespace Prisma {
     additionalNotes?: true
     createdAt?: true
     updatedAt?: true
+    departmentId?: true
     _all?: true
   }
 
@@ -4116,7 +4644,6 @@ export namespace Prisma {
     highestQualification: string
     specialization: string
     teachingExperience: string
-    subjectsCanTeach: string[]
     gradesCanTeach: string[]
     employmentType: $Enums.EmploymentType
     joiningDate: Date
@@ -4129,6 +4656,7 @@ export namespace Prisma {
     additionalNotes: string | null
     createdAt: Date
     updatedAt: Date
+    departmentId: string | null
     _count: TeacherCountAggregateOutputType | null
     _min: TeacherMinAggregateOutputType | null
     _max: TeacherMaxAggregateOutputType | null
@@ -4167,7 +4695,6 @@ export namespace Prisma {
     highestQualification?: boolean
     specialization?: boolean
     teachingExperience?: boolean
-    subjectsCanTeach?: boolean
     gradesCanTeach?: boolean
     employmentType?: boolean
     joiningDate?: boolean
@@ -4180,7 +4707,12 @@ export namespace Prisma {
     additionalNotes?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    departmentId?: boolean
     Stream?: boolean | Teacher$StreamArgs<ExtArgs>
+    Department?: boolean | Teacher$DepartmentArgs<ExtArgs>
+    subjects?: boolean | Teacher$subjectsArgs<ExtArgs>
+    Lesson?: boolean | Teacher$LessonArgs<ExtArgs>
+    _count?: boolean | TeacherCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["teacher"]>
 
   export type TeacherSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4202,7 +4734,6 @@ export namespace Prisma {
     highestQualification?: boolean
     specialization?: boolean
     teachingExperience?: boolean
-    subjectsCanTeach?: boolean
     gradesCanTeach?: boolean
     employmentType?: boolean
     joiningDate?: boolean
@@ -4215,6 +4746,8 @@ export namespace Prisma {
     additionalNotes?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    departmentId?: boolean
+    Department?: boolean | Teacher$DepartmentArgs<ExtArgs>
   }, ExtArgs["result"]["teacher"]>
 
   export type TeacherSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4236,7 +4769,6 @@ export namespace Prisma {
     highestQualification?: boolean
     specialization?: boolean
     teachingExperience?: boolean
-    subjectsCanTeach?: boolean
     gradesCanTeach?: boolean
     employmentType?: boolean
     joiningDate?: boolean
@@ -4249,6 +4781,8 @@ export namespace Prisma {
     additionalNotes?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    departmentId?: boolean
+    Department?: boolean | Teacher$DepartmentArgs<ExtArgs>
   }, ExtArgs["result"]["teacher"]>
 
   export type TeacherSelectScalar = {
@@ -4270,7 +4804,6 @@ export namespace Prisma {
     highestQualification?: boolean
     specialization?: boolean
     teachingExperience?: boolean
-    subjectsCanTeach?: boolean
     gradesCanTeach?: boolean
     employmentType?: boolean
     joiningDate?: boolean
@@ -4283,19 +4816,31 @@ export namespace Prisma {
     additionalNotes?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    departmentId?: boolean
   }
 
-  export type TeacherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "dateOfBirth" | "gender" | "email" | "phone" | "alternatePhone" | "address" | "city" | "state" | "zipCode" | "emergencyContactName" | "emergencyContactPhone" | "emergencyContactRelationship" | "highestQualification" | "specialization" | "teachingExperience" | "subjectsCanTeach" | "gradesCanTeach" | "employmentType" | "joiningDate" | "position" | "department" | "previousEmployments" | "certifications" | "skills" | "languages" | "additionalNotes" | "createdAt" | "updatedAt", ExtArgs["result"]["teacher"]>
+  export type TeacherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "dateOfBirth" | "gender" | "email" | "phone" | "alternatePhone" | "address" | "city" | "state" | "zipCode" | "emergencyContactName" | "emergencyContactPhone" | "emergencyContactRelationship" | "highestQualification" | "specialization" | "teachingExperience" | "gradesCanTeach" | "employmentType" | "joiningDate" | "position" | "department" | "previousEmployments" | "certifications" | "skills" | "languages" | "additionalNotes" | "createdAt" | "updatedAt" | "departmentId", ExtArgs["result"]["teacher"]>
   export type TeacherInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Stream?: boolean | Teacher$StreamArgs<ExtArgs>
+    Department?: boolean | Teacher$DepartmentArgs<ExtArgs>
+    subjects?: boolean | Teacher$subjectsArgs<ExtArgs>
+    Lesson?: boolean | Teacher$LessonArgs<ExtArgs>
+    _count?: boolean | TeacherCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type TeacherIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type TeacherIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type TeacherIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Department?: boolean | Teacher$DepartmentArgs<ExtArgs>
+  }
+  export type TeacherIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Department?: boolean | Teacher$DepartmentArgs<ExtArgs>
+  }
 
   export type $TeacherPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Teacher"
     objects: {
       Stream: Prisma.$StreamPayload<ExtArgs> | null
+      Department: Prisma.$DepartmentPayload<ExtArgs> | null
+      subjects: Prisma.$SubjectPayload<ExtArgs>[]
+      Lesson: Prisma.$LessonPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4316,7 +4861,6 @@ export namespace Prisma {
       highestQualification: string
       specialization: string
       teachingExperience: string
-      subjectsCanTeach: string[]
       gradesCanTeach: string[]
       employmentType: $Enums.EmploymentType
       joiningDate: Date
@@ -4329,6 +4873,7 @@ export namespace Prisma {
       additionalNotes: string | null
       createdAt: Date
       updatedAt: Date
+      departmentId: string | null
     }, ExtArgs["result"]["teacher"]>
     composites: {}
   }
@@ -4724,6 +5269,9 @@ export namespace Prisma {
   export interface Prisma__TeacherClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     Stream<T extends Teacher$StreamArgs<ExtArgs> = {}>(args?: Subset<T, Teacher$StreamArgs<ExtArgs>>): Prisma__StreamClient<$Result.GetResult<Prisma.$StreamPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    Department<T extends Teacher$DepartmentArgs<ExtArgs> = {}>(args?: Subset<T, Teacher$DepartmentArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    subjects<T extends Teacher$subjectsArgs<ExtArgs> = {}>(args?: Subset<T, Teacher$subjectsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Lesson<T extends Teacher$LessonArgs<ExtArgs> = {}>(args?: Subset<T, Teacher$LessonArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4771,7 +5319,6 @@ export namespace Prisma {
     readonly highestQualification: FieldRef<"Teacher", 'String'>
     readonly specialization: FieldRef<"Teacher", 'String'>
     readonly teachingExperience: FieldRef<"Teacher", 'String'>
-    readonly subjectsCanTeach: FieldRef<"Teacher", 'String[]'>
     readonly gradesCanTeach: FieldRef<"Teacher", 'String[]'>
     readonly employmentType: FieldRef<"Teacher", 'EmploymentType'>
     readonly joiningDate: FieldRef<"Teacher", 'DateTime'>
@@ -4784,6 +5331,7 @@ export namespace Prisma {
     readonly additionalNotes: FieldRef<"Teacher", 'String'>
     readonly createdAt: FieldRef<"Teacher", 'DateTime'>
     readonly updatedAt: FieldRef<"Teacher", 'DateTime'>
+    readonly departmentId: FieldRef<"Teacher", 'String'>
   }
     
 
@@ -5033,6 +5581,10 @@ export namespace Prisma {
      */
     data: TeacherCreateManyInput | TeacherCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5103,6 +5655,10 @@ export namespace Prisma {
      * Limit how many Teachers to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5188,6 +5744,73 @@ export namespace Prisma {
      */
     include?: StreamInclude<ExtArgs> | null
     where?: StreamWhereInput
+  }
+
+  /**
+   * Teacher.Department
+   */
+  export type Teacher$DepartmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Department
+     */
+    omit?: DepartmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    where?: DepartmentWhereInput
+  }
+
+  /**
+   * Teacher.subjects
+   */
+  export type Teacher$subjectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subject
+     */
+    select?: SubjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subject
+     */
+    omit?: SubjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubjectInclude<ExtArgs> | null
+    where?: SubjectWhereInput
+    orderBy?: SubjectOrderByWithRelationInput | SubjectOrderByWithRelationInput[]
+    cursor?: SubjectWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SubjectScalarFieldEnum | SubjectScalarFieldEnum[]
+  }
+
+  /**
+   * Teacher.Lesson
+   */
+  export type Teacher$LessonArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lesson
+     */
+    select?: LessonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lesson
+     */
+    omit?: LessonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonInclude<ExtArgs> | null
+    where?: LessonWhereInput
+    orderBy?: LessonOrderByWithRelationInput | LessonOrderByWithRelationInput[]
+    cursor?: LessonWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LessonScalarFieldEnum | LessonScalarFieldEnum[]
   }
 
   /**
@@ -6550,6 +7173,7 @@ export namespace Prisma {
     Grade?: boolean | GradeDefaultArgs<ExtArgs>
     Teacher?: boolean | Stream$TeacherArgs<ExtArgs>
     students?: boolean | Stream$studentsArgs<ExtArgs>
+    Lesson?: boolean | Stream$LessonArgs<ExtArgs>
     _count?: boolean | StreamCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["stream"]>
 
@@ -6586,6 +7210,7 @@ export namespace Prisma {
     Grade?: boolean | GradeDefaultArgs<ExtArgs>
     Teacher?: boolean | Stream$TeacherArgs<ExtArgs>
     students?: boolean | Stream$studentsArgs<ExtArgs>
+    Lesson?: boolean | Stream$LessonArgs<ExtArgs>
     _count?: boolean | StreamCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type StreamIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6603,6 +7228,7 @@ export namespace Prisma {
       Grade: Prisma.$GradePayload<ExtArgs>
       Teacher: Prisma.$TeacherPayload<ExtArgs> | null
       students: Prisma.$StudentPayload<ExtArgs>[]
+      Lesson: Prisma.$LessonPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7007,6 +7633,7 @@ export namespace Prisma {
     Grade<T extends GradeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GradeDefaultArgs<ExtArgs>>): Prisma__GradeClient<$Result.GetResult<Prisma.$GradePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     Teacher<T extends Stream$TeacherArgs<ExtArgs> = {}>(args?: Subset<T, Stream$TeacherArgs<ExtArgs>>): Prisma__TeacherClient<$Result.GetResult<Prisma.$TeacherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     students<T extends Stream$studentsArgs<ExtArgs> = {}>(args?: Subset<T, Stream$studentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Lesson<T extends Stream$LessonArgs<ExtArgs> = {}>(args?: Subset<T, Stream$LessonArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7477,6 +8104,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: StudentScalarFieldEnum | StudentScalarFieldEnum[]
+  }
+
+  /**
+   * Stream.Lesson
+   */
+  export type Stream$LessonArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lesson
+     */
+    select?: LessonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lesson
+     */
+    omit?: LessonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonInclude<ExtArgs> | null
+    where?: LessonWhereInput
+    orderBy?: LessonOrderByWithRelationInput | LessonOrderByWithRelationInput[]
+    cursor?: LessonWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LessonScalarFieldEnum | LessonScalarFieldEnum[]
   }
 
   /**
@@ -8571,6 +9222,4580 @@ export namespace Prisma {
 
 
   /**
+   * Model Department
+   */
+
+  export type AggregateDepartment = {
+    _count: DepartmentCountAggregateOutputType | null
+    _min: DepartmentMinAggregateOutputType | null
+    _max: DepartmentMaxAggregateOutputType | null
+  }
+
+  export type DepartmentMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+    description: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DepartmentMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+    description: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DepartmentCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    description: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type DepartmentMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    description?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DepartmentMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    description?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DepartmentCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    description?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type DepartmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Department to aggregate.
+     */
+    where?: DepartmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Departments to fetch.
+     */
+    orderBy?: DepartmentOrderByWithRelationInput | DepartmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DepartmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Departments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Departments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Departments
+    **/
+    _count?: true | DepartmentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DepartmentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DepartmentMaxAggregateInputType
+  }
+
+  export type GetDepartmentAggregateType<T extends DepartmentAggregateArgs> = {
+        [P in keyof T & keyof AggregateDepartment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDepartment[P]>
+      : GetScalarType<T[P], AggregateDepartment[P]>
+  }
+
+
+
+
+  export type DepartmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DepartmentWhereInput
+    orderBy?: DepartmentOrderByWithAggregationInput | DepartmentOrderByWithAggregationInput[]
+    by: DepartmentScalarFieldEnum[] | DepartmentScalarFieldEnum
+    having?: DepartmentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DepartmentCountAggregateInputType | true
+    _min?: DepartmentMinAggregateInputType
+    _max?: DepartmentMaxAggregateInputType
+  }
+
+  export type DepartmentGroupByOutputType = {
+    id: string
+    name: string
+    slug: string
+    description: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: DepartmentCountAggregateOutputType | null
+    _min: DepartmentMinAggregateOutputType | null
+    _max: DepartmentMaxAggregateOutputType | null
+  }
+
+  type GetDepartmentGroupByPayload<T extends DepartmentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DepartmentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DepartmentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DepartmentGroupByOutputType[P]>
+            : GetScalarType<T[P], DepartmentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DepartmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    teachers?: boolean | Department$teachersArgs<ExtArgs>
+    subjects?: boolean | Department$subjectsArgs<ExtArgs>
+    _count?: boolean | DepartmentCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["department"]>
+
+  export type DepartmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["department"]>
+
+  export type DepartmentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["department"]>
+
+  export type DepartmentSelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type DepartmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["department"]>
+  export type DepartmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    teachers?: boolean | Department$teachersArgs<ExtArgs>
+    subjects?: boolean | Department$subjectsArgs<ExtArgs>
+    _count?: boolean | DepartmentCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type DepartmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type DepartmentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $DepartmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Department"
+    objects: {
+      teachers: Prisma.$TeacherPayload<ExtArgs>[]
+      subjects: Prisma.$SubjectPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      slug: string
+      description: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["department"]>
+    composites: {}
+  }
+
+  type DepartmentGetPayload<S extends boolean | null | undefined | DepartmentDefaultArgs> = $Result.GetResult<Prisma.$DepartmentPayload, S>
+
+  type DepartmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DepartmentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DepartmentCountAggregateInputType | true
+    }
+
+  export interface DepartmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Department'], meta: { name: 'Department' } }
+    /**
+     * Find zero or one Department that matches the filter.
+     * @param {DepartmentFindUniqueArgs} args - Arguments to find a Department
+     * @example
+     * // Get one Department
+     * const department = await prisma.department.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DepartmentFindUniqueArgs>(args: SelectSubset<T, DepartmentFindUniqueArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Department that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DepartmentFindUniqueOrThrowArgs} args - Arguments to find a Department
+     * @example
+     * // Get one Department
+     * const department = await prisma.department.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DepartmentFindUniqueOrThrowArgs>(args: SelectSubset<T, DepartmentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Department that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepartmentFindFirstArgs} args - Arguments to find a Department
+     * @example
+     * // Get one Department
+     * const department = await prisma.department.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DepartmentFindFirstArgs>(args?: SelectSubset<T, DepartmentFindFirstArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Department that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepartmentFindFirstOrThrowArgs} args - Arguments to find a Department
+     * @example
+     * // Get one Department
+     * const department = await prisma.department.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DepartmentFindFirstOrThrowArgs>(args?: SelectSubset<T, DepartmentFindFirstOrThrowArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Departments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepartmentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Departments
+     * const departments = await prisma.department.findMany()
+     * 
+     * // Get first 10 Departments
+     * const departments = await prisma.department.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const departmentWithIdOnly = await prisma.department.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DepartmentFindManyArgs>(args?: SelectSubset<T, DepartmentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Department.
+     * @param {DepartmentCreateArgs} args - Arguments to create a Department.
+     * @example
+     * // Create one Department
+     * const Department = await prisma.department.create({
+     *   data: {
+     *     // ... data to create a Department
+     *   }
+     * })
+     * 
+     */
+    create<T extends DepartmentCreateArgs>(args: SelectSubset<T, DepartmentCreateArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Departments.
+     * @param {DepartmentCreateManyArgs} args - Arguments to create many Departments.
+     * @example
+     * // Create many Departments
+     * const department = await prisma.department.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DepartmentCreateManyArgs>(args?: SelectSubset<T, DepartmentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Departments and returns the data saved in the database.
+     * @param {DepartmentCreateManyAndReturnArgs} args - Arguments to create many Departments.
+     * @example
+     * // Create many Departments
+     * const department = await prisma.department.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Departments and only return the `id`
+     * const departmentWithIdOnly = await prisma.department.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DepartmentCreateManyAndReturnArgs>(args?: SelectSubset<T, DepartmentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Department.
+     * @param {DepartmentDeleteArgs} args - Arguments to delete one Department.
+     * @example
+     * // Delete one Department
+     * const Department = await prisma.department.delete({
+     *   where: {
+     *     // ... filter to delete one Department
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DepartmentDeleteArgs>(args: SelectSubset<T, DepartmentDeleteArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Department.
+     * @param {DepartmentUpdateArgs} args - Arguments to update one Department.
+     * @example
+     * // Update one Department
+     * const department = await prisma.department.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DepartmentUpdateArgs>(args: SelectSubset<T, DepartmentUpdateArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Departments.
+     * @param {DepartmentDeleteManyArgs} args - Arguments to filter Departments to delete.
+     * @example
+     * // Delete a few Departments
+     * const { count } = await prisma.department.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DepartmentDeleteManyArgs>(args?: SelectSubset<T, DepartmentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Departments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepartmentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Departments
+     * const department = await prisma.department.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DepartmentUpdateManyArgs>(args: SelectSubset<T, DepartmentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Departments and returns the data updated in the database.
+     * @param {DepartmentUpdateManyAndReturnArgs} args - Arguments to update many Departments.
+     * @example
+     * // Update many Departments
+     * const department = await prisma.department.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Departments and only return the `id`
+     * const departmentWithIdOnly = await prisma.department.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DepartmentUpdateManyAndReturnArgs>(args: SelectSubset<T, DepartmentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Department.
+     * @param {DepartmentUpsertArgs} args - Arguments to update or create a Department.
+     * @example
+     * // Update or create a Department
+     * const department = await prisma.department.upsert({
+     *   create: {
+     *     // ... data to create a Department
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Department we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DepartmentUpsertArgs>(args: SelectSubset<T, DepartmentUpsertArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Departments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepartmentCountArgs} args - Arguments to filter Departments to count.
+     * @example
+     * // Count the number of Departments
+     * const count = await prisma.department.count({
+     *   where: {
+     *     // ... the filter for the Departments we want to count
+     *   }
+     * })
+    **/
+    count<T extends DepartmentCountArgs>(
+      args?: Subset<T, DepartmentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DepartmentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Department.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepartmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DepartmentAggregateArgs>(args: Subset<T, DepartmentAggregateArgs>): Prisma.PrismaPromise<GetDepartmentAggregateType<T>>
+
+    /**
+     * Group by Department.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DepartmentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DepartmentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DepartmentGroupByArgs['orderBy'] }
+        : { orderBy?: DepartmentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DepartmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDepartmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Department model
+   */
+  readonly fields: DepartmentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Department.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DepartmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    teachers<T extends Department$teachersArgs<ExtArgs> = {}>(args?: Subset<T, Department$teachersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeacherPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    subjects<T extends Department$subjectsArgs<ExtArgs> = {}>(args?: Subset<T, Department$subjectsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Department model
+   */
+  interface DepartmentFieldRefs {
+    readonly id: FieldRef<"Department", 'String'>
+    readonly name: FieldRef<"Department", 'String'>
+    readonly slug: FieldRef<"Department", 'String'>
+    readonly description: FieldRef<"Department", 'String'>
+    readonly createdAt: FieldRef<"Department", 'DateTime'>
+    readonly updatedAt: FieldRef<"Department", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Department findUnique
+   */
+  export type DepartmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Department
+     */
+    omit?: DepartmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * Filter, which Department to fetch.
+     */
+    where: DepartmentWhereUniqueInput
+  }
+
+  /**
+   * Department findUniqueOrThrow
+   */
+  export type DepartmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Department
+     */
+    omit?: DepartmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * Filter, which Department to fetch.
+     */
+    where: DepartmentWhereUniqueInput
+  }
+
+  /**
+   * Department findFirst
+   */
+  export type DepartmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Department
+     */
+    omit?: DepartmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * Filter, which Department to fetch.
+     */
+    where?: DepartmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Departments to fetch.
+     */
+    orderBy?: DepartmentOrderByWithRelationInput | DepartmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Departments.
+     */
+    cursor?: DepartmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Departments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Departments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Departments.
+     */
+    distinct?: DepartmentScalarFieldEnum | DepartmentScalarFieldEnum[]
+  }
+
+  /**
+   * Department findFirstOrThrow
+   */
+  export type DepartmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Department
+     */
+    omit?: DepartmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * Filter, which Department to fetch.
+     */
+    where?: DepartmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Departments to fetch.
+     */
+    orderBy?: DepartmentOrderByWithRelationInput | DepartmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Departments.
+     */
+    cursor?: DepartmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Departments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Departments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Departments.
+     */
+    distinct?: DepartmentScalarFieldEnum | DepartmentScalarFieldEnum[]
+  }
+
+  /**
+   * Department findMany
+   */
+  export type DepartmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Department
+     */
+    omit?: DepartmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * Filter, which Departments to fetch.
+     */
+    where?: DepartmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Departments to fetch.
+     */
+    orderBy?: DepartmentOrderByWithRelationInput | DepartmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Departments.
+     */
+    cursor?: DepartmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Departments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Departments.
+     */
+    skip?: number
+    distinct?: DepartmentScalarFieldEnum | DepartmentScalarFieldEnum[]
+  }
+
+  /**
+   * Department create
+   */
+  export type DepartmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Department
+     */
+    omit?: DepartmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Department.
+     */
+    data: XOR<DepartmentCreateInput, DepartmentUncheckedCreateInput>
+  }
+
+  /**
+   * Department createMany
+   */
+  export type DepartmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Departments.
+     */
+    data: DepartmentCreateManyInput | DepartmentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Department createManyAndReturn
+   */
+  export type DepartmentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Department
+     */
+    omit?: DepartmentOmit<ExtArgs> | null
+    /**
+     * The data used to create many Departments.
+     */
+    data: DepartmentCreateManyInput | DepartmentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Department update
+   */
+  export type DepartmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Department
+     */
+    omit?: DepartmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Department.
+     */
+    data: XOR<DepartmentUpdateInput, DepartmentUncheckedUpdateInput>
+    /**
+     * Choose, which Department to update.
+     */
+    where: DepartmentWhereUniqueInput
+  }
+
+  /**
+   * Department updateMany
+   */
+  export type DepartmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Departments.
+     */
+    data: XOR<DepartmentUpdateManyMutationInput, DepartmentUncheckedUpdateManyInput>
+    /**
+     * Filter which Departments to update
+     */
+    where?: DepartmentWhereInput
+    /**
+     * Limit how many Departments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Department updateManyAndReturn
+   */
+  export type DepartmentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Department
+     */
+    omit?: DepartmentOmit<ExtArgs> | null
+    /**
+     * The data used to update Departments.
+     */
+    data: XOR<DepartmentUpdateManyMutationInput, DepartmentUncheckedUpdateManyInput>
+    /**
+     * Filter which Departments to update
+     */
+    where?: DepartmentWhereInput
+    /**
+     * Limit how many Departments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Department upsert
+   */
+  export type DepartmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Department
+     */
+    omit?: DepartmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Department to update in case it exists.
+     */
+    where: DepartmentWhereUniqueInput
+    /**
+     * In case the Department found by the `where` argument doesn't exist, create a new Department with this data.
+     */
+    create: XOR<DepartmentCreateInput, DepartmentUncheckedCreateInput>
+    /**
+     * In case the Department was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DepartmentUpdateInput, DepartmentUncheckedUpdateInput>
+  }
+
+  /**
+   * Department delete
+   */
+  export type DepartmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Department
+     */
+    omit?: DepartmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+    /**
+     * Filter which Department to delete.
+     */
+    where: DepartmentWhereUniqueInput
+  }
+
+  /**
+   * Department deleteMany
+   */
+  export type DepartmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Departments to delete
+     */
+    where?: DepartmentWhereInput
+    /**
+     * Limit how many Departments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Department.teachers
+   */
+  export type Department$teachersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Teacher
+     */
+    select?: TeacherSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Teacher
+     */
+    omit?: TeacherOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherInclude<ExtArgs> | null
+    where?: TeacherWhereInput
+    orderBy?: TeacherOrderByWithRelationInput | TeacherOrderByWithRelationInput[]
+    cursor?: TeacherWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TeacherScalarFieldEnum | TeacherScalarFieldEnum[]
+  }
+
+  /**
+   * Department.subjects
+   */
+  export type Department$subjectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subject
+     */
+    select?: SubjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subject
+     */
+    omit?: SubjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubjectInclude<ExtArgs> | null
+    where?: SubjectWhereInput
+    orderBy?: SubjectOrderByWithRelationInput | SubjectOrderByWithRelationInput[]
+    cursor?: SubjectWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SubjectScalarFieldEnum | SubjectScalarFieldEnum[]
+  }
+
+  /**
+   * Department without action
+   */
+  export type DepartmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Department
+     */
+    select?: DepartmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Department
+     */
+    omit?: DepartmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DepartmentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Subject
+   */
+
+  export type AggregateSubject = {
+    _count: SubjectCountAggregateOutputType | null
+    _min: SubjectMinAggregateOutputType | null
+    _max: SubjectMaxAggregateOutputType | null
+  }
+
+  export type SubjectMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+    subjectCode: string | null
+    shortname: string | null
+    departmentId: string | null
+    active: boolean | null
+    optional: boolean | null
+    fieldtrips: boolean | null
+    labRequired: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SubjectMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+    subjectCode: string | null
+    shortname: string | null
+    departmentId: string | null
+    active: boolean | null
+    optional: boolean | null
+    fieldtrips: boolean | null
+    labRequired: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SubjectCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    subjectCode: number
+    shortname: number
+    departmentId: number
+    active: number
+    optional: number
+    fieldtrips: number
+    labRequired: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SubjectMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    subjectCode?: true
+    shortname?: true
+    departmentId?: true
+    active?: true
+    optional?: true
+    fieldtrips?: true
+    labRequired?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SubjectMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    subjectCode?: true
+    shortname?: true
+    departmentId?: true
+    active?: true
+    optional?: true
+    fieldtrips?: true
+    labRequired?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SubjectCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    subjectCode?: true
+    shortname?: true
+    departmentId?: true
+    active?: true
+    optional?: true
+    fieldtrips?: true
+    labRequired?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SubjectAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Subject to aggregate.
+     */
+    where?: SubjectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Subjects to fetch.
+     */
+    orderBy?: SubjectOrderByWithRelationInput | SubjectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SubjectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Subjects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Subjects.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Subjects
+    **/
+    _count?: true | SubjectCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SubjectMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SubjectMaxAggregateInputType
+  }
+
+  export type GetSubjectAggregateType<T extends SubjectAggregateArgs> = {
+        [P in keyof T & keyof AggregateSubject]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSubject[P]>
+      : GetScalarType<T[P], AggregateSubject[P]>
+  }
+
+
+
+
+  export type SubjectGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubjectWhereInput
+    orderBy?: SubjectOrderByWithAggregationInput | SubjectOrderByWithAggregationInput[]
+    by: SubjectScalarFieldEnum[] | SubjectScalarFieldEnum
+    having?: SubjectScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SubjectCountAggregateInputType | true
+    _min?: SubjectMinAggregateInputType
+    _max?: SubjectMaxAggregateInputType
+  }
+
+  export type SubjectGroupByOutputType = {
+    id: string
+    name: string
+    slug: string
+    subjectCode: string
+    shortname: string
+    departmentId: string
+    active: boolean
+    optional: boolean
+    fieldtrips: boolean
+    labRequired: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: SubjectCountAggregateOutputType | null
+    _min: SubjectMinAggregateOutputType | null
+    _max: SubjectMaxAggregateOutputType | null
+  }
+
+  type GetSubjectGroupByPayload<T extends SubjectGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SubjectGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SubjectGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SubjectGroupByOutputType[P]>
+            : GetScalarType<T[P], SubjectGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SubjectSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    subjectCode?: boolean
+    shortname?: boolean
+    departmentId?: boolean
+    active?: boolean
+    optional?: boolean
+    fieldtrips?: boolean
+    labRequired?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    teachers?: boolean | Subject$teachersArgs<ExtArgs>
+    Department?: boolean | DepartmentDefaultArgs<ExtArgs>
+    Lesson?: boolean | Subject$LessonArgs<ExtArgs>
+    _count?: boolean | SubjectCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["subject"]>
+
+  export type SubjectSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    subjectCode?: boolean
+    shortname?: boolean
+    departmentId?: boolean
+    active?: boolean
+    optional?: boolean
+    fieldtrips?: boolean
+    labRequired?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    Department?: boolean | DepartmentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["subject"]>
+
+  export type SubjectSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    subjectCode?: boolean
+    shortname?: boolean
+    departmentId?: boolean
+    active?: boolean
+    optional?: boolean
+    fieldtrips?: boolean
+    labRequired?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    Department?: boolean | DepartmentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["subject"]>
+
+  export type SubjectSelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    subjectCode?: boolean
+    shortname?: boolean
+    departmentId?: boolean
+    active?: boolean
+    optional?: boolean
+    fieldtrips?: boolean
+    labRequired?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type SubjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "subjectCode" | "shortname" | "departmentId" | "active" | "optional" | "fieldtrips" | "labRequired" | "createdAt" | "updatedAt", ExtArgs["result"]["subject"]>
+  export type SubjectInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    teachers?: boolean | Subject$teachersArgs<ExtArgs>
+    Department?: boolean | DepartmentDefaultArgs<ExtArgs>
+    Lesson?: boolean | Subject$LessonArgs<ExtArgs>
+    _count?: boolean | SubjectCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type SubjectIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Department?: boolean | DepartmentDefaultArgs<ExtArgs>
+  }
+  export type SubjectIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Department?: boolean | DepartmentDefaultArgs<ExtArgs>
+  }
+
+  export type $SubjectPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Subject"
+    objects: {
+      teachers: Prisma.$TeacherPayload<ExtArgs>[]
+      Department: Prisma.$DepartmentPayload<ExtArgs>
+      Lesson: Prisma.$LessonPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      slug: string
+      subjectCode: string
+      shortname: string
+      departmentId: string
+      active: boolean
+      optional: boolean
+      fieldtrips: boolean
+      labRequired: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["subject"]>
+    composites: {}
+  }
+
+  type SubjectGetPayload<S extends boolean | null | undefined | SubjectDefaultArgs> = $Result.GetResult<Prisma.$SubjectPayload, S>
+
+  type SubjectCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SubjectFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SubjectCountAggregateInputType | true
+    }
+
+  export interface SubjectDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Subject'], meta: { name: 'Subject' } }
+    /**
+     * Find zero or one Subject that matches the filter.
+     * @param {SubjectFindUniqueArgs} args - Arguments to find a Subject
+     * @example
+     * // Get one Subject
+     * const subject = await prisma.subject.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SubjectFindUniqueArgs>(args: SelectSubset<T, SubjectFindUniqueArgs<ExtArgs>>): Prisma__SubjectClient<$Result.GetResult<Prisma.$SubjectPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Subject that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SubjectFindUniqueOrThrowArgs} args - Arguments to find a Subject
+     * @example
+     * // Get one Subject
+     * const subject = await prisma.subject.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SubjectFindUniqueOrThrowArgs>(args: SelectSubset<T, SubjectFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SubjectClient<$Result.GetResult<Prisma.$SubjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Subject that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubjectFindFirstArgs} args - Arguments to find a Subject
+     * @example
+     * // Get one Subject
+     * const subject = await prisma.subject.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SubjectFindFirstArgs>(args?: SelectSubset<T, SubjectFindFirstArgs<ExtArgs>>): Prisma__SubjectClient<$Result.GetResult<Prisma.$SubjectPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Subject that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubjectFindFirstOrThrowArgs} args - Arguments to find a Subject
+     * @example
+     * // Get one Subject
+     * const subject = await prisma.subject.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SubjectFindFirstOrThrowArgs>(args?: SelectSubset<T, SubjectFindFirstOrThrowArgs<ExtArgs>>): Prisma__SubjectClient<$Result.GetResult<Prisma.$SubjectPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Subjects that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubjectFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Subjects
+     * const subjects = await prisma.subject.findMany()
+     * 
+     * // Get first 10 Subjects
+     * const subjects = await prisma.subject.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const subjectWithIdOnly = await prisma.subject.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SubjectFindManyArgs>(args?: SelectSubset<T, SubjectFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Subject.
+     * @param {SubjectCreateArgs} args - Arguments to create a Subject.
+     * @example
+     * // Create one Subject
+     * const Subject = await prisma.subject.create({
+     *   data: {
+     *     // ... data to create a Subject
+     *   }
+     * })
+     * 
+     */
+    create<T extends SubjectCreateArgs>(args: SelectSubset<T, SubjectCreateArgs<ExtArgs>>): Prisma__SubjectClient<$Result.GetResult<Prisma.$SubjectPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Subjects.
+     * @param {SubjectCreateManyArgs} args - Arguments to create many Subjects.
+     * @example
+     * // Create many Subjects
+     * const subject = await prisma.subject.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SubjectCreateManyArgs>(args?: SelectSubset<T, SubjectCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Subjects and returns the data saved in the database.
+     * @param {SubjectCreateManyAndReturnArgs} args - Arguments to create many Subjects.
+     * @example
+     * // Create many Subjects
+     * const subject = await prisma.subject.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Subjects and only return the `id`
+     * const subjectWithIdOnly = await prisma.subject.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SubjectCreateManyAndReturnArgs>(args?: SelectSubset<T, SubjectCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubjectPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Subject.
+     * @param {SubjectDeleteArgs} args - Arguments to delete one Subject.
+     * @example
+     * // Delete one Subject
+     * const Subject = await prisma.subject.delete({
+     *   where: {
+     *     // ... filter to delete one Subject
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SubjectDeleteArgs>(args: SelectSubset<T, SubjectDeleteArgs<ExtArgs>>): Prisma__SubjectClient<$Result.GetResult<Prisma.$SubjectPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Subject.
+     * @param {SubjectUpdateArgs} args - Arguments to update one Subject.
+     * @example
+     * // Update one Subject
+     * const subject = await prisma.subject.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SubjectUpdateArgs>(args: SelectSubset<T, SubjectUpdateArgs<ExtArgs>>): Prisma__SubjectClient<$Result.GetResult<Prisma.$SubjectPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Subjects.
+     * @param {SubjectDeleteManyArgs} args - Arguments to filter Subjects to delete.
+     * @example
+     * // Delete a few Subjects
+     * const { count } = await prisma.subject.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SubjectDeleteManyArgs>(args?: SelectSubset<T, SubjectDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Subjects.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubjectUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Subjects
+     * const subject = await prisma.subject.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SubjectUpdateManyArgs>(args: SelectSubset<T, SubjectUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Subjects and returns the data updated in the database.
+     * @param {SubjectUpdateManyAndReturnArgs} args - Arguments to update many Subjects.
+     * @example
+     * // Update many Subjects
+     * const subject = await prisma.subject.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Subjects and only return the `id`
+     * const subjectWithIdOnly = await prisma.subject.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SubjectUpdateManyAndReturnArgs>(args: SelectSubset<T, SubjectUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubjectPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Subject.
+     * @param {SubjectUpsertArgs} args - Arguments to update or create a Subject.
+     * @example
+     * // Update or create a Subject
+     * const subject = await prisma.subject.upsert({
+     *   create: {
+     *     // ... data to create a Subject
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Subject we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SubjectUpsertArgs>(args: SelectSubset<T, SubjectUpsertArgs<ExtArgs>>): Prisma__SubjectClient<$Result.GetResult<Prisma.$SubjectPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Subjects.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubjectCountArgs} args - Arguments to filter Subjects to count.
+     * @example
+     * // Count the number of Subjects
+     * const count = await prisma.subject.count({
+     *   where: {
+     *     // ... the filter for the Subjects we want to count
+     *   }
+     * })
+    **/
+    count<T extends SubjectCountArgs>(
+      args?: Subset<T, SubjectCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SubjectCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Subject.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubjectAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SubjectAggregateArgs>(args: Subset<T, SubjectAggregateArgs>): Prisma.PrismaPromise<GetSubjectAggregateType<T>>
+
+    /**
+     * Group by Subject.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubjectGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SubjectGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SubjectGroupByArgs['orderBy'] }
+        : { orderBy?: SubjectGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SubjectGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSubjectGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Subject model
+   */
+  readonly fields: SubjectFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Subject.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SubjectClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    teachers<T extends Subject$teachersArgs<ExtArgs> = {}>(args?: Subset<T, Subject$teachersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeacherPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Department<T extends DepartmentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DepartmentDefaultArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    Lesson<T extends Subject$LessonArgs<ExtArgs> = {}>(args?: Subset<T, Subject$LessonArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Subject model
+   */
+  interface SubjectFieldRefs {
+    readonly id: FieldRef<"Subject", 'String'>
+    readonly name: FieldRef<"Subject", 'String'>
+    readonly slug: FieldRef<"Subject", 'String'>
+    readonly subjectCode: FieldRef<"Subject", 'String'>
+    readonly shortname: FieldRef<"Subject", 'String'>
+    readonly departmentId: FieldRef<"Subject", 'String'>
+    readonly active: FieldRef<"Subject", 'Boolean'>
+    readonly optional: FieldRef<"Subject", 'Boolean'>
+    readonly fieldtrips: FieldRef<"Subject", 'Boolean'>
+    readonly labRequired: FieldRef<"Subject", 'Boolean'>
+    readonly createdAt: FieldRef<"Subject", 'DateTime'>
+    readonly updatedAt: FieldRef<"Subject", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Subject findUnique
+   */
+  export type SubjectFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subject
+     */
+    select?: SubjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subject
+     */
+    omit?: SubjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubjectInclude<ExtArgs> | null
+    /**
+     * Filter, which Subject to fetch.
+     */
+    where: SubjectWhereUniqueInput
+  }
+
+  /**
+   * Subject findUniqueOrThrow
+   */
+  export type SubjectFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subject
+     */
+    select?: SubjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subject
+     */
+    omit?: SubjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubjectInclude<ExtArgs> | null
+    /**
+     * Filter, which Subject to fetch.
+     */
+    where: SubjectWhereUniqueInput
+  }
+
+  /**
+   * Subject findFirst
+   */
+  export type SubjectFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subject
+     */
+    select?: SubjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subject
+     */
+    omit?: SubjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubjectInclude<ExtArgs> | null
+    /**
+     * Filter, which Subject to fetch.
+     */
+    where?: SubjectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Subjects to fetch.
+     */
+    orderBy?: SubjectOrderByWithRelationInput | SubjectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Subjects.
+     */
+    cursor?: SubjectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Subjects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Subjects.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Subjects.
+     */
+    distinct?: SubjectScalarFieldEnum | SubjectScalarFieldEnum[]
+  }
+
+  /**
+   * Subject findFirstOrThrow
+   */
+  export type SubjectFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subject
+     */
+    select?: SubjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subject
+     */
+    omit?: SubjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubjectInclude<ExtArgs> | null
+    /**
+     * Filter, which Subject to fetch.
+     */
+    where?: SubjectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Subjects to fetch.
+     */
+    orderBy?: SubjectOrderByWithRelationInput | SubjectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Subjects.
+     */
+    cursor?: SubjectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Subjects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Subjects.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Subjects.
+     */
+    distinct?: SubjectScalarFieldEnum | SubjectScalarFieldEnum[]
+  }
+
+  /**
+   * Subject findMany
+   */
+  export type SubjectFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subject
+     */
+    select?: SubjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subject
+     */
+    omit?: SubjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubjectInclude<ExtArgs> | null
+    /**
+     * Filter, which Subjects to fetch.
+     */
+    where?: SubjectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Subjects to fetch.
+     */
+    orderBy?: SubjectOrderByWithRelationInput | SubjectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Subjects.
+     */
+    cursor?: SubjectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Subjects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Subjects.
+     */
+    skip?: number
+    distinct?: SubjectScalarFieldEnum | SubjectScalarFieldEnum[]
+  }
+
+  /**
+   * Subject create
+   */
+  export type SubjectCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subject
+     */
+    select?: SubjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subject
+     */
+    omit?: SubjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubjectInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Subject.
+     */
+    data: XOR<SubjectCreateInput, SubjectUncheckedCreateInput>
+  }
+
+  /**
+   * Subject createMany
+   */
+  export type SubjectCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Subjects.
+     */
+    data: SubjectCreateManyInput | SubjectCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Subject createManyAndReturn
+   */
+  export type SubjectCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subject
+     */
+    select?: SubjectSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subject
+     */
+    omit?: SubjectOmit<ExtArgs> | null
+    /**
+     * The data used to create many Subjects.
+     */
+    data: SubjectCreateManyInput | SubjectCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubjectIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Subject update
+   */
+  export type SubjectUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subject
+     */
+    select?: SubjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subject
+     */
+    omit?: SubjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubjectInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Subject.
+     */
+    data: XOR<SubjectUpdateInput, SubjectUncheckedUpdateInput>
+    /**
+     * Choose, which Subject to update.
+     */
+    where: SubjectWhereUniqueInput
+  }
+
+  /**
+   * Subject updateMany
+   */
+  export type SubjectUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Subjects.
+     */
+    data: XOR<SubjectUpdateManyMutationInput, SubjectUncheckedUpdateManyInput>
+    /**
+     * Filter which Subjects to update
+     */
+    where?: SubjectWhereInput
+    /**
+     * Limit how many Subjects to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Subject updateManyAndReturn
+   */
+  export type SubjectUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subject
+     */
+    select?: SubjectSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subject
+     */
+    omit?: SubjectOmit<ExtArgs> | null
+    /**
+     * The data used to update Subjects.
+     */
+    data: XOR<SubjectUpdateManyMutationInput, SubjectUncheckedUpdateManyInput>
+    /**
+     * Filter which Subjects to update
+     */
+    where?: SubjectWhereInput
+    /**
+     * Limit how many Subjects to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubjectIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Subject upsert
+   */
+  export type SubjectUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subject
+     */
+    select?: SubjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subject
+     */
+    omit?: SubjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubjectInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Subject to update in case it exists.
+     */
+    where: SubjectWhereUniqueInput
+    /**
+     * In case the Subject found by the `where` argument doesn't exist, create a new Subject with this data.
+     */
+    create: XOR<SubjectCreateInput, SubjectUncheckedCreateInput>
+    /**
+     * In case the Subject was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SubjectUpdateInput, SubjectUncheckedUpdateInput>
+  }
+
+  /**
+   * Subject delete
+   */
+  export type SubjectDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subject
+     */
+    select?: SubjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subject
+     */
+    omit?: SubjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubjectInclude<ExtArgs> | null
+    /**
+     * Filter which Subject to delete.
+     */
+    where: SubjectWhereUniqueInput
+  }
+
+  /**
+   * Subject deleteMany
+   */
+  export type SubjectDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Subjects to delete
+     */
+    where?: SubjectWhereInput
+    /**
+     * Limit how many Subjects to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Subject.teachers
+   */
+  export type Subject$teachersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Teacher
+     */
+    select?: TeacherSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Teacher
+     */
+    omit?: TeacherOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherInclude<ExtArgs> | null
+    where?: TeacherWhereInput
+    orderBy?: TeacherOrderByWithRelationInput | TeacherOrderByWithRelationInput[]
+    cursor?: TeacherWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TeacherScalarFieldEnum | TeacherScalarFieldEnum[]
+  }
+
+  /**
+   * Subject.Lesson
+   */
+  export type Subject$LessonArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lesson
+     */
+    select?: LessonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lesson
+     */
+    omit?: LessonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonInclude<ExtArgs> | null
+    where?: LessonWhereInput
+    orderBy?: LessonOrderByWithRelationInput | LessonOrderByWithRelationInput[]
+    cursor?: LessonWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LessonScalarFieldEnum | LessonScalarFieldEnum[]
+  }
+
+  /**
+   * Subject without action
+   */
+  export type SubjectDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Subject
+     */
+    select?: SubjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Subject
+     */
+    omit?: SubjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubjectInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Lesson
+   */
+
+  export type AggregateLesson = {
+    _count: LessonCountAggregateOutputType | null
+    _avg: LessonAvgAggregateOutputType | null
+    _sum: LessonSumAggregateOutputType | null
+    _min: LessonMinAggregateOutputType | null
+    _max: LessonMaxAggregateOutputType | null
+  }
+
+  export type LessonAvgAggregateOutputType = {
+    day: number | null
+  }
+
+  export type LessonSumAggregateOutputType = {
+    day: number | null
+  }
+
+  export type LessonMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    day: number | null
+    teacherId: string | null
+    subjectId: string | null
+    streamId: string | null
+    timeSlotId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type LessonMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    day: number | null
+    teacherId: string | null
+    subjectId: string | null
+    streamId: string | null
+    timeSlotId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type LessonCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    materials: number
+    assignment: number
+    day: number
+    teacherId: number
+    subjectId: number
+    streamId: number
+    timeSlotId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type LessonAvgAggregateInputType = {
+    day?: true
+  }
+
+  export type LessonSumAggregateInputType = {
+    day?: true
+  }
+
+  export type LessonMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    day?: true
+    teacherId?: true
+    subjectId?: true
+    streamId?: true
+    timeSlotId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type LessonMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    day?: true
+    teacherId?: true
+    subjectId?: true
+    streamId?: true
+    timeSlotId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type LessonCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    materials?: true
+    assignment?: true
+    day?: true
+    teacherId?: true
+    subjectId?: true
+    streamId?: true
+    timeSlotId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type LessonAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Lesson to aggregate.
+     */
+    where?: LessonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Lessons to fetch.
+     */
+    orderBy?: LessonOrderByWithRelationInput | LessonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LessonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Lessons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Lessons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Lessons
+    **/
+    _count?: true | LessonCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LessonAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LessonSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LessonMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LessonMaxAggregateInputType
+  }
+
+  export type GetLessonAggregateType<T extends LessonAggregateArgs> = {
+        [P in keyof T & keyof AggregateLesson]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLesson[P]>
+      : GetScalarType<T[P], AggregateLesson[P]>
+  }
+
+
+
+
+  export type LessonGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LessonWhereInput
+    orderBy?: LessonOrderByWithAggregationInput | LessonOrderByWithAggregationInput[]
+    by: LessonScalarFieldEnum[] | LessonScalarFieldEnum
+    having?: LessonScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LessonCountAggregateInputType | true
+    _avg?: LessonAvgAggregateInputType
+    _sum?: LessonSumAggregateInputType
+    _min?: LessonMinAggregateInputType
+    _max?: LessonMaxAggregateInputType
+  }
+
+  export type LessonGroupByOutputType = {
+    id: string
+    name: string
+    description: string
+    materials: JsonValue | null
+    assignment: JsonValue | null
+    day: number
+    teacherId: string
+    subjectId: string
+    streamId: string
+    timeSlotId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: LessonCountAggregateOutputType | null
+    _avg: LessonAvgAggregateOutputType | null
+    _sum: LessonSumAggregateOutputType | null
+    _min: LessonMinAggregateOutputType | null
+    _max: LessonMaxAggregateOutputType | null
+  }
+
+  type GetLessonGroupByPayload<T extends LessonGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LessonGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LessonGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LessonGroupByOutputType[P]>
+            : GetScalarType<T[P], LessonGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LessonSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    materials?: boolean
+    assignment?: boolean
+    day?: boolean
+    teacherId?: boolean
+    subjectId?: boolean
+    streamId?: boolean
+    timeSlotId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    Teacher?: boolean | TeacherDefaultArgs<ExtArgs>
+    Subject?: boolean | SubjectDefaultArgs<ExtArgs>
+    Stream?: boolean | StreamDefaultArgs<ExtArgs>
+    TimeSlot?: boolean | TimeSlotDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["lesson"]>
+
+  export type LessonSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    materials?: boolean
+    assignment?: boolean
+    day?: boolean
+    teacherId?: boolean
+    subjectId?: boolean
+    streamId?: boolean
+    timeSlotId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    Teacher?: boolean | TeacherDefaultArgs<ExtArgs>
+    Subject?: boolean | SubjectDefaultArgs<ExtArgs>
+    Stream?: boolean | StreamDefaultArgs<ExtArgs>
+    TimeSlot?: boolean | TimeSlotDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["lesson"]>
+
+  export type LessonSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    materials?: boolean
+    assignment?: boolean
+    day?: boolean
+    teacherId?: boolean
+    subjectId?: boolean
+    streamId?: boolean
+    timeSlotId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    Teacher?: boolean | TeacherDefaultArgs<ExtArgs>
+    Subject?: boolean | SubjectDefaultArgs<ExtArgs>
+    Stream?: boolean | StreamDefaultArgs<ExtArgs>
+    TimeSlot?: boolean | TimeSlotDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["lesson"]>
+
+  export type LessonSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    materials?: boolean
+    assignment?: boolean
+    day?: boolean
+    teacherId?: boolean
+    subjectId?: boolean
+    streamId?: boolean
+    timeSlotId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type LessonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "materials" | "assignment" | "day" | "teacherId" | "subjectId" | "streamId" | "timeSlotId" | "createdAt" | "updatedAt", ExtArgs["result"]["lesson"]>
+  export type LessonInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Teacher?: boolean | TeacherDefaultArgs<ExtArgs>
+    Subject?: boolean | SubjectDefaultArgs<ExtArgs>
+    Stream?: boolean | StreamDefaultArgs<ExtArgs>
+    TimeSlot?: boolean | TimeSlotDefaultArgs<ExtArgs>
+  }
+  export type LessonIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Teacher?: boolean | TeacherDefaultArgs<ExtArgs>
+    Subject?: boolean | SubjectDefaultArgs<ExtArgs>
+    Stream?: boolean | StreamDefaultArgs<ExtArgs>
+    TimeSlot?: boolean | TimeSlotDefaultArgs<ExtArgs>
+  }
+  export type LessonIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Teacher?: boolean | TeacherDefaultArgs<ExtArgs>
+    Subject?: boolean | SubjectDefaultArgs<ExtArgs>
+    Stream?: boolean | StreamDefaultArgs<ExtArgs>
+    TimeSlot?: boolean | TimeSlotDefaultArgs<ExtArgs>
+  }
+
+  export type $LessonPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Lesson"
+    objects: {
+      Teacher: Prisma.$TeacherPayload<ExtArgs>
+      Subject: Prisma.$SubjectPayload<ExtArgs>
+      Stream: Prisma.$StreamPayload<ExtArgs>
+      TimeSlot: Prisma.$TimeSlotPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      description: string
+      materials: Prisma.JsonValue | null
+      assignment: Prisma.JsonValue | null
+      day: number
+      teacherId: string
+      subjectId: string
+      streamId: string
+      timeSlotId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["lesson"]>
+    composites: {}
+  }
+
+  type LessonGetPayload<S extends boolean | null | undefined | LessonDefaultArgs> = $Result.GetResult<Prisma.$LessonPayload, S>
+
+  type LessonCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LessonFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LessonCountAggregateInputType | true
+    }
+
+  export interface LessonDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Lesson'], meta: { name: 'Lesson' } }
+    /**
+     * Find zero or one Lesson that matches the filter.
+     * @param {LessonFindUniqueArgs} args - Arguments to find a Lesson
+     * @example
+     * // Get one Lesson
+     * const lesson = await prisma.lesson.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LessonFindUniqueArgs>(args: SelectSubset<T, LessonFindUniqueArgs<ExtArgs>>): Prisma__LessonClient<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Lesson that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LessonFindUniqueOrThrowArgs} args - Arguments to find a Lesson
+     * @example
+     * // Get one Lesson
+     * const lesson = await prisma.lesson.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LessonFindUniqueOrThrowArgs>(args: SelectSubset<T, LessonFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LessonClient<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Lesson that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LessonFindFirstArgs} args - Arguments to find a Lesson
+     * @example
+     * // Get one Lesson
+     * const lesson = await prisma.lesson.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LessonFindFirstArgs>(args?: SelectSubset<T, LessonFindFirstArgs<ExtArgs>>): Prisma__LessonClient<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Lesson that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LessonFindFirstOrThrowArgs} args - Arguments to find a Lesson
+     * @example
+     * // Get one Lesson
+     * const lesson = await prisma.lesson.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LessonFindFirstOrThrowArgs>(args?: SelectSubset<T, LessonFindFirstOrThrowArgs<ExtArgs>>): Prisma__LessonClient<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Lessons that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LessonFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Lessons
+     * const lessons = await prisma.lesson.findMany()
+     * 
+     * // Get first 10 Lessons
+     * const lessons = await prisma.lesson.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const lessonWithIdOnly = await prisma.lesson.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LessonFindManyArgs>(args?: SelectSubset<T, LessonFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Lesson.
+     * @param {LessonCreateArgs} args - Arguments to create a Lesson.
+     * @example
+     * // Create one Lesson
+     * const Lesson = await prisma.lesson.create({
+     *   data: {
+     *     // ... data to create a Lesson
+     *   }
+     * })
+     * 
+     */
+    create<T extends LessonCreateArgs>(args: SelectSubset<T, LessonCreateArgs<ExtArgs>>): Prisma__LessonClient<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Lessons.
+     * @param {LessonCreateManyArgs} args - Arguments to create many Lessons.
+     * @example
+     * // Create many Lessons
+     * const lesson = await prisma.lesson.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LessonCreateManyArgs>(args?: SelectSubset<T, LessonCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Lessons and returns the data saved in the database.
+     * @param {LessonCreateManyAndReturnArgs} args - Arguments to create many Lessons.
+     * @example
+     * // Create many Lessons
+     * const lesson = await prisma.lesson.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Lessons and only return the `id`
+     * const lessonWithIdOnly = await prisma.lesson.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LessonCreateManyAndReturnArgs>(args?: SelectSubset<T, LessonCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Lesson.
+     * @param {LessonDeleteArgs} args - Arguments to delete one Lesson.
+     * @example
+     * // Delete one Lesson
+     * const Lesson = await prisma.lesson.delete({
+     *   where: {
+     *     // ... filter to delete one Lesson
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LessonDeleteArgs>(args: SelectSubset<T, LessonDeleteArgs<ExtArgs>>): Prisma__LessonClient<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Lesson.
+     * @param {LessonUpdateArgs} args - Arguments to update one Lesson.
+     * @example
+     * // Update one Lesson
+     * const lesson = await prisma.lesson.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LessonUpdateArgs>(args: SelectSubset<T, LessonUpdateArgs<ExtArgs>>): Prisma__LessonClient<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Lessons.
+     * @param {LessonDeleteManyArgs} args - Arguments to filter Lessons to delete.
+     * @example
+     * // Delete a few Lessons
+     * const { count } = await prisma.lesson.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LessonDeleteManyArgs>(args?: SelectSubset<T, LessonDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Lessons.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LessonUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Lessons
+     * const lesson = await prisma.lesson.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LessonUpdateManyArgs>(args: SelectSubset<T, LessonUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Lessons and returns the data updated in the database.
+     * @param {LessonUpdateManyAndReturnArgs} args - Arguments to update many Lessons.
+     * @example
+     * // Update many Lessons
+     * const lesson = await prisma.lesson.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Lessons and only return the `id`
+     * const lessonWithIdOnly = await prisma.lesson.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LessonUpdateManyAndReturnArgs>(args: SelectSubset<T, LessonUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Lesson.
+     * @param {LessonUpsertArgs} args - Arguments to update or create a Lesson.
+     * @example
+     * // Update or create a Lesson
+     * const lesson = await prisma.lesson.upsert({
+     *   create: {
+     *     // ... data to create a Lesson
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Lesson we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LessonUpsertArgs>(args: SelectSubset<T, LessonUpsertArgs<ExtArgs>>): Prisma__LessonClient<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Lessons.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LessonCountArgs} args - Arguments to filter Lessons to count.
+     * @example
+     * // Count the number of Lessons
+     * const count = await prisma.lesson.count({
+     *   where: {
+     *     // ... the filter for the Lessons we want to count
+     *   }
+     * })
+    **/
+    count<T extends LessonCountArgs>(
+      args?: Subset<T, LessonCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LessonCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Lesson.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LessonAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LessonAggregateArgs>(args: Subset<T, LessonAggregateArgs>): Prisma.PrismaPromise<GetLessonAggregateType<T>>
+
+    /**
+     * Group by Lesson.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LessonGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LessonGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LessonGroupByArgs['orderBy'] }
+        : { orderBy?: LessonGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LessonGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLessonGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Lesson model
+   */
+  readonly fields: LessonFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Lesson.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LessonClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Teacher<T extends TeacherDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TeacherDefaultArgs<ExtArgs>>): Prisma__TeacherClient<$Result.GetResult<Prisma.$TeacherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    Subject<T extends SubjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SubjectDefaultArgs<ExtArgs>>): Prisma__SubjectClient<$Result.GetResult<Prisma.$SubjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    Stream<T extends StreamDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StreamDefaultArgs<ExtArgs>>): Prisma__StreamClient<$Result.GetResult<Prisma.$StreamPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    TimeSlot<T extends TimeSlotDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TimeSlotDefaultArgs<ExtArgs>>): Prisma__TimeSlotClient<$Result.GetResult<Prisma.$TimeSlotPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Lesson model
+   */
+  interface LessonFieldRefs {
+    readonly id: FieldRef<"Lesson", 'String'>
+    readonly name: FieldRef<"Lesson", 'String'>
+    readonly description: FieldRef<"Lesson", 'String'>
+    readonly materials: FieldRef<"Lesson", 'Json'>
+    readonly assignment: FieldRef<"Lesson", 'Json'>
+    readonly day: FieldRef<"Lesson", 'Int'>
+    readonly teacherId: FieldRef<"Lesson", 'String'>
+    readonly subjectId: FieldRef<"Lesson", 'String'>
+    readonly streamId: FieldRef<"Lesson", 'String'>
+    readonly timeSlotId: FieldRef<"Lesson", 'String'>
+    readonly createdAt: FieldRef<"Lesson", 'DateTime'>
+    readonly updatedAt: FieldRef<"Lesson", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Lesson findUnique
+   */
+  export type LessonFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lesson
+     */
+    select?: LessonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lesson
+     */
+    omit?: LessonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonInclude<ExtArgs> | null
+    /**
+     * Filter, which Lesson to fetch.
+     */
+    where: LessonWhereUniqueInput
+  }
+
+  /**
+   * Lesson findUniqueOrThrow
+   */
+  export type LessonFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lesson
+     */
+    select?: LessonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lesson
+     */
+    omit?: LessonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonInclude<ExtArgs> | null
+    /**
+     * Filter, which Lesson to fetch.
+     */
+    where: LessonWhereUniqueInput
+  }
+
+  /**
+   * Lesson findFirst
+   */
+  export type LessonFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lesson
+     */
+    select?: LessonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lesson
+     */
+    omit?: LessonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonInclude<ExtArgs> | null
+    /**
+     * Filter, which Lesson to fetch.
+     */
+    where?: LessonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Lessons to fetch.
+     */
+    orderBy?: LessonOrderByWithRelationInput | LessonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Lessons.
+     */
+    cursor?: LessonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Lessons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Lessons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Lessons.
+     */
+    distinct?: LessonScalarFieldEnum | LessonScalarFieldEnum[]
+  }
+
+  /**
+   * Lesson findFirstOrThrow
+   */
+  export type LessonFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lesson
+     */
+    select?: LessonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lesson
+     */
+    omit?: LessonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonInclude<ExtArgs> | null
+    /**
+     * Filter, which Lesson to fetch.
+     */
+    where?: LessonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Lessons to fetch.
+     */
+    orderBy?: LessonOrderByWithRelationInput | LessonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Lessons.
+     */
+    cursor?: LessonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Lessons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Lessons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Lessons.
+     */
+    distinct?: LessonScalarFieldEnum | LessonScalarFieldEnum[]
+  }
+
+  /**
+   * Lesson findMany
+   */
+  export type LessonFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lesson
+     */
+    select?: LessonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lesson
+     */
+    omit?: LessonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonInclude<ExtArgs> | null
+    /**
+     * Filter, which Lessons to fetch.
+     */
+    where?: LessonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Lessons to fetch.
+     */
+    orderBy?: LessonOrderByWithRelationInput | LessonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Lessons.
+     */
+    cursor?: LessonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Lessons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Lessons.
+     */
+    skip?: number
+    distinct?: LessonScalarFieldEnum | LessonScalarFieldEnum[]
+  }
+
+  /**
+   * Lesson create
+   */
+  export type LessonCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lesson
+     */
+    select?: LessonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lesson
+     */
+    omit?: LessonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Lesson.
+     */
+    data: XOR<LessonCreateInput, LessonUncheckedCreateInput>
+  }
+
+  /**
+   * Lesson createMany
+   */
+  export type LessonCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Lessons.
+     */
+    data: LessonCreateManyInput | LessonCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Lesson createManyAndReturn
+   */
+  export type LessonCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lesson
+     */
+    select?: LessonSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lesson
+     */
+    omit?: LessonOmit<ExtArgs> | null
+    /**
+     * The data used to create many Lessons.
+     */
+    data: LessonCreateManyInput | LessonCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Lesson update
+   */
+  export type LessonUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lesson
+     */
+    select?: LessonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lesson
+     */
+    omit?: LessonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Lesson.
+     */
+    data: XOR<LessonUpdateInput, LessonUncheckedUpdateInput>
+    /**
+     * Choose, which Lesson to update.
+     */
+    where: LessonWhereUniqueInput
+  }
+
+  /**
+   * Lesson updateMany
+   */
+  export type LessonUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Lessons.
+     */
+    data: XOR<LessonUpdateManyMutationInput, LessonUncheckedUpdateManyInput>
+    /**
+     * Filter which Lessons to update
+     */
+    where?: LessonWhereInput
+    /**
+     * Limit how many Lessons to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Lesson updateManyAndReturn
+   */
+  export type LessonUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lesson
+     */
+    select?: LessonSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lesson
+     */
+    omit?: LessonOmit<ExtArgs> | null
+    /**
+     * The data used to update Lessons.
+     */
+    data: XOR<LessonUpdateManyMutationInput, LessonUncheckedUpdateManyInput>
+    /**
+     * Filter which Lessons to update
+     */
+    where?: LessonWhereInput
+    /**
+     * Limit how many Lessons to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Lesson upsert
+   */
+  export type LessonUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lesson
+     */
+    select?: LessonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lesson
+     */
+    omit?: LessonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Lesson to update in case it exists.
+     */
+    where: LessonWhereUniqueInput
+    /**
+     * In case the Lesson found by the `where` argument doesn't exist, create a new Lesson with this data.
+     */
+    create: XOR<LessonCreateInput, LessonUncheckedCreateInput>
+    /**
+     * In case the Lesson was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LessonUpdateInput, LessonUncheckedUpdateInput>
+  }
+
+  /**
+   * Lesson delete
+   */
+  export type LessonDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lesson
+     */
+    select?: LessonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lesson
+     */
+    omit?: LessonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonInclude<ExtArgs> | null
+    /**
+     * Filter which Lesson to delete.
+     */
+    where: LessonWhereUniqueInput
+  }
+
+  /**
+   * Lesson deleteMany
+   */
+  export type LessonDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Lessons to delete
+     */
+    where?: LessonWhereInput
+    /**
+     * Limit how many Lessons to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Lesson without action
+   */
+  export type LessonDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lesson
+     */
+    select?: LessonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lesson
+     */
+    omit?: LessonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TimeSlot
+   */
+
+  export type AggregateTimeSlot = {
+    _count: TimeSlotCountAggregateOutputType | null
+    _min: TimeSlotMinAggregateOutputType | null
+    _max: TimeSlotMaxAggregateOutputType | null
+  }
+
+  export type TimeSlotMinAggregateOutputType = {
+    id: string | null
+    startTime: string | null
+    endTime: string | null
+    name: string | null
+  }
+
+  export type TimeSlotMaxAggregateOutputType = {
+    id: string | null
+    startTime: string | null
+    endTime: string | null
+    name: string | null
+  }
+
+  export type TimeSlotCountAggregateOutputType = {
+    id: number
+    startTime: number
+    endTime: number
+    name: number
+    _all: number
+  }
+
+
+  export type TimeSlotMinAggregateInputType = {
+    id?: true
+    startTime?: true
+    endTime?: true
+    name?: true
+  }
+
+  export type TimeSlotMaxAggregateInputType = {
+    id?: true
+    startTime?: true
+    endTime?: true
+    name?: true
+  }
+
+  export type TimeSlotCountAggregateInputType = {
+    id?: true
+    startTime?: true
+    endTime?: true
+    name?: true
+    _all?: true
+  }
+
+  export type TimeSlotAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TimeSlot to aggregate.
+     */
+    where?: TimeSlotWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TimeSlots to fetch.
+     */
+    orderBy?: TimeSlotOrderByWithRelationInput | TimeSlotOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TimeSlotWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TimeSlots from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TimeSlots.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TimeSlots
+    **/
+    _count?: true | TimeSlotCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TimeSlotMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TimeSlotMaxAggregateInputType
+  }
+
+  export type GetTimeSlotAggregateType<T extends TimeSlotAggregateArgs> = {
+        [P in keyof T & keyof AggregateTimeSlot]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTimeSlot[P]>
+      : GetScalarType<T[P], AggregateTimeSlot[P]>
+  }
+
+
+
+
+  export type TimeSlotGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TimeSlotWhereInput
+    orderBy?: TimeSlotOrderByWithAggregationInput | TimeSlotOrderByWithAggregationInput[]
+    by: TimeSlotScalarFieldEnum[] | TimeSlotScalarFieldEnum
+    having?: TimeSlotScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TimeSlotCountAggregateInputType | true
+    _min?: TimeSlotMinAggregateInputType
+    _max?: TimeSlotMaxAggregateInputType
+  }
+
+  export type TimeSlotGroupByOutputType = {
+    id: string
+    startTime: string
+    endTime: string
+    name: string
+    _count: TimeSlotCountAggregateOutputType | null
+    _min: TimeSlotMinAggregateOutputType | null
+    _max: TimeSlotMaxAggregateOutputType | null
+  }
+
+  type GetTimeSlotGroupByPayload<T extends TimeSlotGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TimeSlotGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TimeSlotGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TimeSlotGroupByOutputType[P]>
+            : GetScalarType<T[P], TimeSlotGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TimeSlotSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    name?: boolean
+    lessons?: boolean | TimeSlot$lessonsArgs<ExtArgs>
+    _count?: boolean | TimeSlotCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["timeSlot"]>
+
+  export type TimeSlotSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["timeSlot"]>
+
+  export type TimeSlotSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["timeSlot"]>
+
+  export type TimeSlotSelectScalar = {
+    id?: boolean
+    startTime?: boolean
+    endTime?: boolean
+    name?: boolean
+  }
+
+  export type TimeSlotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "startTime" | "endTime" | "name", ExtArgs["result"]["timeSlot"]>
+  export type TimeSlotInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    lessons?: boolean | TimeSlot$lessonsArgs<ExtArgs>
+    _count?: boolean | TimeSlotCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TimeSlotIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type TimeSlotIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $TimeSlotPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TimeSlot"
+    objects: {
+      lessons: Prisma.$LessonPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      startTime: string
+      endTime: string
+      name: string
+    }, ExtArgs["result"]["timeSlot"]>
+    composites: {}
+  }
+
+  type TimeSlotGetPayload<S extends boolean | null | undefined | TimeSlotDefaultArgs> = $Result.GetResult<Prisma.$TimeSlotPayload, S>
+
+  type TimeSlotCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TimeSlotFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TimeSlotCountAggregateInputType | true
+    }
+
+  export interface TimeSlotDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TimeSlot'], meta: { name: 'TimeSlot' } }
+    /**
+     * Find zero or one TimeSlot that matches the filter.
+     * @param {TimeSlotFindUniqueArgs} args - Arguments to find a TimeSlot
+     * @example
+     * // Get one TimeSlot
+     * const timeSlot = await prisma.timeSlot.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TimeSlotFindUniqueArgs>(args: SelectSubset<T, TimeSlotFindUniqueArgs<ExtArgs>>): Prisma__TimeSlotClient<$Result.GetResult<Prisma.$TimeSlotPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TimeSlot that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TimeSlotFindUniqueOrThrowArgs} args - Arguments to find a TimeSlot
+     * @example
+     * // Get one TimeSlot
+     * const timeSlot = await prisma.timeSlot.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TimeSlotFindUniqueOrThrowArgs>(args: SelectSubset<T, TimeSlotFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TimeSlotClient<$Result.GetResult<Prisma.$TimeSlotPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TimeSlot that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TimeSlotFindFirstArgs} args - Arguments to find a TimeSlot
+     * @example
+     * // Get one TimeSlot
+     * const timeSlot = await prisma.timeSlot.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TimeSlotFindFirstArgs>(args?: SelectSubset<T, TimeSlotFindFirstArgs<ExtArgs>>): Prisma__TimeSlotClient<$Result.GetResult<Prisma.$TimeSlotPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TimeSlot that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TimeSlotFindFirstOrThrowArgs} args - Arguments to find a TimeSlot
+     * @example
+     * // Get one TimeSlot
+     * const timeSlot = await prisma.timeSlot.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TimeSlotFindFirstOrThrowArgs>(args?: SelectSubset<T, TimeSlotFindFirstOrThrowArgs<ExtArgs>>): Prisma__TimeSlotClient<$Result.GetResult<Prisma.$TimeSlotPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TimeSlots that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TimeSlotFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TimeSlots
+     * const timeSlots = await prisma.timeSlot.findMany()
+     * 
+     * // Get first 10 TimeSlots
+     * const timeSlots = await prisma.timeSlot.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const timeSlotWithIdOnly = await prisma.timeSlot.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TimeSlotFindManyArgs>(args?: SelectSubset<T, TimeSlotFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TimeSlotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TimeSlot.
+     * @param {TimeSlotCreateArgs} args - Arguments to create a TimeSlot.
+     * @example
+     * // Create one TimeSlot
+     * const TimeSlot = await prisma.timeSlot.create({
+     *   data: {
+     *     // ... data to create a TimeSlot
+     *   }
+     * })
+     * 
+     */
+    create<T extends TimeSlotCreateArgs>(args: SelectSubset<T, TimeSlotCreateArgs<ExtArgs>>): Prisma__TimeSlotClient<$Result.GetResult<Prisma.$TimeSlotPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TimeSlots.
+     * @param {TimeSlotCreateManyArgs} args - Arguments to create many TimeSlots.
+     * @example
+     * // Create many TimeSlots
+     * const timeSlot = await prisma.timeSlot.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TimeSlotCreateManyArgs>(args?: SelectSubset<T, TimeSlotCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TimeSlots and returns the data saved in the database.
+     * @param {TimeSlotCreateManyAndReturnArgs} args - Arguments to create many TimeSlots.
+     * @example
+     * // Create many TimeSlots
+     * const timeSlot = await prisma.timeSlot.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TimeSlots and only return the `id`
+     * const timeSlotWithIdOnly = await prisma.timeSlot.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TimeSlotCreateManyAndReturnArgs>(args?: SelectSubset<T, TimeSlotCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TimeSlotPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TimeSlot.
+     * @param {TimeSlotDeleteArgs} args - Arguments to delete one TimeSlot.
+     * @example
+     * // Delete one TimeSlot
+     * const TimeSlot = await prisma.timeSlot.delete({
+     *   where: {
+     *     // ... filter to delete one TimeSlot
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TimeSlotDeleteArgs>(args: SelectSubset<T, TimeSlotDeleteArgs<ExtArgs>>): Prisma__TimeSlotClient<$Result.GetResult<Prisma.$TimeSlotPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TimeSlot.
+     * @param {TimeSlotUpdateArgs} args - Arguments to update one TimeSlot.
+     * @example
+     * // Update one TimeSlot
+     * const timeSlot = await prisma.timeSlot.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TimeSlotUpdateArgs>(args: SelectSubset<T, TimeSlotUpdateArgs<ExtArgs>>): Prisma__TimeSlotClient<$Result.GetResult<Prisma.$TimeSlotPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TimeSlots.
+     * @param {TimeSlotDeleteManyArgs} args - Arguments to filter TimeSlots to delete.
+     * @example
+     * // Delete a few TimeSlots
+     * const { count } = await prisma.timeSlot.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TimeSlotDeleteManyArgs>(args?: SelectSubset<T, TimeSlotDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TimeSlots.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TimeSlotUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TimeSlots
+     * const timeSlot = await prisma.timeSlot.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TimeSlotUpdateManyArgs>(args: SelectSubset<T, TimeSlotUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TimeSlots and returns the data updated in the database.
+     * @param {TimeSlotUpdateManyAndReturnArgs} args - Arguments to update many TimeSlots.
+     * @example
+     * // Update many TimeSlots
+     * const timeSlot = await prisma.timeSlot.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TimeSlots and only return the `id`
+     * const timeSlotWithIdOnly = await prisma.timeSlot.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TimeSlotUpdateManyAndReturnArgs>(args: SelectSubset<T, TimeSlotUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TimeSlotPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TimeSlot.
+     * @param {TimeSlotUpsertArgs} args - Arguments to update or create a TimeSlot.
+     * @example
+     * // Update or create a TimeSlot
+     * const timeSlot = await prisma.timeSlot.upsert({
+     *   create: {
+     *     // ... data to create a TimeSlot
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TimeSlot we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TimeSlotUpsertArgs>(args: SelectSubset<T, TimeSlotUpsertArgs<ExtArgs>>): Prisma__TimeSlotClient<$Result.GetResult<Prisma.$TimeSlotPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TimeSlots.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TimeSlotCountArgs} args - Arguments to filter TimeSlots to count.
+     * @example
+     * // Count the number of TimeSlots
+     * const count = await prisma.timeSlot.count({
+     *   where: {
+     *     // ... the filter for the TimeSlots we want to count
+     *   }
+     * })
+    **/
+    count<T extends TimeSlotCountArgs>(
+      args?: Subset<T, TimeSlotCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TimeSlotCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TimeSlot.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TimeSlotAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TimeSlotAggregateArgs>(args: Subset<T, TimeSlotAggregateArgs>): Prisma.PrismaPromise<GetTimeSlotAggregateType<T>>
+
+    /**
+     * Group by TimeSlot.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TimeSlotGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TimeSlotGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TimeSlotGroupByArgs['orderBy'] }
+        : { orderBy?: TimeSlotGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TimeSlotGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTimeSlotGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TimeSlot model
+   */
+  readonly fields: TimeSlotFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TimeSlot.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TimeSlotClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    lessons<T extends TimeSlot$lessonsArgs<ExtArgs> = {}>(args?: Subset<T, TimeSlot$lessonsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LessonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TimeSlot model
+   */
+  interface TimeSlotFieldRefs {
+    readonly id: FieldRef<"TimeSlot", 'String'>
+    readonly startTime: FieldRef<"TimeSlot", 'String'>
+    readonly endTime: FieldRef<"TimeSlot", 'String'>
+    readonly name: FieldRef<"TimeSlot", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TimeSlot findUnique
+   */
+  export type TimeSlotFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeSlot
+     */
+    select?: TimeSlotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TimeSlot
+     */
+    omit?: TimeSlotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeSlotInclude<ExtArgs> | null
+    /**
+     * Filter, which TimeSlot to fetch.
+     */
+    where: TimeSlotWhereUniqueInput
+  }
+
+  /**
+   * TimeSlot findUniqueOrThrow
+   */
+  export type TimeSlotFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeSlot
+     */
+    select?: TimeSlotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TimeSlot
+     */
+    omit?: TimeSlotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeSlotInclude<ExtArgs> | null
+    /**
+     * Filter, which TimeSlot to fetch.
+     */
+    where: TimeSlotWhereUniqueInput
+  }
+
+  /**
+   * TimeSlot findFirst
+   */
+  export type TimeSlotFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeSlot
+     */
+    select?: TimeSlotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TimeSlot
+     */
+    omit?: TimeSlotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeSlotInclude<ExtArgs> | null
+    /**
+     * Filter, which TimeSlot to fetch.
+     */
+    where?: TimeSlotWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TimeSlots to fetch.
+     */
+    orderBy?: TimeSlotOrderByWithRelationInput | TimeSlotOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TimeSlots.
+     */
+    cursor?: TimeSlotWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TimeSlots from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TimeSlots.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TimeSlots.
+     */
+    distinct?: TimeSlotScalarFieldEnum | TimeSlotScalarFieldEnum[]
+  }
+
+  /**
+   * TimeSlot findFirstOrThrow
+   */
+  export type TimeSlotFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeSlot
+     */
+    select?: TimeSlotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TimeSlot
+     */
+    omit?: TimeSlotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeSlotInclude<ExtArgs> | null
+    /**
+     * Filter, which TimeSlot to fetch.
+     */
+    where?: TimeSlotWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TimeSlots to fetch.
+     */
+    orderBy?: TimeSlotOrderByWithRelationInput | TimeSlotOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TimeSlots.
+     */
+    cursor?: TimeSlotWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TimeSlots from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TimeSlots.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TimeSlots.
+     */
+    distinct?: TimeSlotScalarFieldEnum | TimeSlotScalarFieldEnum[]
+  }
+
+  /**
+   * TimeSlot findMany
+   */
+  export type TimeSlotFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeSlot
+     */
+    select?: TimeSlotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TimeSlot
+     */
+    omit?: TimeSlotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeSlotInclude<ExtArgs> | null
+    /**
+     * Filter, which TimeSlots to fetch.
+     */
+    where?: TimeSlotWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TimeSlots to fetch.
+     */
+    orderBy?: TimeSlotOrderByWithRelationInput | TimeSlotOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TimeSlots.
+     */
+    cursor?: TimeSlotWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TimeSlots from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TimeSlots.
+     */
+    skip?: number
+    distinct?: TimeSlotScalarFieldEnum | TimeSlotScalarFieldEnum[]
+  }
+
+  /**
+   * TimeSlot create
+   */
+  export type TimeSlotCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeSlot
+     */
+    select?: TimeSlotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TimeSlot
+     */
+    omit?: TimeSlotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeSlotInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TimeSlot.
+     */
+    data: XOR<TimeSlotCreateInput, TimeSlotUncheckedCreateInput>
+  }
+
+  /**
+   * TimeSlot createMany
+   */
+  export type TimeSlotCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TimeSlots.
+     */
+    data: TimeSlotCreateManyInput | TimeSlotCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TimeSlot createManyAndReturn
+   */
+  export type TimeSlotCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeSlot
+     */
+    select?: TimeSlotSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TimeSlot
+     */
+    omit?: TimeSlotOmit<ExtArgs> | null
+    /**
+     * The data used to create many TimeSlots.
+     */
+    data: TimeSlotCreateManyInput | TimeSlotCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TimeSlot update
+   */
+  export type TimeSlotUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeSlot
+     */
+    select?: TimeSlotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TimeSlot
+     */
+    omit?: TimeSlotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeSlotInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TimeSlot.
+     */
+    data: XOR<TimeSlotUpdateInput, TimeSlotUncheckedUpdateInput>
+    /**
+     * Choose, which TimeSlot to update.
+     */
+    where: TimeSlotWhereUniqueInput
+  }
+
+  /**
+   * TimeSlot updateMany
+   */
+  export type TimeSlotUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TimeSlots.
+     */
+    data: XOR<TimeSlotUpdateManyMutationInput, TimeSlotUncheckedUpdateManyInput>
+    /**
+     * Filter which TimeSlots to update
+     */
+    where?: TimeSlotWhereInput
+    /**
+     * Limit how many TimeSlots to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TimeSlot updateManyAndReturn
+   */
+  export type TimeSlotUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeSlot
+     */
+    select?: TimeSlotSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TimeSlot
+     */
+    omit?: TimeSlotOmit<ExtArgs> | null
+    /**
+     * The data used to update TimeSlots.
+     */
+    data: XOR<TimeSlotUpdateManyMutationInput, TimeSlotUncheckedUpdateManyInput>
+    /**
+     * Filter which TimeSlots to update
+     */
+    where?: TimeSlotWhereInput
+    /**
+     * Limit how many TimeSlots to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TimeSlot upsert
+   */
+  export type TimeSlotUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeSlot
+     */
+    select?: TimeSlotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TimeSlot
+     */
+    omit?: TimeSlotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeSlotInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TimeSlot to update in case it exists.
+     */
+    where: TimeSlotWhereUniqueInput
+    /**
+     * In case the TimeSlot found by the `where` argument doesn't exist, create a new TimeSlot with this data.
+     */
+    create: XOR<TimeSlotCreateInput, TimeSlotUncheckedCreateInput>
+    /**
+     * In case the TimeSlot was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TimeSlotUpdateInput, TimeSlotUncheckedUpdateInput>
+  }
+
+  /**
+   * TimeSlot delete
+   */
+  export type TimeSlotDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeSlot
+     */
+    select?: TimeSlotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TimeSlot
+     */
+    omit?: TimeSlotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeSlotInclude<ExtArgs> | null
+    /**
+     * Filter which TimeSlot to delete.
+     */
+    where: TimeSlotWhereUniqueInput
+  }
+
+  /**
+   * TimeSlot deleteMany
+   */
+  export type TimeSlotDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TimeSlots to delete
+     */
+    where?: TimeSlotWhereInput
+    /**
+     * Limit how many TimeSlots to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TimeSlot.lessons
+   */
+  export type TimeSlot$lessonsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Lesson
+     */
+    select?: LessonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Lesson
+     */
+    omit?: LessonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LessonInclude<ExtArgs> | null
+    where?: LessonWhereInput
+    orderBy?: LessonOrderByWithRelationInput | LessonOrderByWithRelationInput[]
+    cursor?: LessonWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LessonScalarFieldEnum | LessonScalarFieldEnum[]
+  }
+
+  /**
+   * TimeSlot without action
+   */
+  export type TimeSlotDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TimeSlot
+     */
+    select?: TimeSlotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TimeSlot
+     */
+    omit?: TimeSlotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TimeSlotInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -8643,7 +13868,6 @@ export namespace Prisma {
     highestQualification: 'highestQualification',
     specialization: 'specialization',
     teachingExperience: 'teachingExperience',
-    subjectsCanTeach: 'subjectsCanTeach',
     gradesCanTeach: 'gradesCanTeach',
     employmentType: 'employmentType',
     joiningDate: 'joiningDate',
@@ -8655,7 +13879,8 @@ export namespace Prisma {
     languages: 'languages',
     additionalNotes: 'additionalNotes',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    departmentId: 'departmentId'
   };
 
   export type TeacherScalarFieldEnum = (typeof TeacherScalarFieldEnum)[keyof typeof TeacherScalarFieldEnum]
@@ -8700,6 +13925,64 @@ export namespace Prisma {
   export type GradeScalarFieldEnum = (typeof GradeScalarFieldEnum)[keyof typeof GradeScalarFieldEnum]
 
 
+  export const DepartmentScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug',
+    description: 'description',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type DepartmentScalarFieldEnum = (typeof DepartmentScalarFieldEnum)[keyof typeof DepartmentScalarFieldEnum]
+
+
+  export const SubjectScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug',
+    subjectCode: 'subjectCode',
+    shortname: 'shortname',
+    departmentId: 'departmentId',
+    active: 'active',
+    optional: 'optional',
+    fieldtrips: 'fieldtrips',
+    labRequired: 'labRequired',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SubjectScalarFieldEnum = (typeof SubjectScalarFieldEnum)[keyof typeof SubjectScalarFieldEnum]
+
+
+  export const LessonScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    materials: 'materials',
+    assignment: 'assignment',
+    day: 'day',
+    teacherId: 'teacherId',
+    subjectId: 'subjectId',
+    streamId: 'streamId',
+    timeSlotId: 'timeSlotId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type LessonScalarFieldEnum = (typeof LessonScalarFieldEnum)[keyof typeof LessonScalarFieldEnum]
+
+
+  export const TimeSlotScalarFieldEnum: {
+    id: 'id',
+    startTime: 'startTime',
+    endTime: 'endTime',
+    name: 'name'
+  };
+
+  export type TimeSlotScalarFieldEnum = (typeof TimeSlotScalarFieldEnum)[keyof typeof TimeSlotScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -8713,6 +13996,14 @@ export namespace Prisma {
   };
 
   export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const QueryMode: {
@@ -8854,6 +14145,13 @@ export namespace Prisma {
    * Reference to a field of type 'ContactMethod[]'
    */
   export type ListEnumContactMethodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContactMethod[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -9101,7 +14399,6 @@ export namespace Prisma {
     highestQualification?: StringFilter<"Teacher"> | string
     specialization?: StringFilter<"Teacher"> | string
     teachingExperience?: StringFilter<"Teacher"> | string
-    subjectsCanTeach?: StringNullableListFilter<"Teacher">
     gradesCanTeach?: StringNullableListFilter<"Teacher">
     employmentType?: EnumEmploymentTypeFilter<"Teacher"> | $Enums.EmploymentType
     joiningDate?: DateTimeFilter<"Teacher"> | Date | string
@@ -9114,7 +14411,11 @@ export namespace Prisma {
     additionalNotes?: StringNullableFilter<"Teacher"> | string | null
     createdAt?: DateTimeFilter<"Teacher"> | Date | string
     updatedAt?: DateTimeFilter<"Teacher"> | Date | string
+    departmentId?: StringNullableFilter<"Teacher"> | string | null
     Stream?: XOR<StreamNullableScalarRelationFilter, StreamWhereInput> | null
+    Department?: XOR<DepartmentNullableScalarRelationFilter, DepartmentWhereInput> | null
+    subjects?: SubjectListRelationFilter
+    Lesson?: LessonListRelationFilter
   }
 
   export type TeacherOrderByWithRelationInput = {
@@ -9136,7 +14437,6 @@ export namespace Prisma {
     highestQualification?: SortOrder
     specialization?: SortOrder
     teachingExperience?: SortOrder
-    subjectsCanTeach?: SortOrder
     gradesCanTeach?: SortOrder
     employmentType?: SortOrder
     joiningDate?: SortOrder
@@ -9149,7 +14449,11 @@ export namespace Prisma {
     additionalNotes?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    departmentId?: SortOrderInput | SortOrder
     Stream?: StreamOrderByWithRelationInput
+    Department?: DepartmentOrderByWithRelationInput
+    subjects?: SubjectOrderByRelationAggregateInput
+    Lesson?: LessonOrderByRelationAggregateInput
   }
 
   export type TeacherWhereUniqueInput = Prisma.AtLeast<{
@@ -9174,7 +14478,6 @@ export namespace Prisma {
     highestQualification?: StringFilter<"Teacher"> | string
     specialization?: StringFilter<"Teacher"> | string
     teachingExperience?: StringFilter<"Teacher"> | string
-    subjectsCanTeach?: StringNullableListFilter<"Teacher">
     gradesCanTeach?: StringNullableListFilter<"Teacher">
     employmentType?: EnumEmploymentTypeFilter<"Teacher"> | $Enums.EmploymentType
     joiningDate?: DateTimeFilter<"Teacher"> | Date | string
@@ -9187,7 +14490,11 @@ export namespace Prisma {
     additionalNotes?: StringNullableFilter<"Teacher"> | string | null
     createdAt?: DateTimeFilter<"Teacher"> | Date | string
     updatedAt?: DateTimeFilter<"Teacher"> | Date | string
+    departmentId?: StringNullableFilter<"Teacher"> | string | null
     Stream?: XOR<StreamNullableScalarRelationFilter, StreamWhereInput> | null
+    Department?: XOR<DepartmentNullableScalarRelationFilter, DepartmentWhereInput> | null
+    subjects?: SubjectListRelationFilter
+    Lesson?: LessonListRelationFilter
   }, "id" | "email">
 
   export type TeacherOrderByWithAggregationInput = {
@@ -9209,7 +14516,6 @@ export namespace Prisma {
     highestQualification?: SortOrder
     specialization?: SortOrder
     teachingExperience?: SortOrder
-    subjectsCanTeach?: SortOrder
     gradesCanTeach?: SortOrder
     employmentType?: SortOrder
     joiningDate?: SortOrder
@@ -9222,6 +14528,7 @@ export namespace Prisma {
     additionalNotes?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    departmentId?: SortOrderInput | SortOrder
     _count?: TeacherCountOrderByAggregateInput
     _max?: TeacherMaxOrderByAggregateInput
     _min?: TeacherMinOrderByAggregateInput
@@ -9249,7 +14556,6 @@ export namespace Prisma {
     highestQualification?: StringWithAggregatesFilter<"Teacher"> | string
     specialization?: StringWithAggregatesFilter<"Teacher"> | string
     teachingExperience?: StringWithAggregatesFilter<"Teacher"> | string
-    subjectsCanTeach?: StringNullableListFilter<"Teacher">
     gradesCanTeach?: StringNullableListFilter<"Teacher">
     employmentType?: EnumEmploymentTypeWithAggregatesFilter<"Teacher"> | $Enums.EmploymentType
     joiningDate?: DateTimeWithAggregatesFilter<"Teacher"> | Date | string
@@ -9262,6 +14568,7 @@ export namespace Prisma {
     additionalNotes?: StringNullableWithAggregatesFilter<"Teacher"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Teacher"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Teacher"> | Date | string
+    departmentId?: StringNullableWithAggregatesFilter<"Teacher"> | string | null
   }
 
   export type GuardianWhereInput = {
@@ -9371,6 +14678,7 @@ export namespace Prisma {
     Grade?: XOR<GradeScalarRelationFilter, GradeWhereInput>
     Teacher?: XOR<TeacherNullableScalarRelationFilter, TeacherWhereInput> | null
     students?: StudentListRelationFilter
+    Lesson?: LessonListRelationFilter
   }
 
   export type StreamOrderByWithRelationInput = {
@@ -9382,6 +14690,7 @@ export namespace Prisma {
     Grade?: GradeOrderByWithRelationInput
     Teacher?: TeacherOrderByWithRelationInput
     students?: StudentOrderByRelationAggregateInput
+    Lesson?: LessonOrderByRelationAggregateInput
   }
 
   export type StreamWhereUniqueInput = Prisma.AtLeast<{
@@ -9396,6 +14705,7 @@ export namespace Prisma {
     Grade?: XOR<GradeScalarRelationFilter, GradeWhereInput>
     Teacher?: XOR<TeacherNullableScalarRelationFilter, TeacherWhereInput> | null
     students?: StudentListRelationFilter
+    Lesson?: LessonListRelationFilter
   }, "id" | "name" | "teacherId">
 
   export type StreamOrderByWithAggregationInput = {
@@ -9466,6 +14776,317 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Grade"> | string
     slug?: StringWithAggregatesFilter<"Grade"> | string
     name?: StringWithAggregatesFilter<"Grade"> | string
+  }
+
+  export type DepartmentWhereInput = {
+    AND?: DepartmentWhereInput | DepartmentWhereInput[]
+    OR?: DepartmentWhereInput[]
+    NOT?: DepartmentWhereInput | DepartmentWhereInput[]
+    id?: StringFilter<"Department"> | string
+    name?: StringFilter<"Department"> | string
+    slug?: StringFilter<"Department"> | string
+    description?: StringNullableFilter<"Department"> | string | null
+    createdAt?: DateTimeFilter<"Department"> | Date | string
+    updatedAt?: DateTimeFilter<"Department"> | Date | string
+    teachers?: TeacherListRelationFilter
+    subjects?: SubjectListRelationFilter
+  }
+
+  export type DepartmentOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    teachers?: TeacherOrderByRelationAggregateInput
+    subjects?: SubjectOrderByRelationAggregateInput
+  }
+
+  export type DepartmentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DepartmentWhereInput | DepartmentWhereInput[]
+    OR?: DepartmentWhereInput[]
+    NOT?: DepartmentWhereInput | DepartmentWhereInput[]
+    name?: StringFilter<"Department"> | string
+    slug?: StringFilter<"Department"> | string
+    description?: StringNullableFilter<"Department"> | string | null
+    createdAt?: DateTimeFilter<"Department"> | Date | string
+    updatedAt?: DateTimeFilter<"Department"> | Date | string
+    teachers?: TeacherListRelationFilter
+    subjects?: SubjectListRelationFilter
+  }, "id">
+
+  export type DepartmentOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: DepartmentCountOrderByAggregateInput
+    _max?: DepartmentMaxOrderByAggregateInput
+    _min?: DepartmentMinOrderByAggregateInput
+  }
+
+  export type DepartmentScalarWhereWithAggregatesInput = {
+    AND?: DepartmentScalarWhereWithAggregatesInput | DepartmentScalarWhereWithAggregatesInput[]
+    OR?: DepartmentScalarWhereWithAggregatesInput[]
+    NOT?: DepartmentScalarWhereWithAggregatesInput | DepartmentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Department"> | string
+    name?: StringWithAggregatesFilter<"Department"> | string
+    slug?: StringWithAggregatesFilter<"Department"> | string
+    description?: StringNullableWithAggregatesFilter<"Department"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Department"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Department"> | Date | string
+  }
+
+  export type SubjectWhereInput = {
+    AND?: SubjectWhereInput | SubjectWhereInput[]
+    OR?: SubjectWhereInput[]
+    NOT?: SubjectWhereInput | SubjectWhereInput[]
+    id?: StringFilter<"Subject"> | string
+    name?: StringFilter<"Subject"> | string
+    slug?: StringFilter<"Subject"> | string
+    subjectCode?: StringFilter<"Subject"> | string
+    shortname?: StringFilter<"Subject"> | string
+    departmentId?: StringFilter<"Subject"> | string
+    active?: BoolFilter<"Subject"> | boolean
+    optional?: BoolFilter<"Subject"> | boolean
+    fieldtrips?: BoolFilter<"Subject"> | boolean
+    labRequired?: BoolFilter<"Subject"> | boolean
+    createdAt?: DateTimeFilter<"Subject"> | Date | string
+    updatedAt?: DateTimeFilter<"Subject"> | Date | string
+    teachers?: TeacherListRelationFilter
+    Department?: XOR<DepartmentScalarRelationFilter, DepartmentWhereInput>
+    Lesson?: LessonListRelationFilter
+  }
+
+  export type SubjectOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    subjectCode?: SortOrder
+    shortname?: SortOrder
+    departmentId?: SortOrder
+    active?: SortOrder
+    optional?: SortOrder
+    fieldtrips?: SortOrder
+    labRequired?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    teachers?: TeacherOrderByRelationAggregateInput
+    Department?: DepartmentOrderByWithRelationInput
+    Lesson?: LessonOrderByRelationAggregateInput
+  }
+
+  export type SubjectWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    subjectCode?: string
+    AND?: SubjectWhereInput | SubjectWhereInput[]
+    OR?: SubjectWhereInput[]
+    NOT?: SubjectWhereInput | SubjectWhereInput[]
+    slug?: StringFilter<"Subject"> | string
+    shortname?: StringFilter<"Subject"> | string
+    departmentId?: StringFilter<"Subject"> | string
+    active?: BoolFilter<"Subject"> | boolean
+    optional?: BoolFilter<"Subject"> | boolean
+    fieldtrips?: BoolFilter<"Subject"> | boolean
+    labRequired?: BoolFilter<"Subject"> | boolean
+    createdAt?: DateTimeFilter<"Subject"> | Date | string
+    updatedAt?: DateTimeFilter<"Subject"> | Date | string
+    teachers?: TeacherListRelationFilter
+    Department?: XOR<DepartmentScalarRelationFilter, DepartmentWhereInput>
+    Lesson?: LessonListRelationFilter
+  }, "id" | "name" | "subjectCode">
+
+  export type SubjectOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    subjectCode?: SortOrder
+    shortname?: SortOrder
+    departmentId?: SortOrder
+    active?: SortOrder
+    optional?: SortOrder
+    fieldtrips?: SortOrder
+    labRequired?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: SubjectCountOrderByAggregateInput
+    _max?: SubjectMaxOrderByAggregateInput
+    _min?: SubjectMinOrderByAggregateInput
+  }
+
+  export type SubjectScalarWhereWithAggregatesInput = {
+    AND?: SubjectScalarWhereWithAggregatesInput | SubjectScalarWhereWithAggregatesInput[]
+    OR?: SubjectScalarWhereWithAggregatesInput[]
+    NOT?: SubjectScalarWhereWithAggregatesInput | SubjectScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Subject"> | string
+    name?: StringWithAggregatesFilter<"Subject"> | string
+    slug?: StringWithAggregatesFilter<"Subject"> | string
+    subjectCode?: StringWithAggregatesFilter<"Subject"> | string
+    shortname?: StringWithAggregatesFilter<"Subject"> | string
+    departmentId?: StringWithAggregatesFilter<"Subject"> | string
+    active?: BoolWithAggregatesFilter<"Subject"> | boolean
+    optional?: BoolWithAggregatesFilter<"Subject"> | boolean
+    fieldtrips?: BoolWithAggregatesFilter<"Subject"> | boolean
+    labRequired?: BoolWithAggregatesFilter<"Subject"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Subject"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Subject"> | Date | string
+  }
+
+  export type LessonWhereInput = {
+    AND?: LessonWhereInput | LessonWhereInput[]
+    OR?: LessonWhereInput[]
+    NOT?: LessonWhereInput | LessonWhereInput[]
+    id?: StringFilter<"Lesson"> | string
+    name?: StringFilter<"Lesson"> | string
+    description?: StringFilter<"Lesson"> | string
+    materials?: JsonNullableFilter<"Lesson">
+    assignment?: JsonNullableFilter<"Lesson">
+    day?: IntFilter<"Lesson"> | number
+    teacherId?: StringFilter<"Lesson"> | string
+    subjectId?: StringFilter<"Lesson"> | string
+    streamId?: StringFilter<"Lesson"> | string
+    timeSlotId?: StringFilter<"Lesson"> | string
+    createdAt?: DateTimeFilter<"Lesson"> | Date | string
+    updatedAt?: DateTimeFilter<"Lesson"> | Date | string
+    Teacher?: XOR<TeacherScalarRelationFilter, TeacherWhereInput>
+    Subject?: XOR<SubjectScalarRelationFilter, SubjectWhereInput>
+    Stream?: XOR<StreamScalarRelationFilter, StreamWhereInput>
+    TimeSlot?: XOR<TimeSlotScalarRelationFilter, TimeSlotWhereInput>
+  }
+
+  export type LessonOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    materials?: SortOrderInput | SortOrder
+    assignment?: SortOrderInput | SortOrder
+    day?: SortOrder
+    teacherId?: SortOrder
+    subjectId?: SortOrder
+    streamId?: SortOrder
+    timeSlotId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    Teacher?: TeacherOrderByWithRelationInput
+    Subject?: SubjectOrderByWithRelationInput
+    Stream?: StreamOrderByWithRelationInput
+    TimeSlot?: TimeSlotOrderByWithRelationInput
+  }
+
+  export type LessonWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: LessonWhereInput | LessonWhereInput[]
+    OR?: LessonWhereInput[]
+    NOT?: LessonWhereInput | LessonWhereInput[]
+    name?: StringFilter<"Lesson"> | string
+    description?: StringFilter<"Lesson"> | string
+    materials?: JsonNullableFilter<"Lesson">
+    assignment?: JsonNullableFilter<"Lesson">
+    day?: IntFilter<"Lesson"> | number
+    teacherId?: StringFilter<"Lesson"> | string
+    subjectId?: StringFilter<"Lesson"> | string
+    streamId?: StringFilter<"Lesson"> | string
+    timeSlotId?: StringFilter<"Lesson"> | string
+    createdAt?: DateTimeFilter<"Lesson"> | Date | string
+    updatedAt?: DateTimeFilter<"Lesson"> | Date | string
+    Teacher?: XOR<TeacherScalarRelationFilter, TeacherWhereInput>
+    Subject?: XOR<SubjectScalarRelationFilter, SubjectWhereInput>
+    Stream?: XOR<StreamScalarRelationFilter, StreamWhereInput>
+    TimeSlot?: XOR<TimeSlotScalarRelationFilter, TimeSlotWhereInput>
+  }, "id">
+
+  export type LessonOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    materials?: SortOrderInput | SortOrder
+    assignment?: SortOrderInput | SortOrder
+    day?: SortOrder
+    teacherId?: SortOrder
+    subjectId?: SortOrder
+    streamId?: SortOrder
+    timeSlotId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: LessonCountOrderByAggregateInput
+    _avg?: LessonAvgOrderByAggregateInput
+    _max?: LessonMaxOrderByAggregateInput
+    _min?: LessonMinOrderByAggregateInput
+    _sum?: LessonSumOrderByAggregateInput
+  }
+
+  export type LessonScalarWhereWithAggregatesInput = {
+    AND?: LessonScalarWhereWithAggregatesInput | LessonScalarWhereWithAggregatesInput[]
+    OR?: LessonScalarWhereWithAggregatesInput[]
+    NOT?: LessonScalarWhereWithAggregatesInput | LessonScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Lesson"> | string
+    name?: StringWithAggregatesFilter<"Lesson"> | string
+    description?: StringWithAggregatesFilter<"Lesson"> | string
+    materials?: JsonNullableWithAggregatesFilter<"Lesson">
+    assignment?: JsonNullableWithAggregatesFilter<"Lesson">
+    day?: IntWithAggregatesFilter<"Lesson"> | number
+    teacherId?: StringWithAggregatesFilter<"Lesson"> | string
+    subjectId?: StringWithAggregatesFilter<"Lesson"> | string
+    streamId?: StringWithAggregatesFilter<"Lesson"> | string
+    timeSlotId?: StringWithAggregatesFilter<"Lesson"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Lesson"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Lesson"> | Date | string
+  }
+
+  export type TimeSlotWhereInput = {
+    AND?: TimeSlotWhereInput | TimeSlotWhereInput[]
+    OR?: TimeSlotWhereInput[]
+    NOT?: TimeSlotWhereInput | TimeSlotWhereInput[]
+    id?: StringFilter<"TimeSlot"> | string
+    startTime?: StringFilter<"TimeSlot"> | string
+    endTime?: StringFilter<"TimeSlot"> | string
+    name?: StringFilter<"TimeSlot"> | string
+    lessons?: LessonListRelationFilter
+  }
+
+  export type TimeSlotOrderByWithRelationInput = {
+    id?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    name?: SortOrder
+    lessons?: LessonOrderByRelationAggregateInput
+  }
+
+  export type TimeSlotWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    startTime_endTime?: TimeSlotStartTimeEndTimeCompoundUniqueInput
+    AND?: TimeSlotWhereInput | TimeSlotWhereInput[]
+    OR?: TimeSlotWhereInput[]
+    NOT?: TimeSlotWhereInput | TimeSlotWhereInput[]
+    startTime?: StringFilter<"TimeSlot"> | string
+    endTime?: StringFilter<"TimeSlot"> | string
+    name?: StringFilter<"TimeSlot"> | string
+    lessons?: LessonListRelationFilter
+  }, "id" | "startTime_endTime">
+
+  export type TimeSlotOrderByWithAggregationInput = {
+    id?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    name?: SortOrder
+    _count?: TimeSlotCountOrderByAggregateInput
+    _max?: TimeSlotMaxOrderByAggregateInput
+    _min?: TimeSlotMinOrderByAggregateInput
+  }
+
+  export type TimeSlotScalarWhereWithAggregatesInput = {
+    AND?: TimeSlotScalarWhereWithAggregatesInput | TimeSlotScalarWhereWithAggregatesInput[]
+    OR?: TimeSlotScalarWhereWithAggregatesInput[]
+    NOT?: TimeSlotScalarWhereWithAggregatesInput | TimeSlotScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TimeSlot"> | string
+    startTime?: StringWithAggregatesFilter<"TimeSlot"> | string
+    endTime?: StringWithAggregatesFilter<"TimeSlot"> | string
+    name?: StringWithAggregatesFilter<"TimeSlot"> | string
   }
 
   export type UserCreateInput = {
@@ -9719,7 +15340,6 @@ export namespace Prisma {
     highestQualification: string
     specialization: string
     teachingExperience: string
-    subjectsCanTeach?: TeacherCreatesubjectsCanTeachInput | string[]
     gradesCanTeach?: TeacherCreategradesCanTeachInput | string[]
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
@@ -9733,6 +15353,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Stream?: StreamCreateNestedOneWithoutTeacherInput
+    Department?: DepartmentCreateNestedOneWithoutTeachersInput
+    subjects?: SubjectCreateNestedManyWithoutTeachersInput
+    Lesson?: LessonCreateNestedManyWithoutTeacherInput
   }
 
   export type TeacherUncheckedCreateInput = {
@@ -9754,7 +15377,6 @@ export namespace Prisma {
     highestQualification: string
     specialization: string
     teachingExperience: string
-    subjectsCanTeach?: TeacherCreatesubjectsCanTeachInput | string[]
     gradesCanTeach?: TeacherCreategradesCanTeachInput | string[]
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
@@ -9767,7 +15389,10 @@ export namespace Prisma {
     additionalNotes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    departmentId?: string | null
     Stream?: StreamUncheckedCreateNestedOneWithoutTeacherInput
+    subjects?: SubjectUncheckedCreateNestedManyWithoutTeachersInput
+    Lesson?: LessonUncheckedCreateNestedManyWithoutTeacherInput
   }
 
   export type TeacherUpdateInput = {
@@ -9789,7 +15414,6 @@ export namespace Prisma {
     highestQualification?: StringFieldUpdateOperationsInput | string
     specialization?: StringFieldUpdateOperationsInput | string
     teachingExperience?: StringFieldUpdateOperationsInput | string
-    subjectsCanTeach?: TeacherUpdatesubjectsCanTeachInput | string[]
     gradesCanTeach?: TeacherUpdategradesCanTeachInput | string[]
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9803,6 +15427,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Stream?: StreamUpdateOneWithoutTeacherNestedInput
+    Department?: DepartmentUpdateOneWithoutTeachersNestedInput
+    subjects?: SubjectUpdateManyWithoutTeachersNestedInput
+    Lesson?: LessonUpdateManyWithoutTeacherNestedInput
   }
 
   export type TeacherUncheckedUpdateInput = {
@@ -9824,7 +15451,6 @@ export namespace Prisma {
     highestQualification?: StringFieldUpdateOperationsInput | string
     specialization?: StringFieldUpdateOperationsInput | string
     teachingExperience?: StringFieldUpdateOperationsInput | string
-    subjectsCanTeach?: TeacherUpdatesubjectsCanTeachInput | string[]
     gradesCanTeach?: TeacherUpdategradesCanTeachInput | string[]
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9837,7 +15463,10 @@ export namespace Prisma {
     additionalNotes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
     Stream?: StreamUncheckedUpdateOneWithoutTeacherNestedInput
+    subjects?: SubjectUncheckedUpdateManyWithoutTeachersNestedInput
+    Lesson?: LessonUncheckedUpdateManyWithoutTeacherNestedInput
   }
 
   export type TeacherCreateManyInput = {
@@ -9859,7 +15488,6 @@ export namespace Prisma {
     highestQualification: string
     specialization: string
     teachingExperience: string
-    subjectsCanTeach?: TeacherCreatesubjectsCanTeachInput | string[]
     gradesCanTeach?: TeacherCreategradesCanTeachInput | string[]
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
@@ -9872,6 +15500,7 @@ export namespace Prisma {
     additionalNotes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    departmentId?: string | null
   }
 
   export type TeacherUpdateManyMutationInput = {
@@ -9893,7 +15522,6 @@ export namespace Prisma {
     highestQualification?: StringFieldUpdateOperationsInput | string
     specialization?: StringFieldUpdateOperationsInput | string
     teachingExperience?: StringFieldUpdateOperationsInput | string
-    subjectsCanTeach?: TeacherUpdatesubjectsCanTeachInput | string[]
     gradesCanTeach?: TeacherUpdategradesCanTeachInput | string[]
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9927,7 +15555,6 @@ export namespace Prisma {
     highestQualification?: StringFieldUpdateOperationsInput | string
     specialization?: StringFieldUpdateOperationsInput | string
     teachingExperience?: StringFieldUpdateOperationsInput | string
-    subjectsCanTeach?: TeacherUpdatesubjectsCanTeachInput | string[]
     gradesCanTeach?: TeacherUpdategradesCanTeachInput | string[]
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9940,6 +15567,7 @@ export namespace Prisma {
     additionalNotes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type GuardianCreateInput = {
@@ -10065,6 +15693,7 @@ export namespace Prisma {
     Grade: GradeCreateNestedOneWithoutStreamsInput
     Teacher?: TeacherCreateNestedOneWithoutStreamInput
     students?: StudentCreateNestedManyWithoutStreamInput
+    Lesson?: LessonCreateNestedManyWithoutStreamInput
   }
 
   export type StreamUncheckedCreateInput = {
@@ -10074,6 +15703,7 @@ export namespace Prisma {
     gradeId: string
     teacherId?: string | null
     students?: StudentUncheckedCreateNestedManyWithoutStreamInput
+    Lesson?: LessonUncheckedCreateNestedManyWithoutStreamInput
   }
 
   export type StreamUpdateInput = {
@@ -10083,6 +15713,7 @@ export namespace Prisma {
     Grade?: GradeUpdateOneRequiredWithoutStreamsNestedInput
     Teacher?: TeacherUpdateOneWithoutStreamNestedInput
     students?: StudentUpdateManyWithoutStreamNestedInput
+    Lesson?: LessonUpdateManyWithoutStreamNestedInput
   }
 
   export type StreamUncheckedUpdateInput = {
@@ -10092,6 +15723,7 @@ export namespace Prisma {
     gradeId?: StringFieldUpdateOperationsInput | string
     teacherId?: NullableStringFieldUpdateOperationsInput | string | null
     students?: StudentUncheckedUpdateManyWithoutStreamNestedInput
+    Lesson?: LessonUncheckedUpdateManyWithoutStreamNestedInput
   }
 
   export type StreamCreateManyInput = {
@@ -10163,6 +15795,343 @@ export namespace Prisma {
   export type GradeUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DepartmentCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teachers?: TeacherCreateNestedManyWithoutDepartmentInput
+    subjects?: SubjectCreateNestedManyWithoutDepartmentInput
+  }
+
+  export type DepartmentUncheckedCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teachers?: TeacherUncheckedCreateNestedManyWithoutDepartmentInput
+    subjects?: SubjectUncheckedCreateNestedManyWithoutDepartmentInput
+  }
+
+  export type DepartmentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teachers?: TeacherUpdateManyWithoutDepartmentNestedInput
+    subjects?: SubjectUpdateManyWithoutDepartmentNestedInput
+  }
+
+  export type DepartmentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teachers?: TeacherUncheckedUpdateManyWithoutDepartmentNestedInput
+    subjects?: SubjectUncheckedUpdateManyWithoutDepartmentNestedInput
+  }
+
+  export type DepartmentCreateManyInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DepartmentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DepartmentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubjectCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    subjectCode: string
+    shortname: string
+    active?: boolean
+    optional?: boolean
+    fieldtrips?: boolean
+    labRequired?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teachers?: TeacherCreateNestedManyWithoutSubjectsInput
+    Department: DepartmentCreateNestedOneWithoutSubjectsInput
+    Lesson?: LessonCreateNestedManyWithoutSubjectInput
+  }
+
+  export type SubjectUncheckedCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    subjectCode: string
+    shortname: string
+    departmentId: string
+    active?: boolean
+    optional?: boolean
+    fieldtrips?: boolean
+    labRequired?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teachers?: TeacherUncheckedCreateNestedManyWithoutSubjectsInput
+    Lesson?: LessonUncheckedCreateNestedManyWithoutSubjectInput
+  }
+
+  export type SubjectUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    subjectCode?: StringFieldUpdateOperationsInput | string
+    shortname?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    optional?: BoolFieldUpdateOperationsInput | boolean
+    fieldtrips?: BoolFieldUpdateOperationsInput | boolean
+    labRequired?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teachers?: TeacherUpdateManyWithoutSubjectsNestedInput
+    Department?: DepartmentUpdateOneRequiredWithoutSubjectsNestedInput
+    Lesson?: LessonUpdateManyWithoutSubjectNestedInput
+  }
+
+  export type SubjectUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    subjectCode?: StringFieldUpdateOperationsInput | string
+    shortname?: StringFieldUpdateOperationsInput | string
+    departmentId?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    optional?: BoolFieldUpdateOperationsInput | boolean
+    fieldtrips?: BoolFieldUpdateOperationsInput | boolean
+    labRequired?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teachers?: TeacherUncheckedUpdateManyWithoutSubjectsNestedInput
+    Lesson?: LessonUncheckedUpdateManyWithoutSubjectNestedInput
+  }
+
+  export type SubjectCreateManyInput = {
+    id?: string
+    name: string
+    slug: string
+    subjectCode: string
+    shortname: string
+    departmentId: string
+    active?: boolean
+    optional?: boolean
+    fieldtrips?: boolean
+    labRequired?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SubjectUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    subjectCode?: StringFieldUpdateOperationsInput | string
+    shortname?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    optional?: BoolFieldUpdateOperationsInput | boolean
+    fieldtrips?: BoolFieldUpdateOperationsInput | boolean
+    labRequired?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubjectUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    subjectCode?: StringFieldUpdateOperationsInput | string
+    shortname?: StringFieldUpdateOperationsInput | string
+    departmentId?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    optional?: BoolFieldUpdateOperationsInput | boolean
+    fieldtrips?: BoolFieldUpdateOperationsInput | boolean
+    labRequired?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LessonCreateInput = {
+    id?: string
+    name: string
+    description: string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Teacher: TeacherCreateNestedOneWithoutLessonInput
+    Subject: SubjectCreateNestedOneWithoutLessonInput
+    Stream: StreamCreateNestedOneWithoutLessonInput
+    TimeSlot: TimeSlotCreateNestedOneWithoutLessonsInput
+  }
+
+  export type LessonUncheckedCreateInput = {
+    id?: string
+    name: string
+    description: string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day: number
+    teacherId: string
+    subjectId: string
+    streamId: string
+    timeSlotId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LessonUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Teacher?: TeacherUpdateOneRequiredWithoutLessonNestedInput
+    Subject?: SubjectUpdateOneRequiredWithoutLessonNestedInput
+    Stream?: StreamUpdateOneRequiredWithoutLessonNestedInput
+    TimeSlot?: TimeSlotUpdateOneRequiredWithoutLessonsNestedInput
+  }
+
+  export type LessonUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day?: IntFieldUpdateOperationsInput | number
+    teacherId?: StringFieldUpdateOperationsInput | string
+    subjectId?: StringFieldUpdateOperationsInput | string
+    streamId?: StringFieldUpdateOperationsInput | string
+    timeSlotId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LessonCreateManyInput = {
+    id?: string
+    name: string
+    description: string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day: number
+    teacherId: string
+    subjectId: string
+    streamId: string
+    timeSlotId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LessonUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LessonUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day?: IntFieldUpdateOperationsInput | number
+    teacherId?: StringFieldUpdateOperationsInput | string
+    subjectId?: StringFieldUpdateOperationsInput | string
+    streamId?: StringFieldUpdateOperationsInput | string
+    timeSlotId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TimeSlotCreateInput = {
+    id?: string
+    startTime: string
+    endTime: string
+    name: string
+    lessons?: LessonCreateNestedManyWithoutTimeSlotInput
+  }
+
+  export type TimeSlotUncheckedCreateInput = {
+    id?: string
+    startTime: string
+    endTime: string
+    name: string
+    lessons?: LessonUncheckedCreateNestedManyWithoutTimeSlotInput
+  }
+
+  export type TimeSlotUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    lessons?: LessonUpdateManyWithoutTimeSlotNestedInput
+  }
+
+  export type TimeSlotUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    lessons?: LessonUncheckedUpdateManyWithoutTimeSlotNestedInput
+  }
+
+  export type TimeSlotCreateManyInput = {
+    id?: string
+    startTime: string
+    endTime: string
+    name: string
+  }
+
+  export type TimeSlotUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TimeSlotUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
   }
 
@@ -10481,6 +16450,31 @@ export namespace Prisma {
     isNot?: StreamWhereInput | null
   }
 
+  export type DepartmentNullableScalarRelationFilter = {
+    is?: DepartmentWhereInput | null
+    isNot?: DepartmentWhereInput | null
+  }
+
+  export type SubjectListRelationFilter = {
+    every?: SubjectWhereInput
+    some?: SubjectWhereInput
+    none?: SubjectWhereInput
+  }
+
+  export type LessonListRelationFilter = {
+    every?: LessonWhereInput
+    some?: LessonWhereInput
+    none?: LessonWhereInput
+  }
+
+  export type SubjectOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type LessonOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type TeacherCountOrderByAggregateInput = {
     id?: SortOrder
     firstName?: SortOrder
@@ -10500,7 +16494,6 @@ export namespace Prisma {
     highestQualification?: SortOrder
     specialization?: SortOrder
     teachingExperience?: SortOrder
-    subjectsCanTeach?: SortOrder
     gradesCanTeach?: SortOrder
     employmentType?: SortOrder
     joiningDate?: SortOrder
@@ -10513,6 +16506,7 @@ export namespace Prisma {
     additionalNotes?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    departmentId?: SortOrder
   }
 
   export type TeacherMaxOrderByAggregateInput = {
@@ -10544,6 +16538,7 @@ export namespace Prisma {
     additionalNotes?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    departmentId?: SortOrder
   }
 
   export type TeacherMinOrderByAggregateInput = {
@@ -10575,6 +16570,7 @@ export namespace Prisma {
     additionalNotes?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    departmentId?: SortOrder
   }
 
   export type EnumGenderWithAggregatesFilter<$PrismaModel = never> = {
@@ -10780,6 +16776,245 @@ export namespace Prisma {
     name?: SortOrder
   }
 
+  export type TeacherListRelationFilter = {
+    every?: TeacherWhereInput
+    some?: TeacherWhereInput
+    none?: TeacherWhereInput
+  }
+
+  export type TeacherOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DepartmentCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DepartmentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DepartmentMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type DepartmentScalarRelationFilter = {
+    is?: DepartmentWhereInput
+    isNot?: DepartmentWhereInput
+  }
+
+  export type SubjectCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    subjectCode?: SortOrder
+    shortname?: SortOrder
+    departmentId?: SortOrder
+    active?: SortOrder
+    optional?: SortOrder
+    fieldtrips?: SortOrder
+    labRequired?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SubjectMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    subjectCode?: SortOrder
+    shortname?: SortOrder
+    departmentId?: SortOrder
+    active?: SortOrder
+    optional?: SortOrder
+    fieldtrips?: SortOrder
+    labRequired?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SubjectMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    subjectCode?: SortOrder
+    shortname?: SortOrder
+    departmentId?: SortOrder
+    active?: SortOrder
+    optional?: SortOrder
+    fieldtrips?: SortOrder
+    labRequired?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type TeacherScalarRelationFilter = {
+    is?: TeacherWhereInput
+    isNot?: TeacherWhereInput
+  }
+
+  export type SubjectScalarRelationFilter = {
+    is?: SubjectWhereInput
+    isNot?: SubjectWhereInput
+  }
+
+  export type TimeSlotScalarRelationFilter = {
+    is?: TimeSlotWhereInput
+    isNot?: TimeSlotWhereInput
+  }
+
+  export type LessonCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    materials?: SortOrder
+    assignment?: SortOrder
+    day?: SortOrder
+    teacherId?: SortOrder
+    subjectId?: SortOrder
+    streamId?: SortOrder
+    timeSlotId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LessonAvgOrderByAggregateInput = {
+    day?: SortOrder
+  }
+
+  export type LessonMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    day?: SortOrder
+    teacherId?: SortOrder
+    subjectId?: SortOrder
+    streamId?: SortOrder
+    timeSlotId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LessonMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    day?: SortOrder
+    teacherId?: SortOrder
+    subjectId?: SortOrder
+    streamId?: SortOrder
+    timeSlotId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LessonSumOrderByAggregateInput = {
+    day?: SortOrder
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type TimeSlotStartTimeEndTimeCompoundUniqueInput = {
+    startTime: string
+    endTime: string
+  }
+
+  export type TimeSlotCountOrderByAggregateInput = {
+    id?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    name?: SortOrder
+  }
+
+  export type TimeSlotMaxOrderByAggregateInput = {
+    id?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    name?: SortOrder
+  }
+
+  export type TimeSlotMinOrderByAggregateInput = {
+    id?: SortOrder
+    startTime?: SortOrder
+    endTime?: SortOrder
+    name?: SortOrder
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -10846,10 +17081,6 @@ export namespace Prisma {
     update?: XOR<XOR<StreamUpdateToOneWithWhereWithoutStudentsInput, StreamUpdateWithoutStudentsInput>, StreamUncheckedUpdateWithoutStudentsInput>
   }
 
-  export type TeacherCreatesubjectsCanTeachInput = {
-    set: string[]
-  }
-
   export type TeacherCreategradesCanTeachInput = {
     set: string[]
   }
@@ -10860,19 +17091,46 @@ export namespace Prisma {
     connect?: StreamWhereUniqueInput
   }
 
+  export type DepartmentCreateNestedOneWithoutTeachersInput = {
+    create?: XOR<DepartmentCreateWithoutTeachersInput, DepartmentUncheckedCreateWithoutTeachersInput>
+    connectOrCreate?: DepartmentCreateOrConnectWithoutTeachersInput
+    connect?: DepartmentWhereUniqueInput
+  }
+
+  export type SubjectCreateNestedManyWithoutTeachersInput = {
+    create?: XOR<SubjectCreateWithoutTeachersInput, SubjectUncheckedCreateWithoutTeachersInput> | SubjectCreateWithoutTeachersInput[] | SubjectUncheckedCreateWithoutTeachersInput[]
+    connectOrCreate?: SubjectCreateOrConnectWithoutTeachersInput | SubjectCreateOrConnectWithoutTeachersInput[]
+    connect?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+  }
+
+  export type LessonCreateNestedManyWithoutTeacherInput = {
+    create?: XOR<LessonCreateWithoutTeacherInput, LessonUncheckedCreateWithoutTeacherInput> | LessonCreateWithoutTeacherInput[] | LessonUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: LessonCreateOrConnectWithoutTeacherInput | LessonCreateOrConnectWithoutTeacherInput[]
+    createMany?: LessonCreateManyTeacherInputEnvelope
+    connect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+  }
+
   export type StreamUncheckedCreateNestedOneWithoutTeacherInput = {
     create?: XOR<StreamCreateWithoutTeacherInput, StreamUncheckedCreateWithoutTeacherInput>
     connectOrCreate?: StreamCreateOrConnectWithoutTeacherInput
     connect?: StreamWhereUniqueInput
   }
 
-  export type EnumGenderFieldUpdateOperationsInput = {
-    set?: $Enums.Gender
+  export type SubjectUncheckedCreateNestedManyWithoutTeachersInput = {
+    create?: XOR<SubjectCreateWithoutTeachersInput, SubjectUncheckedCreateWithoutTeachersInput> | SubjectCreateWithoutTeachersInput[] | SubjectUncheckedCreateWithoutTeachersInput[]
+    connectOrCreate?: SubjectCreateOrConnectWithoutTeachersInput | SubjectCreateOrConnectWithoutTeachersInput[]
+    connect?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
   }
 
-  export type TeacherUpdatesubjectsCanTeachInput = {
-    set?: string[]
-    push?: string | string[]
+  export type LessonUncheckedCreateNestedManyWithoutTeacherInput = {
+    create?: XOR<LessonCreateWithoutTeacherInput, LessonUncheckedCreateWithoutTeacherInput> | LessonCreateWithoutTeacherInput[] | LessonUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: LessonCreateOrConnectWithoutTeacherInput | LessonCreateOrConnectWithoutTeacherInput[]
+    createMany?: LessonCreateManyTeacherInputEnvelope
+    connect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+  }
+
+  export type EnumGenderFieldUpdateOperationsInput = {
+    set?: $Enums.Gender
   }
 
   export type TeacherUpdategradesCanTeachInput = {
@@ -10894,6 +17152,43 @@ export namespace Prisma {
     update?: XOR<XOR<StreamUpdateToOneWithWhereWithoutTeacherInput, StreamUpdateWithoutTeacherInput>, StreamUncheckedUpdateWithoutTeacherInput>
   }
 
+  export type DepartmentUpdateOneWithoutTeachersNestedInput = {
+    create?: XOR<DepartmentCreateWithoutTeachersInput, DepartmentUncheckedCreateWithoutTeachersInput>
+    connectOrCreate?: DepartmentCreateOrConnectWithoutTeachersInput
+    upsert?: DepartmentUpsertWithoutTeachersInput
+    disconnect?: DepartmentWhereInput | boolean
+    delete?: DepartmentWhereInput | boolean
+    connect?: DepartmentWhereUniqueInput
+    update?: XOR<XOR<DepartmentUpdateToOneWithWhereWithoutTeachersInput, DepartmentUpdateWithoutTeachersInput>, DepartmentUncheckedUpdateWithoutTeachersInput>
+  }
+
+  export type SubjectUpdateManyWithoutTeachersNestedInput = {
+    create?: XOR<SubjectCreateWithoutTeachersInput, SubjectUncheckedCreateWithoutTeachersInput> | SubjectCreateWithoutTeachersInput[] | SubjectUncheckedCreateWithoutTeachersInput[]
+    connectOrCreate?: SubjectCreateOrConnectWithoutTeachersInput | SubjectCreateOrConnectWithoutTeachersInput[]
+    upsert?: SubjectUpsertWithWhereUniqueWithoutTeachersInput | SubjectUpsertWithWhereUniqueWithoutTeachersInput[]
+    set?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+    disconnect?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+    delete?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+    connect?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+    update?: SubjectUpdateWithWhereUniqueWithoutTeachersInput | SubjectUpdateWithWhereUniqueWithoutTeachersInput[]
+    updateMany?: SubjectUpdateManyWithWhereWithoutTeachersInput | SubjectUpdateManyWithWhereWithoutTeachersInput[]
+    deleteMany?: SubjectScalarWhereInput | SubjectScalarWhereInput[]
+  }
+
+  export type LessonUpdateManyWithoutTeacherNestedInput = {
+    create?: XOR<LessonCreateWithoutTeacherInput, LessonUncheckedCreateWithoutTeacherInput> | LessonCreateWithoutTeacherInput[] | LessonUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: LessonCreateOrConnectWithoutTeacherInput | LessonCreateOrConnectWithoutTeacherInput[]
+    upsert?: LessonUpsertWithWhereUniqueWithoutTeacherInput | LessonUpsertWithWhereUniqueWithoutTeacherInput[]
+    createMany?: LessonCreateManyTeacherInputEnvelope
+    set?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    disconnect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    delete?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    connect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    update?: LessonUpdateWithWhereUniqueWithoutTeacherInput | LessonUpdateWithWhereUniqueWithoutTeacherInput[]
+    updateMany?: LessonUpdateManyWithWhereWithoutTeacherInput | LessonUpdateManyWithWhereWithoutTeacherInput[]
+    deleteMany?: LessonScalarWhereInput | LessonScalarWhereInput[]
+  }
+
   export type StreamUncheckedUpdateOneWithoutTeacherNestedInput = {
     create?: XOR<StreamCreateWithoutTeacherInput, StreamUncheckedCreateWithoutTeacherInput>
     connectOrCreate?: StreamCreateOrConnectWithoutTeacherInput
@@ -10902,6 +17197,33 @@ export namespace Prisma {
     delete?: StreamWhereInput | boolean
     connect?: StreamWhereUniqueInput
     update?: XOR<XOR<StreamUpdateToOneWithWhereWithoutTeacherInput, StreamUpdateWithoutTeacherInput>, StreamUncheckedUpdateWithoutTeacherInput>
+  }
+
+  export type SubjectUncheckedUpdateManyWithoutTeachersNestedInput = {
+    create?: XOR<SubjectCreateWithoutTeachersInput, SubjectUncheckedCreateWithoutTeachersInput> | SubjectCreateWithoutTeachersInput[] | SubjectUncheckedCreateWithoutTeachersInput[]
+    connectOrCreate?: SubjectCreateOrConnectWithoutTeachersInput | SubjectCreateOrConnectWithoutTeachersInput[]
+    upsert?: SubjectUpsertWithWhereUniqueWithoutTeachersInput | SubjectUpsertWithWhereUniqueWithoutTeachersInput[]
+    set?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+    disconnect?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+    delete?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+    connect?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+    update?: SubjectUpdateWithWhereUniqueWithoutTeachersInput | SubjectUpdateWithWhereUniqueWithoutTeachersInput[]
+    updateMany?: SubjectUpdateManyWithWhereWithoutTeachersInput | SubjectUpdateManyWithWhereWithoutTeachersInput[]
+    deleteMany?: SubjectScalarWhereInput | SubjectScalarWhereInput[]
+  }
+
+  export type LessonUncheckedUpdateManyWithoutTeacherNestedInput = {
+    create?: XOR<LessonCreateWithoutTeacherInput, LessonUncheckedCreateWithoutTeacherInput> | LessonCreateWithoutTeacherInput[] | LessonUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: LessonCreateOrConnectWithoutTeacherInput | LessonCreateOrConnectWithoutTeacherInput[]
+    upsert?: LessonUpsertWithWhereUniqueWithoutTeacherInput | LessonUpsertWithWhereUniqueWithoutTeacherInput[]
+    createMany?: LessonCreateManyTeacherInputEnvelope
+    set?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    disconnect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    delete?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    connect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    update?: LessonUpdateWithWhereUniqueWithoutTeacherInput | LessonUpdateWithWhereUniqueWithoutTeacherInput[]
+    updateMany?: LessonUpdateManyWithWhereWithoutTeacherInput | LessonUpdateManyWithWhereWithoutTeacherInput[]
+    deleteMany?: LessonScalarWhereInput | LessonScalarWhereInput[]
   }
 
   export type StudentCreateNestedManyWithoutGuardianInput = {
@@ -10973,11 +17295,25 @@ export namespace Prisma {
     connect?: StudentWhereUniqueInput | StudentWhereUniqueInput[]
   }
 
+  export type LessonCreateNestedManyWithoutStreamInput = {
+    create?: XOR<LessonCreateWithoutStreamInput, LessonUncheckedCreateWithoutStreamInput> | LessonCreateWithoutStreamInput[] | LessonUncheckedCreateWithoutStreamInput[]
+    connectOrCreate?: LessonCreateOrConnectWithoutStreamInput | LessonCreateOrConnectWithoutStreamInput[]
+    createMany?: LessonCreateManyStreamInputEnvelope
+    connect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+  }
+
   export type StudentUncheckedCreateNestedManyWithoutStreamInput = {
     create?: XOR<StudentCreateWithoutStreamInput, StudentUncheckedCreateWithoutStreamInput> | StudentCreateWithoutStreamInput[] | StudentUncheckedCreateWithoutStreamInput[]
     connectOrCreate?: StudentCreateOrConnectWithoutStreamInput | StudentCreateOrConnectWithoutStreamInput[]
     createMany?: StudentCreateManyStreamInputEnvelope
     connect?: StudentWhereUniqueInput | StudentWhereUniqueInput[]
+  }
+
+  export type LessonUncheckedCreateNestedManyWithoutStreamInput = {
+    create?: XOR<LessonCreateWithoutStreamInput, LessonUncheckedCreateWithoutStreamInput> | LessonCreateWithoutStreamInput[] | LessonUncheckedCreateWithoutStreamInput[]
+    connectOrCreate?: LessonCreateOrConnectWithoutStreamInput | LessonCreateOrConnectWithoutStreamInput[]
+    createMany?: LessonCreateManyStreamInputEnvelope
+    connect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
   }
 
   export type GradeUpdateOneRequiredWithoutStreamsNestedInput = {
@@ -11012,6 +17348,20 @@ export namespace Prisma {
     deleteMany?: StudentScalarWhereInput | StudentScalarWhereInput[]
   }
 
+  export type LessonUpdateManyWithoutStreamNestedInput = {
+    create?: XOR<LessonCreateWithoutStreamInput, LessonUncheckedCreateWithoutStreamInput> | LessonCreateWithoutStreamInput[] | LessonUncheckedCreateWithoutStreamInput[]
+    connectOrCreate?: LessonCreateOrConnectWithoutStreamInput | LessonCreateOrConnectWithoutStreamInput[]
+    upsert?: LessonUpsertWithWhereUniqueWithoutStreamInput | LessonUpsertWithWhereUniqueWithoutStreamInput[]
+    createMany?: LessonCreateManyStreamInputEnvelope
+    set?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    disconnect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    delete?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    connect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    update?: LessonUpdateWithWhereUniqueWithoutStreamInput | LessonUpdateWithWhereUniqueWithoutStreamInput[]
+    updateMany?: LessonUpdateManyWithWhereWithoutStreamInput | LessonUpdateManyWithWhereWithoutStreamInput[]
+    deleteMany?: LessonScalarWhereInput | LessonScalarWhereInput[]
+  }
+
   export type StudentUncheckedUpdateManyWithoutStreamNestedInput = {
     create?: XOR<StudentCreateWithoutStreamInput, StudentUncheckedCreateWithoutStreamInput> | StudentCreateWithoutStreamInput[] | StudentUncheckedCreateWithoutStreamInput[]
     connectOrCreate?: StudentCreateOrConnectWithoutStreamInput | StudentCreateOrConnectWithoutStreamInput[]
@@ -11024,6 +17374,20 @@ export namespace Prisma {
     update?: StudentUpdateWithWhereUniqueWithoutStreamInput | StudentUpdateWithWhereUniqueWithoutStreamInput[]
     updateMany?: StudentUpdateManyWithWhereWithoutStreamInput | StudentUpdateManyWithWhereWithoutStreamInput[]
     deleteMany?: StudentScalarWhereInput | StudentScalarWhereInput[]
+  }
+
+  export type LessonUncheckedUpdateManyWithoutStreamNestedInput = {
+    create?: XOR<LessonCreateWithoutStreamInput, LessonUncheckedCreateWithoutStreamInput> | LessonCreateWithoutStreamInput[] | LessonUncheckedCreateWithoutStreamInput[]
+    connectOrCreate?: LessonCreateOrConnectWithoutStreamInput | LessonCreateOrConnectWithoutStreamInput[]
+    upsert?: LessonUpsertWithWhereUniqueWithoutStreamInput | LessonUpsertWithWhereUniqueWithoutStreamInput[]
+    createMany?: LessonCreateManyStreamInputEnvelope
+    set?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    disconnect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    delete?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    connect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    update?: LessonUpdateWithWhereUniqueWithoutStreamInput | LessonUpdateWithWhereUniqueWithoutStreamInput[]
+    updateMany?: LessonUpdateManyWithWhereWithoutStreamInput | LessonUpdateManyWithWhereWithoutStreamInput[]
+    deleteMany?: LessonScalarWhereInput | LessonScalarWhereInput[]
   }
 
   export type StreamCreateNestedManyWithoutGradeInput = {
@@ -11108,6 +17472,286 @@ export namespace Prisma {
     update?: StudentUpdateWithWhereUniqueWithoutGradeInput | StudentUpdateWithWhereUniqueWithoutGradeInput[]
     updateMany?: StudentUpdateManyWithWhereWithoutGradeInput | StudentUpdateManyWithWhereWithoutGradeInput[]
     deleteMany?: StudentScalarWhereInput | StudentScalarWhereInput[]
+  }
+
+  export type TeacherCreateNestedManyWithoutDepartmentInput = {
+    create?: XOR<TeacherCreateWithoutDepartmentInput, TeacherUncheckedCreateWithoutDepartmentInput> | TeacherCreateWithoutDepartmentInput[] | TeacherUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: TeacherCreateOrConnectWithoutDepartmentInput | TeacherCreateOrConnectWithoutDepartmentInput[]
+    createMany?: TeacherCreateManyDepartmentInputEnvelope
+    connect?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+  }
+
+  export type SubjectCreateNestedManyWithoutDepartmentInput = {
+    create?: XOR<SubjectCreateWithoutDepartmentInput, SubjectUncheckedCreateWithoutDepartmentInput> | SubjectCreateWithoutDepartmentInput[] | SubjectUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: SubjectCreateOrConnectWithoutDepartmentInput | SubjectCreateOrConnectWithoutDepartmentInput[]
+    createMany?: SubjectCreateManyDepartmentInputEnvelope
+    connect?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+  }
+
+  export type TeacherUncheckedCreateNestedManyWithoutDepartmentInput = {
+    create?: XOR<TeacherCreateWithoutDepartmentInput, TeacherUncheckedCreateWithoutDepartmentInput> | TeacherCreateWithoutDepartmentInput[] | TeacherUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: TeacherCreateOrConnectWithoutDepartmentInput | TeacherCreateOrConnectWithoutDepartmentInput[]
+    createMany?: TeacherCreateManyDepartmentInputEnvelope
+    connect?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+  }
+
+  export type SubjectUncheckedCreateNestedManyWithoutDepartmentInput = {
+    create?: XOR<SubjectCreateWithoutDepartmentInput, SubjectUncheckedCreateWithoutDepartmentInput> | SubjectCreateWithoutDepartmentInput[] | SubjectUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: SubjectCreateOrConnectWithoutDepartmentInput | SubjectCreateOrConnectWithoutDepartmentInput[]
+    createMany?: SubjectCreateManyDepartmentInputEnvelope
+    connect?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+  }
+
+  export type TeacherUpdateManyWithoutDepartmentNestedInput = {
+    create?: XOR<TeacherCreateWithoutDepartmentInput, TeacherUncheckedCreateWithoutDepartmentInput> | TeacherCreateWithoutDepartmentInput[] | TeacherUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: TeacherCreateOrConnectWithoutDepartmentInput | TeacherCreateOrConnectWithoutDepartmentInput[]
+    upsert?: TeacherUpsertWithWhereUniqueWithoutDepartmentInput | TeacherUpsertWithWhereUniqueWithoutDepartmentInput[]
+    createMany?: TeacherCreateManyDepartmentInputEnvelope
+    set?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+    disconnect?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+    delete?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+    connect?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+    update?: TeacherUpdateWithWhereUniqueWithoutDepartmentInput | TeacherUpdateWithWhereUniqueWithoutDepartmentInput[]
+    updateMany?: TeacherUpdateManyWithWhereWithoutDepartmentInput | TeacherUpdateManyWithWhereWithoutDepartmentInput[]
+    deleteMany?: TeacherScalarWhereInput | TeacherScalarWhereInput[]
+  }
+
+  export type SubjectUpdateManyWithoutDepartmentNestedInput = {
+    create?: XOR<SubjectCreateWithoutDepartmentInput, SubjectUncheckedCreateWithoutDepartmentInput> | SubjectCreateWithoutDepartmentInput[] | SubjectUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: SubjectCreateOrConnectWithoutDepartmentInput | SubjectCreateOrConnectWithoutDepartmentInput[]
+    upsert?: SubjectUpsertWithWhereUniqueWithoutDepartmentInput | SubjectUpsertWithWhereUniqueWithoutDepartmentInput[]
+    createMany?: SubjectCreateManyDepartmentInputEnvelope
+    set?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+    disconnect?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+    delete?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+    connect?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+    update?: SubjectUpdateWithWhereUniqueWithoutDepartmentInput | SubjectUpdateWithWhereUniqueWithoutDepartmentInput[]
+    updateMany?: SubjectUpdateManyWithWhereWithoutDepartmentInput | SubjectUpdateManyWithWhereWithoutDepartmentInput[]
+    deleteMany?: SubjectScalarWhereInput | SubjectScalarWhereInput[]
+  }
+
+  export type TeacherUncheckedUpdateManyWithoutDepartmentNestedInput = {
+    create?: XOR<TeacherCreateWithoutDepartmentInput, TeacherUncheckedCreateWithoutDepartmentInput> | TeacherCreateWithoutDepartmentInput[] | TeacherUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: TeacherCreateOrConnectWithoutDepartmentInput | TeacherCreateOrConnectWithoutDepartmentInput[]
+    upsert?: TeacherUpsertWithWhereUniqueWithoutDepartmentInput | TeacherUpsertWithWhereUniqueWithoutDepartmentInput[]
+    createMany?: TeacherCreateManyDepartmentInputEnvelope
+    set?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+    disconnect?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+    delete?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+    connect?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+    update?: TeacherUpdateWithWhereUniqueWithoutDepartmentInput | TeacherUpdateWithWhereUniqueWithoutDepartmentInput[]
+    updateMany?: TeacherUpdateManyWithWhereWithoutDepartmentInput | TeacherUpdateManyWithWhereWithoutDepartmentInput[]
+    deleteMany?: TeacherScalarWhereInput | TeacherScalarWhereInput[]
+  }
+
+  export type SubjectUncheckedUpdateManyWithoutDepartmentNestedInput = {
+    create?: XOR<SubjectCreateWithoutDepartmentInput, SubjectUncheckedCreateWithoutDepartmentInput> | SubjectCreateWithoutDepartmentInput[] | SubjectUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: SubjectCreateOrConnectWithoutDepartmentInput | SubjectCreateOrConnectWithoutDepartmentInput[]
+    upsert?: SubjectUpsertWithWhereUniqueWithoutDepartmentInput | SubjectUpsertWithWhereUniqueWithoutDepartmentInput[]
+    createMany?: SubjectCreateManyDepartmentInputEnvelope
+    set?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+    disconnect?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+    delete?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+    connect?: SubjectWhereUniqueInput | SubjectWhereUniqueInput[]
+    update?: SubjectUpdateWithWhereUniqueWithoutDepartmentInput | SubjectUpdateWithWhereUniqueWithoutDepartmentInput[]
+    updateMany?: SubjectUpdateManyWithWhereWithoutDepartmentInput | SubjectUpdateManyWithWhereWithoutDepartmentInput[]
+    deleteMany?: SubjectScalarWhereInput | SubjectScalarWhereInput[]
+  }
+
+  export type TeacherCreateNestedManyWithoutSubjectsInput = {
+    create?: XOR<TeacherCreateWithoutSubjectsInput, TeacherUncheckedCreateWithoutSubjectsInput> | TeacherCreateWithoutSubjectsInput[] | TeacherUncheckedCreateWithoutSubjectsInput[]
+    connectOrCreate?: TeacherCreateOrConnectWithoutSubjectsInput | TeacherCreateOrConnectWithoutSubjectsInput[]
+    connect?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+  }
+
+  export type DepartmentCreateNestedOneWithoutSubjectsInput = {
+    create?: XOR<DepartmentCreateWithoutSubjectsInput, DepartmentUncheckedCreateWithoutSubjectsInput>
+    connectOrCreate?: DepartmentCreateOrConnectWithoutSubjectsInput
+    connect?: DepartmentWhereUniqueInput
+  }
+
+  export type LessonCreateNestedManyWithoutSubjectInput = {
+    create?: XOR<LessonCreateWithoutSubjectInput, LessonUncheckedCreateWithoutSubjectInput> | LessonCreateWithoutSubjectInput[] | LessonUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: LessonCreateOrConnectWithoutSubjectInput | LessonCreateOrConnectWithoutSubjectInput[]
+    createMany?: LessonCreateManySubjectInputEnvelope
+    connect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+  }
+
+  export type TeacherUncheckedCreateNestedManyWithoutSubjectsInput = {
+    create?: XOR<TeacherCreateWithoutSubjectsInput, TeacherUncheckedCreateWithoutSubjectsInput> | TeacherCreateWithoutSubjectsInput[] | TeacherUncheckedCreateWithoutSubjectsInput[]
+    connectOrCreate?: TeacherCreateOrConnectWithoutSubjectsInput | TeacherCreateOrConnectWithoutSubjectsInput[]
+    connect?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+  }
+
+  export type LessonUncheckedCreateNestedManyWithoutSubjectInput = {
+    create?: XOR<LessonCreateWithoutSubjectInput, LessonUncheckedCreateWithoutSubjectInput> | LessonCreateWithoutSubjectInput[] | LessonUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: LessonCreateOrConnectWithoutSubjectInput | LessonCreateOrConnectWithoutSubjectInput[]
+    createMany?: LessonCreateManySubjectInputEnvelope
+    connect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type TeacherUpdateManyWithoutSubjectsNestedInput = {
+    create?: XOR<TeacherCreateWithoutSubjectsInput, TeacherUncheckedCreateWithoutSubjectsInput> | TeacherCreateWithoutSubjectsInput[] | TeacherUncheckedCreateWithoutSubjectsInput[]
+    connectOrCreate?: TeacherCreateOrConnectWithoutSubjectsInput | TeacherCreateOrConnectWithoutSubjectsInput[]
+    upsert?: TeacherUpsertWithWhereUniqueWithoutSubjectsInput | TeacherUpsertWithWhereUniqueWithoutSubjectsInput[]
+    set?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+    disconnect?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+    delete?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+    connect?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+    update?: TeacherUpdateWithWhereUniqueWithoutSubjectsInput | TeacherUpdateWithWhereUniqueWithoutSubjectsInput[]
+    updateMany?: TeacherUpdateManyWithWhereWithoutSubjectsInput | TeacherUpdateManyWithWhereWithoutSubjectsInput[]
+    deleteMany?: TeacherScalarWhereInput | TeacherScalarWhereInput[]
+  }
+
+  export type DepartmentUpdateOneRequiredWithoutSubjectsNestedInput = {
+    create?: XOR<DepartmentCreateWithoutSubjectsInput, DepartmentUncheckedCreateWithoutSubjectsInput>
+    connectOrCreate?: DepartmentCreateOrConnectWithoutSubjectsInput
+    upsert?: DepartmentUpsertWithoutSubjectsInput
+    connect?: DepartmentWhereUniqueInput
+    update?: XOR<XOR<DepartmentUpdateToOneWithWhereWithoutSubjectsInput, DepartmentUpdateWithoutSubjectsInput>, DepartmentUncheckedUpdateWithoutSubjectsInput>
+  }
+
+  export type LessonUpdateManyWithoutSubjectNestedInput = {
+    create?: XOR<LessonCreateWithoutSubjectInput, LessonUncheckedCreateWithoutSubjectInput> | LessonCreateWithoutSubjectInput[] | LessonUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: LessonCreateOrConnectWithoutSubjectInput | LessonCreateOrConnectWithoutSubjectInput[]
+    upsert?: LessonUpsertWithWhereUniqueWithoutSubjectInput | LessonUpsertWithWhereUniqueWithoutSubjectInput[]
+    createMany?: LessonCreateManySubjectInputEnvelope
+    set?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    disconnect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    delete?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    connect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    update?: LessonUpdateWithWhereUniqueWithoutSubjectInput | LessonUpdateWithWhereUniqueWithoutSubjectInput[]
+    updateMany?: LessonUpdateManyWithWhereWithoutSubjectInput | LessonUpdateManyWithWhereWithoutSubjectInput[]
+    deleteMany?: LessonScalarWhereInput | LessonScalarWhereInput[]
+  }
+
+  export type TeacherUncheckedUpdateManyWithoutSubjectsNestedInput = {
+    create?: XOR<TeacherCreateWithoutSubjectsInput, TeacherUncheckedCreateWithoutSubjectsInput> | TeacherCreateWithoutSubjectsInput[] | TeacherUncheckedCreateWithoutSubjectsInput[]
+    connectOrCreate?: TeacherCreateOrConnectWithoutSubjectsInput | TeacherCreateOrConnectWithoutSubjectsInput[]
+    upsert?: TeacherUpsertWithWhereUniqueWithoutSubjectsInput | TeacherUpsertWithWhereUniqueWithoutSubjectsInput[]
+    set?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+    disconnect?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+    delete?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+    connect?: TeacherWhereUniqueInput | TeacherWhereUniqueInput[]
+    update?: TeacherUpdateWithWhereUniqueWithoutSubjectsInput | TeacherUpdateWithWhereUniqueWithoutSubjectsInput[]
+    updateMany?: TeacherUpdateManyWithWhereWithoutSubjectsInput | TeacherUpdateManyWithWhereWithoutSubjectsInput[]
+    deleteMany?: TeacherScalarWhereInput | TeacherScalarWhereInput[]
+  }
+
+  export type LessonUncheckedUpdateManyWithoutSubjectNestedInput = {
+    create?: XOR<LessonCreateWithoutSubjectInput, LessonUncheckedCreateWithoutSubjectInput> | LessonCreateWithoutSubjectInput[] | LessonUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: LessonCreateOrConnectWithoutSubjectInput | LessonCreateOrConnectWithoutSubjectInput[]
+    upsert?: LessonUpsertWithWhereUniqueWithoutSubjectInput | LessonUpsertWithWhereUniqueWithoutSubjectInput[]
+    createMany?: LessonCreateManySubjectInputEnvelope
+    set?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    disconnect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    delete?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    connect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    update?: LessonUpdateWithWhereUniqueWithoutSubjectInput | LessonUpdateWithWhereUniqueWithoutSubjectInput[]
+    updateMany?: LessonUpdateManyWithWhereWithoutSubjectInput | LessonUpdateManyWithWhereWithoutSubjectInput[]
+    deleteMany?: LessonScalarWhereInput | LessonScalarWhereInput[]
+  }
+
+  export type TeacherCreateNestedOneWithoutLessonInput = {
+    create?: XOR<TeacherCreateWithoutLessonInput, TeacherUncheckedCreateWithoutLessonInput>
+    connectOrCreate?: TeacherCreateOrConnectWithoutLessonInput
+    connect?: TeacherWhereUniqueInput
+  }
+
+  export type SubjectCreateNestedOneWithoutLessonInput = {
+    create?: XOR<SubjectCreateWithoutLessonInput, SubjectUncheckedCreateWithoutLessonInput>
+    connectOrCreate?: SubjectCreateOrConnectWithoutLessonInput
+    connect?: SubjectWhereUniqueInput
+  }
+
+  export type StreamCreateNestedOneWithoutLessonInput = {
+    create?: XOR<StreamCreateWithoutLessonInput, StreamUncheckedCreateWithoutLessonInput>
+    connectOrCreate?: StreamCreateOrConnectWithoutLessonInput
+    connect?: StreamWhereUniqueInput
+  }
+
+  export type TimeSlotCreateNestedOneWithoutLessonsInput = {
+    create?: XOR<TimeSlotCreateWithoutLessonsInput, TimeSlotUncheckedCreateWithoutLessonsInput>
+    connectOrCreate?: TimeSlotCreateOrConnectWithoutLessonsInput
+    connect?: TimeSlotWhereUniqueInput
+  }
+
+  export type TeacherUpdateOneRequiredWithoutLessonNestedInput = {
+    create?: XOR<TeacherCreateWithoutLessonInput, TeacherUncheckedCreateWithoutLessonInput>
+    connectOrCreate?: TeacherCreateOrConnectWithoutLessonInput
+    upsert?: TeacherUpsertWithoutLessonInput
+    connect?: TeacherWhereUniqueInput
+    update?: XOR<XOR<TeacherUpdateToOneWithWhereWithoutLessonInput, TeacherUpdateWithoutLessonInput>, TeacherUncheckedUpdateWithoutLessonInput>
+  }
+
+  export type SubjectUpdateOneRequiredWithoutLessonNestedInput = {
+    create?: XOR<SubjectCreateWithoutLessonInput, SubjectUncheckedCreateWithoutLessonInput>
+    connectOrCreate?: SubjectCreateOrConnectWithoutLessonInput
+    upsert?: SubjectUpsertWithoutLessonInput
+    connect?: SubjectWhereUniqueInput
+    update?: XOR<XOR<SubjectUpdateToOneWithWhereWithoutLessonInput, SubjectUpdateWithoutLessonInput>, SubjectUncheckedUpdateWithoutLessonInput>
+  }
+
+  export type StreamUpdateOneRequiredWithoutLessonNestedInput = {
+    create?: XOR<StreamCreateWithoutLessonInput, StreamUncheckedCreateWithoutLessonInput>
+    connectOrCreate?: StreamCreateOrConnectWithoutLessonInput
+    upsert?: StreamUpsertWithoutLessonInput
+    connect?: StreamWhereUniqueInput
+    update?: XOR<XOR<StreamUpdateToOneWithWhereWithoutLessonInput, StreamUpdateWithoutLessonInput>, StreamUncheckedUpdateWithoutLessonInput>
+  }
+
+  export type TimeSlotUpdateOneRequiredWithoutLessonsNestedInput = {
+    create?: XOR<TimeSlotCreateWithoutLessonsInput, TimeSlotUncheckedCreateWithoutLessonsInput>
+    connectOrCreate?: TimeSlotCreateOrConnectWithoutLessonsInput
+    upsert?: TimeSlotUpsertWithoutLessonsInput
+    connect?: TimeSlotWhereUniqueInput
+    update?: XOR<XOR<TimeSlotUpdateToOneWithWhereWithoutLessonsInput, TimeSlotUpdateWithoutLessonsInput>, TimeSlotUncheckedUpdateWithoutLessonsInput>
+  }
+
+  export type LessonCreateNestedManyWithoutTimeSlotInput = {
+    create?: XOR<LessonCreateWithoutTimeSlotInput, LessonUncheckedCreateWithoutTimeSlotInput> | LessonCreateWithoutTimeSlotInput[] | LessonUncheckedCreateWithoutTimeSlotInput[]
+    connectOrCreate?: LessonCreateOrConnectWithoutTimeSlotInput | LessonCreateOrConnectWithoutTimeSlotInput[]
+    createMany?: LessonCreateManyTimeSlotInputEnvelope
+    connect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+  }
+
+  export type LessonUncheckedCreateNestedManyWithoutTimeSlotInput = {
+    create?: XOR<LessonCreateWithoutTimeSlotInput, LessonUncheckedCreateWithoutTimeSlotInput> | LessonCreateWithoutTimeSlotInput[] | LessonUncheckedCreateWithoutTimeSlotInput[]
+    connectOrCreate?: LessonCreateOrConnectWithoutTimeSlotInput | LessonCreateOrConnectWithoutTimeSlotInput[]
+    createMany?: LessonCreateManyTimeSlotInputEnvelope
+    connect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+  }
+
+  export type LessonUpdateManyWithoutTimeSlotNestedInput = {
+    create?: XOR<LessonCreateWithoutTimeSlotInput, LessonUncheckedCreateWithoutTimeSlotInput> | LessonCreateWithoutTimeSlotInput[] | LessonUncheckedCreateWithoutTimeSlotInput[]
+    connectOrCreate?: LessonCreateOrConnectWithoutTimeSlotInput | LessonCreateOrConnectWithoutTimeSlotInput[]
+    upsert?: LessonUpsertWithWhereUniqueWithoutTimeSlotInput | LessonUpsertWithWhereUniqueWithoutTimeSlotInput[]
+    createMany?: LessonCreateManyTimeSlotInputEnvelope
+    set?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    disconnect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    delete?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    connect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    update?: LessonUpdateWithWhereUniqueWithoutTimeSlotInput | LessonUpdateWithWhereUniqueWithoutTimeSlotInput[]
+    updateMany?: LessonUpdateManyWithWhereWithoutTimeSlotInput | LessonUpdateManyWithWhereWithoutTimeSlotInput[]
+    deleteMany?: LessonScalarWhereInput | LessonScalarWhereInput[]
+  }
+
+  export type LessonUncheckedUpdateManyWithoutTimeSlotNestedInput = {
+    create?: XOR<LessonCreateWithoutTimeSlotInput, LessonUncheckedCreateWithoutTimeSlotInput> | LessonCreateWithoutTimeSlotInput[] | LessonUncheckedCreateWithoutTimeSlotInput[]
+    connectOrCreate?: LessonCreateOrConnectWithoutTimeSlotInput | LessonCreateOrConnectWithoutTimeSlotInput[]
+    upsert?: LessonUpsertWithWhereUniqueWithoutTimeSlotInput | LessonUpsertWithWhereUniqueWithoutTimeSlotInput[]
+    createMany?: LessonCreateManyTimeSlotInputEnvelope
+    set?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    disconnect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    delete?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    connect?: LessonWhereUniqueInput | LessonWhereUniqueInput[]
+    update?: LessonUpdateWithWhereUniqueWithoutTimeSlotInput | LessonUpdateWithWhereUniqueWithoutTimeSlotInput[]
+    updateMany?: LessonUpdateManyWithWhereWithoutTimeSlotInput | LessonUpdateManyWithWhereWithoutTimeSlotInput[]
+    deleteMany?: LessonScalarWhereInput | LessonScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -11362,6 +18006,42 @@ export namespace Prisma {
     _max?: NestedEnumContactMethodFilter<$PrismaModel>
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
   export type GuardianCreateWithoutStudentsInput = {
     id?: string
     name: string
@@ -11424,6 +18104,7 @@ export namespace Prisma {
     slug: string
     Grade: GradeCreateNestedOneWithoutStreamsInput
     Teacher?: TeacherCreateNestedOneWithoutStreamInput
+    Lesson?: LessonCreateNestedManyWithoutStreamInput
   }
 
   export type StreamUncheckedCreateWithoutStudentsInput = {
@@ -11432,6 +18113,7 @@ export namespace Prisma {
     slug: string
     gradeId: string
     teacherId?: string | null
+    Lesson?: LessonUncheckedCreateNestedManyWithoutStreamInput
   }
 
   export type StreamCreateOrConnectWithoutStudentsInput = {
@@ -11524,6 +18206,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     Grade?: GradeUpdateOneRequiredWithoutStreamsNestedInput
     Teacher?: TeacherUpdateOneWithoutStreamNestedInput
+    Lesson?: LessonUpdateManyWithoutStreamNestedInput
   }
 
   export type StreamUncheckedUpdateWithoutStudentsInput = {
@@ -11532,6 +18215,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     gradeId?: StringFieldUpdateOperationsInput | string
     teacherId?: NullableStringFieldUpdateOperationsInput | string | null
+    Lesson?: LessonUncheckedUpdateManyWithoutStreamNestedInput
   }
 
   export type StreamCreateWithoutTeacherInput = {
@@ -11540,6 +18224,7 @@ export namespace Prisma {
     slug: string
     Grade: GradeCreateNestedOneWithoutStreamsInput
     students?: StudentCreateNestedManyWithoutStreamInput
+    Lesson?: LessonCreateNestedManyWithoutStreamInput
   }
 
   export type StreamUncheckedCreateWithoutTeacherInput = {
@@ -11548,11 +18233,112 @@ export namespace Prisma {
     slug: string
     gradeId: string
     students?: StudentUncheckedCreateNestedManyWithoutStreamInput
+    Lesson?: LessonUncheckedCreateNestedManyWithoutStreamInput
   }
 
   export type StreamCreateOrConnectWithoutTeacherInput = {
     where: StreamWhereUniqueInput
     create: XOR<StreamCreateWithoutTeacherInput, StreamUncheckedCreateWithoutTeacherInput>
+  }
+
+  export type DepartmentCreateWithoutTeachersInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subjects?: SubjectCreateNestedManyWithoutDepartmentInput
+  }
+
+  export type DepartmentUncheckedCreateWithoutTeachersInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subjects?: SubjectUncheckedCreateNestedManyWithoutDepartmentInput
+  }
+
+  export type DepartmentCreateOrConnectWithoutTeachersInput = {
+    where: DepartmentWhereUniqueInput
+    create: XOR<DepartmentCreateWithoutTeachersInput, DepartmentUncheckedCreateWithoutTeachersInput>
+  }
+
+  export type SubjectCreateWithoutTeachersInput = {
+    id?: string
+    name: string
+    slug: string
+    subjectCode: string
+    shortname: string
+    active?: boolean
+    optional?: boolean
+    fieldtrips?: boolean
+    labRequired?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Department: DepartmentCreateNestedOneWithoutSubjectsInput
+    Lesson?: LessonCreateNestedManyWithoutSubjectInput
+  }
+
+  export type SubjectUncheckedCreateWithoutTeachersInput = {
+    id?: string
+    name: string
+    slug: string
+    subjectCode: string
+    shortname: string
+    departmentId: string
+    active?: boolean
+    optional?: boolean
+    fieldtrips?: boolean
+    labRequired?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Lesson?: LessonUncheckedCreateNestedManyWithoutSubjectInput
+  }
+
+  export type SubjectCreateOrConnectWithoutTeachersInput = {
+    where: SubjectWhereUniqueInput
+    create: XOR<SubjectCreateWithoutTeachersInput, SubjectUncheckedCreateWithoutTeachersInput>
+  }
+
+  export type LessonCreateWithoutTeacherInput = {
+    id?: string
+    name: string
+    description: string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Subject: SubjectCreateNestedOneWithoutLessonInput
+    Stream: StreamCreateNestedOneWithoutLessonInput
+    TimeSlot: TimeSlotCreateNestedOneWithoutLessonsInput
+  }
+
+  export type LessonUncheckedCreateWithoutTeacherInput = {
+    id?: string
+    name: string
+    description: string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day: number
+    subjectId: string
+    streamId: string
+    timeSlotId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LessonCreateOrConnectWithoutTeacherInput = {
+    where: LessonWhereUniqueInput
+    create: XOR<LessonCreateWithoutTeacherInput, LessonUncheckedCreateWithoutTeacherInput>
+  }
+
+  export type LessonCreateManyTeacherInputEnvelope = {
+    data: LessonCreateManyTeacherInput | LessonCreateManyTeacherInput[]
+    skipDuplicates?: boolean
   }
 
   export type StreamUpsertWithoutTeacherInput = {
@@ -11572,6 +18358,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     Grade?: GradeUpdateOneRequiredWithoutStreamsNestedInput
     students?: StudentUpdateManyWithoutStreamNestedInput
+    Lesson?: LessonUpdateManyWithoutStreamNestedInput
   }
 
   export type StreamUncheckedUpdateWithoutTeacherInput = {
@@ -11580,6 +18367,106 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     gradeId?: StringFieldUpdateOperationsInput | string
     students?: StudentUncheckedUpdateManyWithoutStreamNestedInput
+    Lesson?: LessonUncheckedUpdateManyWithoutStreamNestedInput
+  }
+
+  export type DepartmentUpsertWithoutTeachersInput = {
+    update: XOR<DepartmentUpdateWithoutTeachersInput, DepartmentUncheckedUpdateWithoutTeachersInput>
+    create: XOR<DepartmentCreateWithoutTeachersInput, DepartmentUncheckedCreateWithoutTeachersInput>
+    where?: DepartmentWhereInput
+  }
+
+  export type DepartmentUpdateToOneWithWhereWithoutTeachersInput = {
+    where?: DepartmentWhereInput
+    data: XOR<DepartmentUpdateWithoutTeachersInput, DepartmentUncheckedUpdateWithoutTeachersInput>
+  }
+
+  export type DepartmentUpdateWithoutTeachersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subjects?: SubjectUpdateManyWithoutDepartmentNestedInput
+  }
+
+  export type DepartmentUncheckedUpdateWithoutTeachersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subjects?: SubjectUncheckedUpdateManyWithoutDepartmentNestedInput
+  }
+
+  export type SubjectUpsertWithWhereUniqueWithoutTeachersInput = {
+    where: SubjectWhereUniqueInput
+    update: XOR<SubjectUpdateWithoutTeachersInput, SubjectUncheckedUpdateWithoutTeachersInput>
+    create: XOR<SubjectCreateWithoutTeachersInput, SubjectUncheckedCreateWithoutTeachersInput>
+  }
+
+  export type SubjectUpdateWithWhereUniqueWithoutTeachersInput = {
+    where: SubjectWhereUniqueInput
+    data: XOR<SubjectUpdateWithoutTeachersInput, SubjectUncheckedUpdateWithoutTeachersInput>
+  }
+
+  export type SubjectUpdateManyWithWhereWithoutTeachersInput = {
+    where: SubjectScalarWhereInput
+    data: XOR<SubjectUpdateManyMutationInput, SubjectUncheckedUpdateManyWithoutTeachersInput>
+  }
+
+  export type SubjectScalarWhereInput = {
+    AND?: SubjectScalarWhereInput | SubjectScalarWhereInput[]
+    OR?: SubjectScalarWhereInput[]
+    NOT?: SubjectScalarWhereInput | SubjectScalarWhereInput[]
+    id?: StringFilter<"Subject"> | string
+    name?: StringFilter<"Subject"> | string
+    slug?: StringFilter<"Subject"> | string
+    subjectCode?: StringFilter<"Subject"> | string
+    shortname?: StringFilter<"Subject"> | string
+    departmentId?: StringFilter<"Subject"> | string
+    active?: BoolFilter<"Subject"> | boolean
+    optional?: BoolFilter<"Subject"> | boolean
+    fieldtrips?: BoolFilter<"Subject"> | boolean
+    labRequired?: BoolFilter<"Subject"> | boolean
+    createdAt?: DateTimeFilter<"Subject"> | Date | string
+    updatedAt?: DateTimeFilter<"Subject"> | Date | string
+  }
+
+  export type LessonUpsertWithWhereUniqueWithoutTeacherInput = {
+    where: LessonWhereUniqueInput
+    update: XOR<LessonUpdateWithoutTeacherInput, LessonUncheckedUpdateWithoutTeacherInput>
+    create: XOR<LessonCreateWithoutTeacherInput, LessonUncheckedCreateWithoutTeacherInput>
+  }
+
+  export type LessonUpdateWithWhereUniqueWithoutTeacherInput = {
+    where: LessonWhereUniqueInput
+    data: XOR<LessonUpdateWithoutTeacherInput, LessonUncheckedUpdateWithoutTeacherInput>
+  }
+
+  export type LessonUpdateManyWithWhereWithoutTeacherInput = {
+    where: LessonScalarWhereInput
+    data: XOR<LessonUpdateManyMutationInput, LessonUncheckedUpdateManyWithoutTeacherInput>
+  }
+
+  export type LessonScalarWhereInput = {
+    AND?: LessonScalarWhereInput | LessonScalarWhereInput[]
+    OR?: LessonScalarWhereInput[]
+    NOT?: LessonScalarWhereInput | LessonScalarWhereInput[]
+    id?: StringFilter<"Lesson"> | string
+    name?: StringFilter<"Lesson"> | string
+    description?: StringFilter<"Lesson"> | string
+    materials?: JsonNullableFilter<"Lesson">
+    assignment?: JsonNullableFilter<"Lesson">
+    day?: IntFilter<"Lesson"> | number
+    teacherId?: StringFilter<"Lesson"> | string
+    subjectId?: StringFilter<"Lesson"> | string
+    streamId?: StringFilter<"Lesson"> | string
+    timeSlotId?: StringFilter<"Lesson"> | string
+    createdAt?: DateTimeFilter<"Lesson"> | Date | string
+    updatedAt?: DateTimeFilter<"Lesson"> | Date | string
   }
 
   export type StudentCreateWithoutGuardianInput = {
@@ -11716,7 +18603,6 @@ export namespace Prisma {
     highestQualification: string
     specialization: string
     teachingExperience: string
-    subjectsCanTeach?: TeacherCreatesubjectsCanTeachInput | string[]
     gradesCanTeach?: TeacherCreategradesCanTeachInput | string[]
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
@@ -11729,6 +18615,9 @@ export namespace Prisma {
     additionalNotes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    Department?: DepartmentCreateNestedOneWithoutTeachersInput
+    subjects?: SubjectCreateNestedManyWithoutTeachersInput
+    Lesson?: LessonCreateNestedManyWithoutTeacherInput
   }
 
   export type TeacherUncheckedCreateWithoutStreamInput = {
@@ -11750,7 +18639,6 @@ export namespace Prisma {
     highestQualification: string
     specialization: string
     teachingExperience: string
-    subjectsCanTeach?: TeacherCreatesubjectsCanTeachInput | string[]
     gradesCanTeach?: TeacherCreategradesCanTeachInput | string[]
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
@@ -11763,6 +18651,9 @@ export namespace Prisma {
     additionalNotes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    departmentId?: string | null
+    subjects?: SubjectUncheckedCreateNestedManyWithoutTeachersInput
+    Lesson?: LessonUncheckedCreateNestedManyWithoutTeacherInput
   }
 
   export type TeacherCreateOrConnectWithoutStreamInput = {
@@ -11824,6 +18715,44 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type LessonCreateWithoutStreamInput = {
+    id?: string
+    name: string
+    description: string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Teacher: TeacherCreateNestedOneWithoutLessonInput
+    Subject: SubjectCreateNestedOneWithoutLessonInput
+    TimeSlot: TimeSlotCreateNestedOneWithoutLessonsInput
+  }
+
+  export type LessonUncheckedCreateWithoutStreamInput = {
+    id?: string
+    name: string
+    description: string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day: number
+    teacherId: string
+    subjectId: string
+    timeSlotId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LessonCreateOrConnectWithoutStreamInput = {
+    where: LessonWhereUniqueInput
+    create: XOR<LessonCreateWithoutStreamInput, LessonUncheckedCreateWithoutStreamInput>
+  }
+
+  export type LessonCreateManyStreamInputEnvelope = {
+    data: LessonCreateManyStreamInput | LessonCreateManyStreamInput[]
+    skipDuplicates?: boolean
+  }
+
   export type GradeUpsertWithoutStreamsInput = {
     update: XOR<GradeUpdateWithoutStreamsInput, GradeUncheckedUpdateWithoutStreamsInput>
     create: XOR<GradeCreateWithoutStreamsInput, GradeUncheckedCreateWithoutStreamsInput>
@@ -11879,7 +18808,6 @@ export namespace Prisma {
     highestQualification?: StringFieldUpdateOperationsInput | string
     specialization?: StringFieldUpdateOperationsInput | string
     teachingExperience?: StringFieldUpdateOperationsInput | string
-    subjectsCanTeach?: TeacherUpdatesubjectsCanTeachInput | string[]
     gradesCanTeach?: TeacherUpdategradesCanTeachInput | string[]
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11892,6 +18820,9 @@ export namespace Prisma {
     additionalNotes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Department?: DepartmentUpdateOneWithoutTeachersNestedInput
+    subjects?: SubjectUpdateManyWithoutTeachersNestedInput
+    Lesson?: LessonUpdateManyWithoutTeacherNestedInput
   }
 
   export type TeacherUncheckedUpdateWithoutStreamInput = {
@@ -11913,7 +18844,6 @@ export namespace Prisma {
     highestQualification?: StringFieldUpdateOperationsInput | string
     specialization?: StringFieldUpdateOperationsInput | string
     teachingExperience?: StringFieldUpdateOperationsInput | string
-    subjectsCanTeach?: TeacherUpdatesubjectsCanTeachInput | string[]
     gradesCanTeach?: TeacherUpdategradesCanTeachInput | string[]
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11926,6 +18856,9 @@ export namespace Prisma {
     additionalNotes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    subjects?: SubjectUncheckedUpdateManyWithoutTeachersNestedInput
+    Lesson?: LessonUncheckedUpdateManyWithoutTeacherNestedInput
   }
 
   export type StudentUpsertWithWhereUniqueWithoutStreamInput = {
@@ -11944,12 +18877,29 @@ export namespace Prisma {
     data: XOR<StudentUpdateManyMutationInput, StudentUncheckedUpdateManyWithoutStreamInput>
   }
 
+  export type LessonUpsertWithWhereUniqueWithoutStreamInput = {
+    where: LessonWhereUniqueInput
+    update: XOR<LessonUpdateWithoutStreamInput, LessonUncheckedUpdateWithoutStreamInput>
+    create: XOR<LessonCreateWithoutStreamInput, LessonUncheckedCreateWithoutStreamInput>
+  }
+
+  export type LessonUpdateWithWhereUniqueWithoutStreamInput = {
+    where: LessonWhereUniqueInput
+    data: XOR<LessonUpdateWithoutStreamInput, LessonUncheckedUpdateWithoutStreamInput>
+  }
+
+  export type LessonUpdateManyWithWhereWithoutStreamInput = {
+    where: LessonScalarWhereInput
+    data: XOR<LessonUpdateManyMutationInput, LessonUncheckedUpdateManyWithoutStreamInput>
+  }
+
   export type StreamCreateWithoutGradeInput = {
     id?: string
     name: string
     slug: string
     Teacher?: TeacherCreateNestedOneWithoutStreamInput
     students?: StudentCreateNestedManyWithoutStreamInput
+    Lesson?: LessonCreateNestedManyWithoutStreamInput
   }
 
   export type StreamUncheckedCreateWithoutGradeInput = {
@@ -11958,6 +18908,7 @@ export namespace Prisma {
     slug: string
     teacherId?: string | null
     students?: StudentUncheckedCreateNestedManyWithoutStreamInput
+    Lesson?: LessonUncheckedCreateNestedManyWithoutStreamInput
   }
 
   export type StreamCreateOrConnectWithoutGradeInput = {
@@ -12065,6 +19016,895 @@ export namespace Prisma {
   export type StudentUpdateManyWithWhereWithoutGradeInput = {
     where: StudentScalarWhereInput
     data: XOR<StudentUpdateManyMutationInput, StudentUncheckedUpdateManyWithoutGradeInput>
+  }
+
+  export type TeacherCreateWithoutDepartmentInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    dateOfBirth: Date | string
+    gender: $Enums.Gender
+    email: string
+    phone: string
+    alternatePhone?: string | null
+    address: string
+    city: string
+    state: string
+    zipCode: string
+    emergencyContactName: string
+    emergencyContactPhone: string
+    emergencyContactRelationship: string
+    highestQualification: string
+    specialization: string
+    teachingExperience: string
+    gradesCanTeach?: TeacherCreategradesCanTeachInput | string[]
+    employmentType: $Enums.EmploymentType
+    joiningDate: Date | string
+    position: string
+    department: string
+    previousEmployments: JsonNullValueInput | InputJsonValue
+    certifications?: string | null
+    skills?: string | null
+    languages?: string | null
+    additionalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Stream?: StreamCreateNestedOneWithoutTeacherInput
+    subjects?: SubjectCreateNestedManyWithoutTeachersInput
+    Lesson?: LessonCreateNestedManyWithoutTeacherInput
+  }
+
+  export type TeacherUncheckedCreateWithoutDepartmentInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    dateOfBirth: Date | string
+    gender: $Enums.Gender
+    email: string
+    phone: string
+    alternatePhone?: string | null
+    address: string
+    city: string
+    state: string
+    zipCode: string
+    emergencyContactName: string
+    emergencyContactPhone: string
+    emergencyContactRelationship: string
+    highestQualification: string
+    specialization: string
+    teachingExperience: string
+    gradesCanTeach?: TeacherCreategradesCanTeachInput | string[]
+    employmentType: $Enums.EmploymentType
+    joiningDate: Date | string
+    position: string
+    department: string
+    previousEmployments: JsonNullValueInput | InputJsonValue
+    certifications?: string | null
+    skills?: string | null
+    languages?: string | null
+    additionalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Stream?: StreamUncheckedCreateNestedOneWithoutTeacherInput
+    subjects?: SubjectUncheckedCreateNestedManyWithoutTeachersInput
+    Lesson?: LessonUncheckedCreateNestedManyWithoutTeacherInput
+  }
+
+  export type TeacherCreateOrConnectWithoutDepartmentInput = {
+    where: TeacherWhereUniqueInput
+    create: XOR<TeacherCreateWithoutDepartmentInput, TeacherUncheckedCreateWithoutDepartmentInput>
+  }
+
+  export type TeacherCreateManyDepartmentInputEnvelope = {
+    data: TeacherCreateManyDepartmentInput | TeacherCreateManyDepartmentInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SubjectCreateWithoutDepartmentInput = {
+    id?: string
+    name: string
+    slug: string
+    subjectCode: string
+    shortname: string
+    active?: boolean
+    optional?: boolean
+    fieldtrips?: boolean
+    labRequired?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teachers?: TeacherCreateNestedManyWithoutSubjectsInput
+    Lesson?: LessonCreateNestedManyWithoutSubjectInput
+  }
+
+  export type SubjectUncheckedCreateWithoutDepartmentInput = {
+    id?: string
+    name: string
+    slug: string
+    subjectCode: string
+    shortname: string
+    active?: boolean
+    optional?: boolean
+    fieldtrips?: boolean
+    labRequired?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teachers?: TeacherUncheckedCreateNestedManyWithoutSubjectsInput
+    Lesson?: LessonUncheckedCreateNestedManyWithoutSubjectInput
+  }
+
+  export type SubjectCreateOrConnectWithoutDepartmentInput = {
+    where: SubjectWhereUniqueInput
+    create: XOR<SubjectCreateWithoutDepartmentInput, SubjectUncheckedCreateWithoutDepartmentInput>
+  }
+
+  export type SubjectCreateManyDepartmentInputEnvelope = {
+    data: SubjectCreateManyDepartmentInput | SubjectCreateManyDepartmentInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TeacherUpsertWithWhereUniqueWithoutDepartmentInput = {
+    where: TeacherWhereUniqueInput
+    update: XOR<TeacherUpdateWithoutDepartmentInput, TeacherUncheckedUpdateWithoutDepartmentInput>
+    create: XOR<TeacherCreateWithoutDepartmentInput, TeacherUncheckedCreateWithoutDepartmentInput>
+  }
+
+  export type TeacherUpdateWithWhereUniqueWithoutDepartmentInput = {
+    where: TeacherWhereUniqueInput
+    data: XOR<TeacherUpdateWithoutDepartmentInput, TeacherUncheckedUpdateWithoutDepartmentInput>
+  }
+
+  export type TeacherUpdateManyWithWhereWithoutDepartmentInput = {
+    where: TeacherScalarWhereInput
+    data: XOR<TeacherUpdateManyMutationInput, TeacherUncheckedUpdateManyWithoutDepartmentInput>
+  }
+
+  export type TeacherScalarWhereInput = {
+    AND?: TeacherScalarWhereInput | TeacherScalarWhereInput[]
+    OR?: TeacherScalarWhereInput[]
+    NOT?: TeacherScalarWhereInput | TeacherScalarWhereInput[]
+    id?: StringFilter<"Teacher"> | string
+    firstName?: StringFilter<"Teacher"> | string
+    lastName?: StringFilter<"Teacher"> | string
+    dateOfBirth?: DateTimeFilter<"Teacher"> | Date | string
+    gender?: EnumGenderFilter<"Teacher"> | $Enums.Gender
+    email?: StringFilter<"Teacher"> | string
+    phone?: StringFilter<"Teacher"> | string
+    alternatePhone?: StringNullableFilter<"Teacher"> | string | null
+    address?: StringFilter<"Teacher"> | string
+    city?: StringFilter<"Teacher"> | string
+    state?: StringFilter<"Teacher"> | string
+    zipCode?: StringFilter<"Teacher"> | string
+    emergencyContactName?: StringFilter<"Teacher"> | string
+    emergencyContactPhone?: StringFilter<"Teacher"> | string
+    emergencyContactRelationship?: StringFilter<"Teacher"> | string
+    highestQualification?: StringFilter<"Teacher"> | string
+    specialization?: StringFilter<"Teacher"> | string
+    teachingExperience?: StringFilter<"Teacher"> | string
+    gradesCanTeach?: StringNullableListFilter<"Teacher">
+    employmentType?: EnumEmploymentTypeFilter<"Teacher"> | $Enums.EmploymentType
+    joiningDate?: DateTimeFilter<"Teacher"> | Date | string
+    position?: StringFilter<"Teacher"> | string
+    department?: StringFilter<"Teacher"> | string
+    previousEmployments?: JsonFilter<"Teacher">
+    certifications?: StringNullableFilter<"Teacher"> | string | null
+    skills?: StringNullableFilter<"Teacher"> | string | null
+    languages?: StringNullableFilter<"Teacher"> | string | null
+    additionalNotes?: StringNullableFilter<"Teacher"> | string | null
+    createdAt?: DateTimeFilter<"Teacher"> | Date | string
+    updatedAt?: DateTimeFilter<"Teacher"> | Date | string
+    departmentId?: StringNullableFilter<"Teacher"> | string | null
+  }
+
+  export type SubjectUpsertWithWhereUniqueWithoutDepartmentInput = {
+    where: SubjectWhereUniqueInput
+    update: XOR<SubjectUpdateWithoutDepartmentInput, SubjectUncheckedUpdateWithoutDepartmentInput>
+    create: XOR<SubjectCreateWithoutDepartmentInput, SubjectUncheckedCreateWithoutDepartmentInput>
+  }
+
+  export type SubjectUpdateWithWhereUniqueWithoutDepartmentInput = {
+    where: SubjectWhereUniqueInput
+    data: XOR<SubjectUpdateWithoutDepartmentInput, SubjectUncheckedUpdateWithoutDepartmentInput>
+  }
+
+  export type SubjectUpdateManyWithWhereWithoutDepartmentInput = {
+    where: SubjectScalarWhereInput
+    data: XOR<SubjectUpdateManyMutationInput, SubjectUncheckedUpdateManyWithoutDepartmentInput>
+  }
+
+  export type TeacherCreateWithoutSubjectsInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    dateOfBirth: Date | string
+    gender: $Enums.Gender
+    email: string
+    phone: string
+    alternatePhone?: string | null
+    address: string
+    city: string
+    state: string
+    zipCode: string
+    emergencyContactName: string
+    emergencyContactPhone: string
+    emergencyContactRelationship: string
+    highestQualification: string
+    specialization: string
+    teachingExperience: string
+    gradesCanTeach?: TeacherCreategradesCanTeachInput | string[]
+    employmentType: $Enums.EmploymentType
+    joiningDate: Date | string
+    position: string
+    department: string
+    previousEmployments: JsonNullValueInput | InputJsonValue
+    certifications?: string | null
+    skills?: string | null
+    languages?: string | null
+    additionalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Stream?: StreamCreateNestedOneWithoutTeacherInput
+    Department?: DepartmentCreateNestedOneWithoutTeachersInput
+    Lesson?: LessonCreateNestedManyWithoutTeacherInput
+  }
+
+  export type TeacherUncheckedCreateWithoutSubjectsInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    dateOfBirth: Date | string
+    gender: $Enums.Gender
+    email: string
+    phone: string
+    alternatePhone?: string | null
+    address: string
+    city: string
+    state: string
+    zipCode: string
+    emergencyContactName: string
+    emergencyContactPhone: string
+    emergencyContactRelationship: string
+    highestQualification: string
+    specialization: string
+    teachingExperience: string
+    gradesCanTeach?: TeacherCreategradesCanTeachInput | string[]
+    employmentType: $Enums.EmploymentType
+    joiningDate: Date | string
+    position: string
+    department: string
+    previousEmployments: JsonNullValueInput | InputJsonValue
+    certifications?: string | null
+    skills?: string | null
+    languages?: string | null
+    additionalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    departmentId?: string | null
+    Stream?: StreamUncheckedCreateNestedOneWithoutTeacherInput
+    Lesson?: LessonUncheckedCreateNestedManyWithoutTeacherInput
+  }
+
+  export type TeacherCreateOrConnectWithoutSubjectsInput = {
+    where: TeacherWhereUniqueInput
+    create: XOR<TeacherCreateWithoutSubjectsInput, TeacherUncheckedCreateWithoutSubjectsInput>
+  }
+
+  export type DepartmentCreateWithoutSubjectsInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teachers?: TeacherCreateNestedManyWithoutDepartmentInput
+  }
+
+  export type DepartmentUncheckedCreateWithoutSubjectsInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teachers?: TeacherUncheckedCreateNestedManyWithoutDepartmentInput
+  }
+
+  export type DepartmentCreateOrConnectWithoutSubjectsInput = {
+    where: DepartmentWhereUniqueInput
+    create: XOR<DepartmentCreateWithoutSubjectsInput, DepartmentUncheckedCreateWithoutSubjectsInput>
+  }
+
+  export type LessonCreateWithoutSubjectInput = {
+    id?: string
+    name: string
+    description: string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Teacher: TeacherCreateNestedOneWithoutLessonInput
+    Stream: StreamCreateNestedOneWithoutLessonInput
+    TimeSlot: TimeSlotCreateNestedOneWithoutLessonsInput
+  }
+
+  export type LessonUncheckedCreateWithoutSubjectInput = {
+    id?: string
+    name: string
+    description: string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day: number
+    teacherId: string
+    streamId: string
+    timeSlotId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LessonCreateOrConnectWithoutSubjectInput = {
+    where: LessonWhereUniqueInput
+    create: XOR<LessonCreateWithoutSubjectInput, LessonUncheckedCreateWithoutSubjectInput>
+  }
+
+  export type LessonCreateManySubjectInputEnvelope = {
+    data: LessonCreateManySubjectInput | LessonCreateManySubjectInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TeacherUpsertWithWhereUniqueWithoutSubjectsInput = {
+    where: TeacherWhereUniqueInput
+    update: XOR<TeacherUpdateWithoutSubjectsInput, TeacherUncheckedUpdateWithoutSubjectsInput>
+    create: XOR<TeacherCreateWithoutSubjectsInput, TeacherUncheckedCreateWithoutSubjectsInput>
+  }
+
+  export type TeacherUpdateWithWhereUniqueWithoutSubjectsInput = {
+    where: TeacherWhereUniqueInput
+    data: XOR<TeacherUpdateWithoutSubjectsInput, TeacherUncheckedUpdateWithoutSubjectsInput>
+  }
+
+  export type TeacherUpdateManyWithWhereWithoutSubjectsInput = {
+    where: TeacherScalarWhereInput
+    data: XOR<TeacherUpdateManyMutationInput, TeacherUncheckedUpdateManyWithoutSubjectsInput>
+  }
+
+  export type DepartmentUpsertWithoutSubjectsInput = {
+    update: XOR<DepartmentUpdateWithoutSubjectsInput, DepartmentUncheckedUpdateWithoutSubjectsInput>
+    create: XOR<DepartmentCreateWithoutSubjectsInput, DepartmentUncheckedCreateWithoutSubjectsInput>
+    where?: DepartmentWhereInput
+  }
+
+  export type DepartmentUpdateToOneWithWhereWithoutSubjectsInput = {
+    where?: DepartmentWhereInput
+    data: XOR<DepartmentUpdateWithoutSubjectsInput, DepartmentUncheckedUpdateWithoutSubjectsInput>
+  }
+
+  export type DepartmentUpdateWithoutSubjectsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teachers?: TeacherUpdateManyWithoutDepartmentNestedInput
+  }
+
+  export type DepartmentUncheckedUpdateWithoutSubjectsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teachers?: TeacherUncheckedUpdateManyWithoutDepartmentNestedInput
+  }
+
+  export type LessonUpsertWithWhereUniqueWithoutSubjectInput = {
+    where: LessonWhereUniqueInput
+    update: XOR<LessonUpdateWithoutSubjectInput, LessonUncheckedUpdateWithoutSubjectInput>
+    create: XOR<LessonCreateWithoutSubjectInput, LessonUncheckedCreateWithoutSubjectInput>
+  }
+
+  export type LessonUpdateWithWhereUniqueWithoutSubjectInput = {
+    where: LessonWhereUniqueInput
+    data: XOR<LessonUpdateWithoutSubjectInput, LessonUncheckedUpdateWithoutSubjectInput>
+  }
+
+  export type LessonUpdateManyWithWhereWithoutSubjectInput = {
+    where: LessonScalarWhereInput
+    data: XOR<LessonUpdateManyMutationInput, LessonUncheckedUpdateManyWithoutSubjectInput>
+  }
+
+  export type TeacherCreateWithoutLessonInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    dateOfBirth: Date | string
+    gender: $Enums.Gender
+    email: string
+    phone: string
+    alternatePhone?: string | null
+    address: string
+    city: string
+    state: string
+    zipCode: string
+    emergencyContactName: string
+    emergencyContactPhone: string
+    emergencyContactRelationship: string
+    highestQualification: string
+    specialization: string
+    teachingExperience: string
+    gradesCanTeach?: TeacherCreategradesCanTeachInput | string[]
+    employmentType: $Enums.EmploymentType
+    joiningDate: Date | string
+    position: string
+    department: string
+    previousEmployments: JsonNullValueInput | InputJsonValue
+    certifications?: string | null
+    skills?: string | null
+    languages?: string | null
+    additionalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Stream?: StreamCreateNestedOneWithoutTeacherInput
+    Department?: DepartmentCreateNestedOneWithoutTeachersInput
+    subjects?: SubjectCreateNestedManyWithoutTeachersInput
+  }
+
+  export type TeacherUncheckedCreateWithoutLessonInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    dateOfBirth: Date | string
+    gender: $Enums.Gender
+    email: string
+    phone: string
+    alternatePhone?: string | null
+    address: string
+    city: string
+    state: string
+    zipCode: string
+    emergencyContactName: string
+    emergencyContactPhone: string
+    emergencyContactRelationship: string
+    highestQualification: string
+    specialization: string
+    teachingExperience: string
+    gradesCanTeach?: TeacherCreategradesCanTeachInput | string[]
+    employmentType: $Enums.EmploymentType
+    joiningDate: Date | string
+    position: string
+    department: string
+    previousEmployments: JsonNullValueInput | InputJsonValue
+    certifications?: string | null
+    skills?: string | null
+    languages?: string | null
+    additionalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    departmentId?: string | null
+    Stream?: StreamUncheckedCreateNestedOneWithoutTeacherInput
+    subjects?: SubjectUncheckedCreateNestedManyWithoutTeachersInput
+  }
+
+  export type TeacherCreateOrConnectWithoutLessonInput = {
+    where: TeacherWhereUniqueInput
+    create: XOR<TeacherCreateWithoutLessonInput, TeacherUncheckedCreateWithoutLessonInput>
+  }
+
+  export type SubjectCreateWithoutLessonInput = {
+    id?: string
+    name: string
+    slug: string
+    subjectCode: string
+    shortname: string
+    active?: boolean
+    optional?: boolean
+    fieldtrips?: boolean
+    labRequired?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teachers?: TeacherCreateNestedManyWithoutSubjectsInput
+    Department: DepartmentCreateNestedOneWithoutSubjectsInput
+  }
+
+  export type SubjectUncheckedCreateWithoutLessonInput = {
+    id?: string
+    name: string
+    slug: string
+    subjectCode: string
+    shortname: string
+    departmentId: string
+    active?: boolean
+    optional?: boolean
+    fieldtrips?: boolean
+    labRequired?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teachers?: TeacherUncheckedCreateNestedManyWithoutSubjectsInput
+  }
+
+  export type SubjectCreateOrConnectWithoutLessonInput = {
+    where: SubjectWhereUniqueInput
+    create: XOR<SubjectCreateWithoutLessonInput, SubjectUncheckedCreateWithoutLessonInput>
+  }
+
+  export type StreamCreateWithoutLessonInput = {
+    id?: string
+    name: string
+    slug: string
+    Grade: GradeCreateNestedOneWithoutStreamsInput
+    Teacher?: TeacherCreateNestedOneWithoutStreamInput
+    students?: StudentCreateNestedManyWithoutStreamInput
+  }
+
+  export type StreamUncheckedCreateWithoutLessonInput = {
+    id?: string
+    name: string
+    slug: string
+    gradeId: string
+    teacherId?: string | null
+    students?: StudentUncheckedCreateNestedManyWithoutStreamInput
+  }
+
+  export type StreamCreateOrConnectWithoutLessonInput = {
+    where: StreamWhereUniqueInput
+    create: XOR<StreamCreateWithoutLessonInput, StreamUncheckedCreateWithoutLessonInput>
+  }
+
+  export type TimeSlotCreateWithoutLessonsInput = {
+    id?: string
+    startTime: string
+    endTime: string
+    name: string
+  }
+
+  export type TimeSlotUncheckedCreateWithoutLessonsInput = {
+    id?: string
+    startTime: string
+    endTime: string
+    name: string
+  }
+
+  export type TimeSlotCreateOrConnectWithoutLessonsInput = {
+    where: TimeSlotWhereUniqueInput
+    create: XOR<TimeSlotCreateWithoutLessonsInput, TimeSlotUncheckedCreateWithoutLessonsInput>
+  }
+
+  export type TeacherUpsertWithoutLessonInput = {
+    update: XOR<TeacherUpdateWithoutLessonInput, TeacherUncheckedUpdateWithoutLessonInput>
+    create: XOR<TeacherCreateWithoutLessonInput, TeacherUncheckedCreateWithoutLessonInput>
+    where?: TeacherWhereInput
+  }
+
+  export type TeacherUpdateToOneWithWhereWithoutLessonInput = {
+    where?: TeacherWhereInput
+    data: XOR<TeacherUpdateWithoutLessonInput, TeacherUncheckedUpdateWithoutLessonInput>
+  }
+
+  export type TeacherUpdateWithoutLessonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    alternatePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    zipCode?: StringFieldUpdateOperationsInput | string
+    emergencyContactName?: StringFieldUpdateOperationsInput | string
+    emergencyContactPhone?: StringFieldUpdateOperationsInput | string
+    emergencyContactRelationship?: StringFieldUpdateOperationsInput | string
+    highestQualification?: StringFieldUpdateOperationsInput | string
+    specialization?: StringFieldUpdateOperationsInput | string
+    teachingExperience?: StringFieldUpdateOperationsInput | string
+    gradesCanTeach?: TeacherUpdategradesCanTeachInput | string[]
+    employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
+    joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    position?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    previousEmployments?: JsonNullValueInput | InputJsonValue
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    skills?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: NullableStringFieldUpdateOperationsInput | string | null
+    additionalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Stream?: StreamUpdateOneWithoutTeacherNestedInput
+    Department?: DepartmentUpdateOneWithoutTeachersNestedInput
+    subjects?: SubjectUpdateManyWithoutTeachersNestedInput
+  }
+
+  export type TeacherUncheckedUpdateWithoutLessonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    alternatePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    zipCode?: StringFieldUpdateOperationsInput | string
+    emergencyContactName?: StringFieldUpdateOperationsInput | string
+    emergencyContactPhone?: StringFieldUpdateOperationsInput | string
+    emergencyContactRelationship?: StringFieldUpdateOperationsInput | string
+    highestQualification?: StringFieldUpdateOperationsInput | string
+    specialization?: StringFieldUpdateOperationsInput | string
+    teachingExperience?: StringFieldUpdateOperationsInput | string
+    gradesCanTeach?: TeacherUpdategradesCanTeachInput | string[]
+    employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
+    joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    position?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    previousEmployments?: JsonNullValueInput | InputJsonValue
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    skills?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: NullableStringFieldUpdateOperationsInput | string | null
+    additionalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    Stream?: StreamUncheckedUpdateOneWithoutTeacherNestedInput
+    subjects?: SubjectUncheckedUpdateManyWithoutTeachersNestedInput
+  }
+
+  export type SubjectUpsertWithoutLessonInput = {
+    update: XOR<SubjectUpdateWithoutLessonInput, SubjectUncheckedUpdateWithoutLessonInput>
+    create: XOR<SubjectCreateWithoutLessonInput, SubjectUncheckedCreateWithoutLessonInput>
+    where?: SubjectWhereInput
+  }
+
+  export type SubjectUpdateToOneWithWhereWithoutLessonInput = {
+    where?: SubjectWhereInput
+    data: XOR<SubjectUpdateWithoutLessonInput, SubjectUncheckedUpdateWithoutLessonInput>
+  }
+
+  export type SubjectUpdateWithoutLessonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    subjectCode?: StringFieldUpdateOperationsInput | string
+    shortname?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    optional?: BoolFieldUpdateOperationsInput | boolean
+    fieldtrips?: BoolFieldUpdateOperationsInput | boolean
+    labRequired?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teachers?: TeacherUpdateManyWithoutSubjectsNestedInput
+    Department?: DepartmentUpdateOneRequiredWithoutSubjectsNestedInput
+  }
+
+  export type SubjectUncheckedUpdateWithoutLessonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    subjectCode?: StringFieldUpdateOperationsInput | string
+    shortname?: StringFieldUpdateOperationsInput | string
+    departmentId?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    optional?: BoolFieldUpdateOperationsInput | boolean
+    fieldtrips?: BoolFieldUpdateOperationsInput | boolean
+    labRequired?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teachers?: TeacherUncheckedUpdateManyWithoutSubjectsNestedInput
+  }
+
+  export type StreamUpsertWithoutLessonInput = {
+    update: XOR<StreamUpdateWithoutLessonInput, StreamUncheckedUpdateWithoutLessonInput>
+    create: XOR<StreamCreateWithoutLessonInput, StreamUncheckedCreateWithoutLessonInput>
+    where?: StreamWhereInput
+  }
+
+  export type StreamUpdateToOneWithWhereWithoutLessonInput = {
+    where?: StreamWhereInput
+    data: XOR<StreamUpdateWithoutLessonInput, StreamUncheckedUpdateWithoutLessonInput>
+  }
+
+  export type StreamUpdateWithoutLessonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    Grade?: GradeUpdateOneRequiredWithoutStreamsNestedInput
+    Teacher?: TeacherUpdateOneWithoutStreamNestedInput
+    students?: StudentUpdateManyWithoutStreamNestedInput
+  }
+
+  export type StreamUncheckedUpdateWithoutLessonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    gradeId?: StringFieldUpdateOperationsInput | string
+    teacherId?: NullableStringFieldUpdateOperationsInput | string | null
+    students?: StudentUncheckedUpdateManyWithoutStreamNestedInput
+  }
+
+  export type TimeSlotUpsertWithoutLessonsInput = {
+    update: XOR<TimeSlotUpdateWithoutLessonsInput, TimeSlotUncheckedUpdateWithoutLessonsInput>
+    create: XOR<TimeSlotCreateWithoutLessonsInput, TimeSlotUncheckedCreateWithoutLessonsInput>
+    where?: TimeSlotWhereInput
+  }
+
+  export type TimeSlotUpdateToOneWithWhereWithoutLessonsInput = {
+    where?: TimeSlotWhereInput
+    data: XOR<TimeSlotUpdateWithoutLessonsInput, TimeSlotUncheckedUpdateWithoutLessonsInput>
+  }
+
+  export type TimeSlotUpdateWithoutLessonsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TimeSlotUncheckedUpdateWithoutLessonsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    startTime?: StringFieldUpdateOperationsInput | string
+    endTime?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LessonCreateWithoutTimeSlotInput = {
+    id?: string
+    name: string
+    description: string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Teacher: TeacherCreateNestedOneWithoutLessonInput
+    Subject: SubjectCreateNestedOneWithoutLessonInput
+    Stream: StreamCreateNestedOneWithoutLessonInput
+  }
+
+  export type LessonUncheckedCreateWithoutTimeSlotInput = {
+    id?: string
+    name: string
+    description: string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day: number
+    teacherId: string
+    subjectId: string
+    streamId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LessonCreateOrConnectWithoutTimeSlotInput = {
+    where: LessonWhereUniqueInput
+    create: XOR<LessonCreateWithoutTimeSlotInput, LessonUncheckedCreateWithoutTimeSlotInput>
+  }
+
+  export type LessonCreateManyTimeSlotInputEnvelope = {
+    data: LessonCreateManyTimeSlotInput | LessonCreateManyTimeSlotInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type LessonUpsertWithWhereUniqueWithoutTimeSlotInput = {
+    where: LessonWhereUniqueInput
+    update: XOR<LessonUpdateWithoutTimeSlotInput, LessonUncheckedUpdateWithoutTimeSlotInput>
+    create: XOR<LessonCreateWithoutTimeSlotInput, LessonUncheckedCreateWithoutTimeSlotInput>
+  }
+
+  export type LessonUpdateWithWhereUniqueWithoutTimeSlotInput = {
+    where: LessonWhereUniqueInput
+    data: XOR<LessonUpdateWithoutTimeSlotInput, LessonUncheckedUpdateWithoutTimeSlotInput>
+  }
+
+  export type LessonUpdateManyWithWhereWithoutTimeSlotInput = {
+    where: LessonScalarWhereInput
+    data: XOR<LessonUpdateManyMutationInput, LessonUncheckedUpdateManyWithoutTimeSlotInput>
+  }
+
+  export type LessonCreateManyTeacherInput = {
+    id?: string
+    name: string
+    description: string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day: number
+    subjectId: string
+    streamId: string
+    timeSlotId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SubjectUpdateWithoutTeachersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    subjectCode?: StringFieldUpdateOperationsInput | string
+    shortname?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    optional?: BoolFieldUpdateOperationsInput | boolean
+    fieldtrips?: BoolFieldUpdateOperationsInput | boolean
+    labRequired?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Department?: DepartmentUpdateOneRequiredWithoutSubjectsNestedInput
+    Lesson?: LessonUpdateManyWithoutSubjectNestedInput
+  }
+
+  export type SubjectUncheckedUpdateWithoutTeachersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    subjectCode?: StringFieldUpdateOperationsInput | string
+    shortname?: StringFieldUpdateOperationsInput | string
+    departmentId?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    optional?: BoolFieldUpdateOperationsInput | boolean
+    fieldtrips?: BoolFieldUpdateOperationsInput | boolean
+    labRequired?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Lesson?: LessonUncheckedUpdateManyWithoutSubjectNestedInput
+  }
+
+  export type SubjectUncheckedUpdateManyWithoutTeachersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    subjectCode?: StringFieldUpdateOperationsInput | string
+    shortname?: StringFieldUpdateOperationsInput | string
+    departmentId?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    optional?: BoolFieldUpdateOperationsInput | boolean
+    fieldtrips?: BoolFieldUpdateOperationsInput | boolean
+    labRequired?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LessonUpdateWithoutTeacherInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Subject?: SubjectUpdateOneRequiredWithoutLessonNestedInput
+    Stream?: StreamUpdateOneRequiredWithoutLessonNestedInput
+    TimeSlot?: TimeSlotUpdateOneRequiredWithoutLessonsNestedInput
+  }
+
+  export type LessonUncheckedUpdateWithoutTeacherInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day?: IntFieldUpdateOperationsInput | number
+    subjectId?: StringFieldUpdateOperationsInput | string
+    streamId?: StringFieldUpdateOperationsInput | string
+    timeSlotId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LessonUncheckedUpdateManyWithoutTeacherInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day?: IntFieldUpdateOperationsInput | number
+    subjectId?: StringFieldUpdateOperationsInput | string
+    streamId?: StringFieldUpdateOperationsInput | string
+    timeSlotId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StudentCreateManyGuardianInput = {
@@ -12177,6 +20017,20 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type LessonCreateManyStreamInput = {
+    id?: string
+    name: string
+    description: string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day: number
+    teacherId: string
+    subjectId: string
+    timeSlotId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type StudentUpdateWithoutStreamInput = {
     id?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
@@ -12243,6 +20097,48 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type LessonUpdateWithoutStreamInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Teacher?: TeacherUpdateOneRequiredWithoutLessonNestedInput
+    Subject?: SubjectUpdateOneRequiredWithoutLessonNestedInput
+    TimeSlot?: TimeSlotUpdateOneRequiredWithoutLessonsNestedInput
+  }
+
+  export type LessonUncheckedUpdateWithoutStreamInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day?: IntFieldUpdateOperationsInput | number
+    teacherId?: StringFieldUpdateOperationsInput | string
+    subjectId?: StringFieldUpdateOperationsInput | string
+    timeSlotId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LessonUncheckedUpdateManyWithoutStreamInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day?: IntFieldUpdateOperationsInput | number
+    teacherId?: StringFieldUpdateOperationsInput | string
+    subjectId?: StringFieldUpdateOperationsInput | string
+    timeSlotId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StreamCreateManyGradeInput = {
     id?: string
     name: string
@@ -12278,6 +20174,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     Teacher?: TeacherUpdateOneWithoutStreamNestedInput
     students?: StudentUpdateManyWithoutStreamNestedInput
+    Lesson?: LessonUpdateManyWithoutStreamNestedInput
   }
 
   export type StreamUncheckedUpdateWithoutGradeInput = {
@@ -12286,6 +20183,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     teacherId?: NullableStringFieldUpdateOperationsInput | string | null
     students?: StudentUncheckedUpdateManyWithoutStreamNestedInput
+    Lesson?: LessonUncheckedUpdateManyWithoutStreamNestedInput
   }
 
   export type StreamUncheckedUpdateManyWithoutGradeInput = {
@@ -12357,6 +20255,422 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     streamId?: StringFieldUpdateOperationsInput | string
     message?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TeacherCreateManyDepartmentInput = {
+    id?: string
+    firstName: string
+    lastName: string
+    dateOfBirth: Date | string
+    gender: $Enums.Gender
+    email: string
+    phone: string
+    alternatePhone?: string | null
+    address: string
+    city: string
+    state: string
+    zipCode: string
+    emergencyContactName: string
+    emergencyContactPhone: string
+    emergencyContactRelationship: string
+    highestQualification: string
+    specialization: string
+    teachingExperience: string
+    gradesCanTeach?: TeacherCreategradesCanTeachInput | string[]
+    employmentType: $Enums.EmploymentType
+    joiningDate: Date | string
+    position: string
+    department: string
+    previousEmployments: JsonNullValueInput | InputJsonValue
+    certifications?: string | null
+    skills?: string | null
+    languages?: string | null
+    additionalNotes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SubjectCreateManyDepartmentInput = {
+    id?: string
+    name: string
+    slug: string
+    subjectCode: string
+    shortname: string
+    active?: boolean
+    optional?: boolean
+    fieldtrips?: boolean
+    labRequired?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TeacherUpdateWithoutDepartmentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    alternatePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    zipCode?: StringFieldUpdateOperationsInput | string
+    emergencyContactName?: StringFieldUpdateOperationsInput | string
+    emergencyContactPhone?: StringFieldUpdateOperationsInput | string
+    emergencyContactRelationship?: StringFieldUpdateOperationsInput | string
+    highestQualification?: StringFieldUpdateOperationsInput | string
+    specialization?: StringFieldUpdateOperationsInput | string
+    teachingExperience?: StringFieldUpdateOperationsInput | string
+    gradesCanTeach?: TeacherUpdategradesCanTeachInput | string[]
+    employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
+    joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    position?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    previousEmployments?: JsonNullValueInput | InputJsonValue
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    skills?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: NullableStringFieldUpdateOperationsInput | string | null
+    additionalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Stream?: StreamUpdateOneWithoutTeacherNestedInput
+    subjects?: SubjectUpdateManyWithoutTeachersNestedInput
+    Lesson?: LessonUpdateManyWithoutTeacherNestedInput
+  }
+
+  export type TeacherUncheckedUpdateWithoutDepartmentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    alternatePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    zipCode?: StringFieldUpdateOperationsInput | string
+    emergencyContactName?: StringFieldUpdateOperationsInput | string
+    emergencyContactPhone?: StringFieldUpdateOperationsInput | string
+    emergencyContactRelationship?: StringFieldUpdateOperationsInput | string
+    highestQualification?: StringFieldUpdateOperationsInput | string
+    specialization?: StringFieldUpdateOperationsInput | string
+    teachingExperience?: StringFieldUpdateOperationsInput | string
+    gradesCanTeach?: TeacherUpdategradesCanTeachInput | string[]
+    employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
+    joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    position?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    previousEmployments?: JsonNullValueInput | InputJsonValue
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    skills?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: NullableStringFieldUpdateOperationsInput | string | null
+    additionalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Stream?: StreamUncheckedUpdateOneWithoutTeacherNestedInput
+    subjects?: SubjectUncheckedUpdateManyWithoutTeachersNestedInput
+    Lesson?: LessonUncheckedUpdateManyWithoutTeacherNestedInput
+  }
+
+  export type TeacherUncheckedUpdateManyWithoutDepartmentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    alternatePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    zipCode?: StringFieldUpdateOperationsInput | string
+    emergencyContactName?: StringFieldUpdateOperationsInput | string
+    emergencyContactPhone?: StringFieldUpdateOperationsInput | string
+    emergencyContactRelationship?: StringFieldUpdateOperationsInput | string
+    highestQualification?: StringFieldUpdateOperationsInput | string
+    specialization?: StringFieldUpdateOperationsInput | string
+    teachingExperience?: StringFieldUpdateOperationsInput | string
+    gradesCanTeach?: TeacherUpdategradesCanTeachInput | string[]
+    employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
+    joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    position?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    previousEmployments?: JsonNullValueInput | InputJsonValue
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    skills?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: NullableStringFieldUpdateOperationsInput | string | null
+    additionalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubjectUpdateWithoutDepartmentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    subjectCode?: StringFieldUpdateOperationsInput | string
+    shortname?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    optional?: BoolFieldUpdateOperationsInput | boolean
+    fieldtrips?: BoolFieldUpdateOperationsInput | boolean
+    labRequired?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teachers?: TeacherUpdateManyWithoutSubjectsNestedInput
+    Lesson?: LessonUpdateManyWithoutSubjectNestedInput
+  }
+
+  export type SubjectUncheckedUpdateWithoutDepartmentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    subjectCode?: StringFieldUpdateOperationsInput | string
+    shortname?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    optional?: BoolFieldUpdateOperationsInput | boolean
+    fieldtrips?: BoolFieldUpdateOperationsInput | boolean
+    labRequired?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teachers?: TeacherUncheckedUpdateManyWithoutSubjectsNestedInput
+    Lesson?: LessonUncheckedUpdateManyWithoutSubjectNestedInput
+  }
+
+  export type SubjectUncheckedUpdateManyWithoutDepartmentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    subjectCode?: StringFieldUpdateOperationsInput | string
+    shortname?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    optional?: BoolFieldUpdateOperationsInput | boolean
+    fieldtrips?: BoolFieldUpdateOperationsInput | boolean
+    labRequired?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LessonCreateManySubjectInput = {
+    id?: string
+    name: string
+    description: string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day: number
+    teacherId: string
+    streamId: string
+    timeSlotId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TeacherUpdateWithoutSubjectsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    alternatePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    zipCode?: StringFieldUpdateOperationsInput | string
+    emergencyContactName?: StringFieldUpdateOperationsInput | string
+    emergencyContactPhone?: StringFieldUpdateOperationsInput | string
+    emergencyContactRelationship?: StringFieldUpdateOperationsInput | string
+    highestQualification?: StringFieldUpdateOperationsInput | string
+    specialization?: StringFieldUpdateOperationsInput | string
+    teachingExperience?: StringFieldUpdateOperationsInput | string
+    gradesCanTeach?: TeacherUpdategradesCanTeachInput | string[]
+    employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
+    joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    position?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    previousEmployments?: JsonNullValueInput | InputJsonValue
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    skills?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: NullableStringFieldUpdateOperationsInput | string | null
+    additionalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Stream?: StreamUpdateOneWithoutTeacherNestedInput
+    Department?: DepartmentUpdateOneWithoutTeachersNestedInput
+    Lesson?: LessonUpdateManyWithoutTeacherNestedInput
+  }
+
+  export type TeacherUncheckedUpdateWithoutSubjectsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    alternatePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    zipCode?: StringFieldUpdateOperationsInput | string
+    emergencyContactName?: StringFieldUpdateOperationsInput | string
+    emergencyContactPhone?: StringFieldUpdateOperationsInput | string
+    emergencyContactRelationship?: StringFieldUpdateOperationsInput | string
+    highestQualification?: StringFieldUpdateOperationsInput | string
+    specialization?: StringFieldUpdateOperationsInput | string
+    teachingExperience?: StringFieldUpdateOperationsInput | string
+    gradesCanTeach?: TeacherUpdategradesCanTeachInput | string[]
+    employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
+    joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    position?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    previousEmployments?: JsonNullValueInput | InputJsonValue
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    skills?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: NullableStringFieldUpdateOperationsInput | string | null
+    additionalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
+    Stream?: StreamUncheckedUpdateOneWithoutTeacherNestedInput
+    Lesson?: LessonUncheckedUpdateManyWithoutTeacherNestedInput
+  }
+
+  export type TeacherUncheckedUpdateManyWithoutSubjectsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    alternatePhone?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    zipCode?: StringFieldUpdateOperationsInput | string
+    emergencyContactName?: StringFieldUpdateOperationsInput | string
+    emergencyContactPhone?: StringFieldUpdateOperationsInput | string
+    emergencyContactRelationship?: StringFieldUpdateOperationsInput | string
+    highestQualification?: StringFieldUpdateOperationsInput | string
+    specialization?: StringFieldUpdateOperationsInput | string
+    teachingExperience?: StringFieldUpdateOperationsInput | string
+    gradesCanTeach?: TeacherUpdategradesCanTeachInput | string[]
+    employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
+    joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    position?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    previousEmployments?: JsonNullValueInput | InputJsonValue
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    skills?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: NullableStringFieldUpdateOperationsInput | string | null
+    additionalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departmentId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type LessonUpdateWithoutSubjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Teacher?: TeacherUpdateOneRequiredWithoutLessonNestedInput
+    Stream?: StreamUpdateOneRequiredWithoutLessonNestedInput
+    TimeSlot?: TimeSlotUpdateOneRequiredWithoutLessonsNestedInput
+  }
+
+  export type LessonUncheckedUpdateWithoutSubjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day?: IntFieldUpdateOperationsInput | number
+    teacherId?: StringFieldUpdateOperationsInput | string
+    streamId?: StringFieldUpdateOperationsInput | string
+    timeSlotId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LessonUncheckedUpdateManyWithoutSubjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day?: IntFieldUpdateOperationsInput | number
+    teacherId?: StringFieldUpdateOperationsInput | string
+    streamId?: StringFieldUpdateOperationsInput | string
+    timeSlotId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LessonCreateManyTimeSlotInput = {
+    id?: string
+    name: string
+    description: string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day: number
+    teacherId: string
+    subjectId: string
+    streamId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LessonUpdateWithoutTimeSlotInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Teacher?: TeacherUpdateOneRequiredWithoutLessonNestedInput
+    Subject?: SubjectUpdateOneRequiredWithoutLessonNestedInput
+    Stream?: StreamUpdateOneRequiredWithoutLessonNestedInput
+  }
+
+  export type LessonUncheckedUpdateWithoutTimeSlotInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day?: IntFieldUpdateOperationsInput | number
+    teacherId?: StringFieldUpdateOperationsInput | string
+    subjectId?: StringFieldUpdateOperationsInput | string
+    streamId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LessonUncheckedUpdateManyWithoutTimeSlotInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    materials?: NullableJsonNullValueInput | InputJsonValue
+    assignment?: NullableJsonNullValueInput | InputJsonValue
+    day?: IntFieldUpdateOperationsInput | number
+    teacherId?: StringFieldUpdateOperationsInput | string
+    subjectId?: StringFieldUpdateOperationsInput | string
+    streamId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

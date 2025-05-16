@@ -79,7 +79,6 @@ model Teacher {
   highestQualification String
   specialization       String
   teachingExperience   String
-  subjectsCanTeach     String[]
   gradesCanTeach       String[]
 
   // Employment Details
@@ -100,6 +99,12 @@ model Teacher {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   Stream    Stream?
+
+  Department   Department? @relation(fields: [departmentId], references: [id])
+  departmentId String?
+
+  subjects Subject[]
+  Lesson   Lesson[]
 }
 
 model Guardian {
@@ -129,6 +134,7 @@ model Stream {
   teacherId String?   @unique()
   Teacher   Teacher?  @relation(fields: [teacherId], references: [id])
   students  Student[]
+  Lesson    Lesson[]
 }
 
 model Grade {
@@ -137,6 +143,74 @@ model Grade {
   name     String    @unique
   streams  Stream[]
   students Student[]
+}
+
+model Department {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String
+  description String?
+  teachers    Teacher[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  subjects    Subject[]
+}
+
+model Subject {
+  id          String @id @default(cuid())
+  name        String @unique()
+  slug        String
+  subjectCode String @unique()
+  shortname   String
+
+  teachers Teacher[]
+
+  Department   Department @relation(fields: [departmentId], references: [id])
+  departmentId String
+
+  active      Boolean @default(true)
+  optional    Boolean @default(false)
+  fieldtrips  Boolean @default(false)
+  labRequired Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Lesson    Lesson[]
+}
+
+model Lesson {
+  id          String @id @default(cuid())
+  name        String
+  description String
+  materials   Json?
+  assignment  Json?
+  day         Int
+
+  teacherId String
+  Teacher   Teacher @relation(fields: [teacherId], references: [id])
+
+  subjectId String
+  Subject   Subject @relation(fields: [subjectId], references: [id])
+
+  streamId String
+  Stream   Stream @relation(fields: [streamId], references: [id])
+
+  timeSlotId String
+  TimeSlot   TimeSlot @relation(fields: [timeSlotId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TimeSlot {
+  id        String   @id @default(uuid())
+  startTime DateTime
+  endTime   DateTime
+  name      String
+  lessons   Lesson[]
+
+  @@unique([startTime, endTime])
+  @@map("time_slot")
 }
 
 enum ContactMethod {
