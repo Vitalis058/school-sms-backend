@@ -17,21 +17,27 @@ export const createLesson = catchAsync(
 
     const data = validatedData.data;
 
-    //confirm if there is any overlapping teachers or stream
+    const newLesson = await prisma.lesson.create({
+      data,
+    });
 
     res.status(200).json({
       success: true,
+      data: newLesson,
     });
   }
 );
 
 //get lesson
-export const getLesson = catchAsync(
+export const getLessons = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const lessons = await prisma.lesson.findMany();
-    return {
+
+    console.log(lessons);
+
+    res.status(200).json({
       success: true,
       data: lessons,
-    };
+    });
   }
 );

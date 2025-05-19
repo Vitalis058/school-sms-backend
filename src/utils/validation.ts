@@ -137,11 +137,13 @@ export const DepartmentCreationSchema = z.object({
 export const lessonSchema = z.object({
   name: z.string().min(1, "Lesson name is required"),
   description: z.string().optional(),
-  materials: z.any().optional(), // or use z.record(z.any()) if it's expected to be an object
-  assignment: z.any().optional(),
   teacherId: z.string().min(1, "Teacher ID is required"),
   subjectId: z.string().min(1, "Subject ID is required"),
   streamId: z.string().min(1, "Stream ID is required"),
+  timeSlotId: z.string().min(1, "Time slot ID is required"),
+  day: z.string().refine((val) => !isNaN(Number(val)), {
+    message: "day must be a string that can be parsed into a number",
+  }),
 });
 
 //time slot schema

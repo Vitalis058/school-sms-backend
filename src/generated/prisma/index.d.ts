@@ -11545,25 +11545,15 @@ export namespace Prisma {
 
   export type AggregateLesson = {
     _count: LessonCountAggregateOutputType | null
-    _avg: LessonAvgAggregateOutputType | null
-    _sum: LessonSumAggregateOutputType | null
     _min: LessonMinAggregateOutputType | null
     _max: LessonMaxAggregateOutputType | null
-  }
-
-  export type LessonAvgAggregateOutputType = {
-    day: number | null
-  }
-
-  export type LessonSumAggregateOutputType = {
-    day: number | null
   }
 
   export type LessonMinAggregateOutputType = {
     id: string | null
     name: string | null
     description: string | null
-    day: number | null
+    day: string | null
     teacherId: string | null
     subjectId: string | null
     streamId: string | null
@@ -11576,7 +11566,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     description: string | null
-    day: number | null
+    day: string | null
     teacherId: string | null
     subjectId: string | null
     streamId: string | null
@@ -11589,8 +11579,6 @@ export namespace Prisma {
     id: number
     name: number
     description: number
-    materials: number
-    assignment: number
     day: number
     teacherId: number
     subjectId: number
@@ -11601,14 +11589,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type LessonAvgAggregateInputType = {
-    day?: true
-  }
-
-  export type LessonSumAggregateInputType = {
-    day?: true
-  }
 
   export type LessonMinAggregateInputType = {
     id?: true
@@ -11640,8 +11620,6 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
-    materials?: true
-    assignment?: true
     day?: true
     teacherId?: true
     subjectId?: true
@@ -11690,18 +11668,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: LessonAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: LessonSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: LessonMinAggregateInputType
@@ -11732,8 +11698,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: LessonCountAggregateInputType | true
-    _avg?: LessonAvgAggregateInputType
-    _sum?: LessonSumAggregateInputType
     _min?: LessonMinAggregateInputType
     _max?: LessonMaxAggregateInputType
   }
@@ -11741,10 +11705,8 @@ export namespace Prisma {
   export type LessonGroupByOutputType = {
     id: string
     name: string
-    description: string
-    materials: JsonValue | null
-    assignment: JsonValue | null
-    day: number
+    description: string | null
+    day: string
     teacherId: string
     subjectId: string
     streamId: string
@@ -11752,8 +11714,6 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     _count: LessonCountAggregateOutputType | null
-    _avg: LessonAvgAggregateOutputType | null
-    _sum: LessonSumAggregateOutputType | null
     _min: LessonMinAggregateOutputType | null
     _max: LessonMaxAggregateOutputType | null
   }
@@ -11776,8 +11736,6 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
-    materials?: boolean
-    assignment?: boolean
     day?: boolean
     teacherId?: boolean
     subjectId?: boolean
@@ -11795,8 +11753,6 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
-    materials?: boolean
-    assignment?: boolean
     day?: boolean
     teacherId?: boolean
     subjectId?: boolean
@@ -11814,8 +11770,6 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
-    materials?: boolean
-    assignment?: boolean
     day?: boolean
     teacherId?: boolean
     subjectId?: boolean
@@ -11833,8 +11787,6 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
-    materials?: boolean
-    assignment?: boolean
     day?: boolean
     teacherId?: boolean
     subjectId?: boolean
@@ -11844,7 +11796,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type LessonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "materials" | "assignment" | "day" | "teacherId" | "subjectId" | "streamId" | "timeSlotId" | "createdAt" | "updatedAt", ExtArgs["result"]["lesson"]>
+  export type LessonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "day" | "teacherId" | "subjectId" | "streamId" | "timeSlotId" | "createdAt" | "updatedAt", ExtArgs["result"]["lesson"]>
   export type LessonInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Teacher?: boolean | TeacherDefaultArgs<ExtArgs>
     Subject?: boolean | SubjectDefaultArgs<ExtArgs>
@@ -11875,10 +11827,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
-      description: string
-      materials: Prisma.JsonValue | null
-      assignment: Prisma.JsonValue | null
-      day: number
+      description: string | null
+      day: string
       teacherId: string
       subjectId: string
       streamId: string
@@ -12315,9 +12265,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Lesson", 'String'>
     readonly name: FieldRef<"Lesson", 'String'>
     readonly description: FieldRef<"Lesson", 'String'>
-    readonly materials: FieldRef<"Lesson", 'Json'>
-    readonly assignment: FieldRef<"Lesson", 'Json'>
-    readonly day: FieldRef<"Lesson", 'Int'>
+    readonly day: FieldRef<"Lesson", 'String'>
     readonly teacherId: FieldRef<"Lesson", 'String'>
     readonly subjectId: FieldRef<"Lesson", 'String'>
     readonly streamId: FieldRef<"Lesson", 'String'>
@@ -13959,8 +13907,6 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     description: 'description',
-    materials: 'materials',
-    assignment: 'assignment',
     day: 'day',
     teacherId: 'teacherId',
     subjectId: 'subjectId',
@@ -13996,14 +13942,6 @@ export namespace Prisma {
   };
 
   export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
-
-
-  export const NullableJsonNullValueInput: {
-    DbNull: typeof DbNull,
-    JsonNull: typeof JsonNull
-  };
-
-  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const QueryMode: {
@@ -14943,10 +14881,8 @@ export namespace Prisma {
     NOT?: LessonWhereInput | LessonWhereInput[]
     id?: StringFilter<"Lesson"> | string
     name?: StringFilter<"Lesson"> | string
-    description?: StringFilter<"Lesson"> | string
-    materials?: JsonNullableFilter<"Lesson">
-    assignment?: JsonNullableFilter<"Lesson">
-    day?: IntFilter<"Lesson"> | number
+    description?: StringNullableFilter<"Lesson"> | string | null
+    day?: StringFilter<"Lesson"> | string
     teacherId?: StringFilter<"Lesson"> | string
     subjectId?: StringFilter<"Lesson"> | string
     streamId?: StringFilter<"Lesson"> | string
@@ -14962,9 +14898,7 @@ export namespace Prisma {
   export type LessonOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    description?: SortOrder
-    materials?: SortOrderInput | SortOrder
-    assignment?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     day?: SortOrder
     teacherId?: SortOrder
     subjectId?: SortOrder
@@ -14980,14 +14914,14 @@ export namespace Prisma {
 
   export type LessonWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    teacherId_timeSlotId?: LessonTeacherIdTimeSlotIdCompoundUniqueInput
+    streamId_timeSlotId?: LessonStreamIdTimeSlotIdCompoundUniqueInput
     AND?: LessonWhereInput | LessonWhereInput[]
     OR?: LessonWhereInput[]
     NOT?: LessonWhereInput | LessonWhereInput[]
     name?: StringFilter<"Lesson"> | string
-    description?: StringFilter<"Lesson"> | string
-    materials?: JsonNullableFilter<"Lesson">
-    assignment?: JsonNullableFilter<"Lesson">
-    day?: IntFilter<"Lesson"> | number
+    description?: StringNullableFilter<"Lesson"> | string | null
+    day?: StringFilter<"Lesson"> | string
     teacherId?: StringFilter<"Lesson"> | string
     subjectId?: StringFilter<"Lesson"> | string
     streamId?: StringFilter<"Lesson"> | string
@@ -14998,14 +14932,12 @@ export namespace Prisma {
     Subject?: XOR<SubjectScalarRelationFilter, SubjectWhereInput>
     Stream?: XOR<StreamScalarRelationFilter, StreamWhereInput>
     TimeSlot?: XOR<TimeSlotScalarRelationFilter, TimeSlotWhereInput>
-  }, "id">
+  }, "id" | "teacherId_timeSlotId" | "streamId_timeSlotId">
 
   export type LessonOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    description?: SortOrder
-    materials?: SortOrderInput | SortOrder
-    assignment?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     day?: SortOrder
     teacherId?: SortOrder
     subjectId?: SortOrder
@@ -15014,10 +14946,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: LessonCountOrderByAggregateInput
-    _avg?: LessonAvgOrderByAggregateInput
     _max?: LessonMaxOrderByAggregateInput
     _min?: LessonMinOrderByAggregateInput
-    _sum?: LessonSumOrderByAggregateInput
   }
 
   export type LessonScalarWhereWithAggregatesInput = {
@@ -15026,10 +14956,8 @@ export namespace Prisma {
     NOT?: LessonScalarWhereWithAggregatesInput | LessonScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Lesson"> | string
     name?: StringWithAggregatesFilter<"Lesson"> | string
-    description?: StringWithAggregatesFilter<"Lesson"> | string
-    materials?: JsonNullableWithAggregatesFilter<"Lesson">
-    assignment?: JsonNullableWithAggregatesFilter<"Lesson">
-    day?: IntWithAggregatesFilter<"Lesson"> | number
+    description?: StringNullableWithAggregatesFilter<"Lesson"> | string | null
+    day?: StringWithAggregatesFilter<"Lesson"> | string
     teacherId?: StringWithAggregatesFilter<"Lesson"> | string
     subjectId?: StringWithAggregatesFilter<"Lesson"> | string
     streamId?: StringWithAggregatesFilter<"Lesson"> | string
@@ -15984,10 +15912,8 @@ export namespace Prisma {
   export type LessonCreateInput = {
     id?: string
     name: string
-    description: string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day: number
+    description?: string | null
+    day: string
     createdAt?: Date | string
     updatedAt?: Date | string
     Teacher: TeacherCreateNestedOneWithoutLessonInput
@@ -15999,10 +15925,8 @@ export namespace Prisma {
   export type LessonUncheckedCreateInput = {
     id?: string
     name: string
-    description: string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day: number
+    description?: string | null
+    day: string
     teacherId: string
     subjectId: string
     streamId: string
@@ -16014,10 +15938,8 @@ export namespace Prisma {
   export type LessonUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    day?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Teacher?: TeacherUpdateOneRequiredWithoutLessonNestedInput
@@ -16029,10 +15951,8 @@ export namespace Prisma {
   export type LessonUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    day?: StringFieldUpdateOperationsInput | string
     teacherId?: StringFieldUpdateOperationsInput | string
     subjectId?: StringFieldUpdateOperationsInput | string
     streamId?: StringFieldUpdateOperationsInput | string
@@ -16044,10 +15964,8 @@ export namespace Prisma {
   export type LessonCreateManyInput = {
     id?: string
     name: string
-    description: string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day: number
+    description?: string | null
+    day: string
     teacherId: string
     subjectId: string
     streamId: string
@@ -16059,10 +15977,8 @@ export namespace Prisma {
   export type LessonUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    day?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -16070,10 +15986,8 @@ export namespace Prisma {
   export type LessonUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    day?: StringFieldUpdateOperationsInput | string
     teacherId?: StringFieldUpdateOperationsInput | string
     subjectId?: StringFieldUpdateOperationsInput | string
     streamId?: StringFieldUpdateOperationsInput | string
@@ -16875,29 +16789,6 @@ export namespace Prisma {
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
   }
-  export type JsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type TeacherScalarRelationFilter = {
     is?: TeacherWhereInput
@@ -16914,12 +16805,20 @@ export namespace Prisma {
     isNot?: TimeSlotWhereInput
   }
 
+  export type LessonTeacherIdTimeSlotIdCompoundUniqueInput = {
+    teacherId: string
+    timeSlotId: string
+  }
+
+  export type LessonStreamIdTimeSlotIdCompoundUniqueInput = {
+    streamId: string
+    timeSlotId: string
+  }
+
   export type LessonCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    materials?: SortOrder
-    assignment?: SortOrder
     day?: SortOrder
     teacherId?: SortOrder
     subjectId?: SortOrder
@@ -16927,10 +16826,6 @@ export namespace Prisma {
     timeSlotId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type LessonAvgOrderByAggregateInput = {
-    day?: SortOrder
   }
 
   export type LessonMaxOrderByAggregateInput = {
@@ -16957,36 +16852,6 @@ export namespace Prisma {
     timeSlotId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type LessonSumOrderByAggregateInput = {
-    day?: SortOrder
-  }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type TimeSlotStartTimeEndTimeCompoundUniqueInput = {
@@ -18018,29 +17883,6 @@ export namespace Prisma {
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
   }
-  export type NestedJsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type GuardianCreateWithoutStudentsInput = {
     id?: string
@@ -18306,10 +18148,8 @@ export namespace Prisma {
   export type LessonCreateWithoutTeacherInput = {
     id?: string
     name: string
-    description: string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day: number
+    description?: string | null
+    day: string
     createdAt?: Date | string
     updatedAt?: Date | string
     Subject: SubjectCreateNestedOneWithoutLessonInput
@@ -18320,10 +18160,8 @@ export namespace Prisma {
   export type LessonUncheckedCreateWithoutTeacherInput = {
     id?: string
     name: string
-    description: string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day: number
+    description?: string | null
+    day: string
     subjectId: string
     streamId: string
     timeSlotId: string
@@ -18457,10 +18295,8 @@ export namespace Prisma {
     NOT?: LessonScalarWhereInput | LessonScalarWhereInput[]
     id?: StringFilter<"Lesson"> | string
     name?: StringFilter<"Lesson"> | string
-    description?: StringFilter<"Lesson"> | string
-    materials?: JsonNullableFilter<"Lesson">
-    assignment?: JsonNullableFilter<"Lesson">
-    day?: IntFilter<"Lesson"> | number
+    description?: StringNullableFilter<"Lesson"> | string | null
+    day?: StringFilter<"Lesson"> | string
     teacherId?: StringFilter<"Lesson"> | string
     subjectId?: StringFilter<"Lesson"> | string
     streamId?: StringFilter<"Lesson"> | string
@@ -18718,10 +18554,8 @@ export namespace Prisma {
   export type LessonCreateWithoutStreamInput = {
     id?: string
     name: string
-    description: string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day: number
+    description?: string | null
+    day: string
     createdAt?: Date | string
     updatedAt?: Date | string
     Teacher: TeacherCreateNestedOneWithoutLessonInput
@@ -18732,10 +18566,8 @@ export namespace Prisma {
   export type LessonUncheckedCreateWithoutStreamInput = {
     id?: string
     name: string
-    description: string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day: number
+    description?: string | null
+    day: string
     teacherId: string
     subjectId: string
     timeSlotId: string
@@ -19316,10 +19148,8 @@ export namespace Prisma {
   export type LessonCreateWithoutSubjectInput = {
     id?: string
     name: string
-    description: string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day: number
+    description?: string | null
+    day: string
     createdAt?: Date | string
     updatedAt?: Date | string
     Teacher: TeacherCreateNestedOneWithoutLessonInput
@@ -19330,10 +19160,8 @@ export namespace Prisma {
   export type LessonUncheckedCreateWithoutSubjectInput = {
     id?: string
     name: string
-    description: string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day: number
+    description?: string | null
+    day: string
     teacherId: string
     streamId: string
     timeSlotId: string
@@ -19753,10 +19581,8 @@ export namespace Prisma {
   export type LessonCreateWithoutTimeSlotInput = {
     id?: string
     name: string
-    description: string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day: number
+    description?: string | null
+    day: string
     createdAt?: Date | string
     updatedAt?: Date | string
     Teacher: TeacherCreateNestedOneWithoutLessonInput
@@ -19767,10 +19593,8 @@ export namespace Prisma {
   export type LessonUncheckedCreateWithoutTimeSlotInput = {
     id?: string
     name: string
-    description: string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day: number
+    description?: string | null
+    day: string
     teacherId: string
     subjectId: string
     streamId: string
@@ -19807,10 +19631,8 @@ export namespace Prisma {
   export type LessonCreateManyTeacherInput = {
     id?: string
     name: string
-    description: string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day: number
+    description?: string | null
+    day: string
     subjectId: string
     streamId: string
     timeSlotId: string
@@ -19868,10 +19690,8 @@ export namespace Prisma {
   export type LessonUpdateWithoutTeacherInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    day?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Subject?: SubjectUpdateOneRequiredWithoutLessonNestedInput
@@ -19882,10 +19702,8 @@ export namespace Prisma {
   export type LessonUncheckedUpdateWithoutTeacherInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    day?: StringFieldUpdateOperationsInput | string
     subjectId?: StringFieldUpdateOperationsInput | string
     streamId?: StringFieldUpdateOperationsInput | string
     timeSlotId?: StringFieldUpdateOperationsInput | string
@@ -19896,10 +19714,8 @@ export namespace Prisma {
   export type LessonUncheckedUpdateManyWithoutTeacherInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    day?: StringFieldUpdateOperationsInput | string
     subjectId?: StringFieldUpdateOperationsInput | string
     streamId?: StringFieldUpdateOperationsInput | string
     timeSlotId?: StringFieldUpdateOperationsInput | string
@@ -20020,10 +19836,8 @@ export namespace Prisma {
   export type LessonCreateManyStreamInput = {
     id?: string
     name: string
-    description: string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day: number
+    description?: string | null
+    day: string
     teacherId: string
     subjectId: string
     timeSlotId: string
@@ -20100,10 +19914,8 @@ export namespace Prisma {
   export type LessonUpdateWithoutStreamInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    day?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Teacher?: TeacherUpdateOneRequiredWithoutLessonNestedInput
@@ -20114,10 +19926,8 @@ export namespace Prisma {
   export type LessonUncheckedUpdateWithoutStreamInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    day?: StringFieldUpdateOperationsInput | string
     teacherId?: StringFieldUpdateOperationsInput | string
     subjectId?: StringFieldUpdateOperationsInput | string
     timeSlotId?: StringFieldUpdateOperationsInput | string
@@ -20128,10 +19938,8 @@ export namespace Prisma {
   export type LessonUncheckedUpdateManyWithoutStreamInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    day?: StringFieldUpdateOperationsInput | string
     teacherId?: StringFieldUpdateOperationsInput | string
     subjectId?: StringFieldUpdateOperationsInput | string
     timeSlotId?: StringFieldUpdateOperationsInput | string
@@ -20460,10 +20268,8 @@ export namespace Prisma {
   export type LessonCreateManySubjectInput = {
     id?: string
     name: string
-    description: string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day: number
+    description?: string | null
+    day: string
     teacherId: string
     streamId: string
     timeSlotId: string
@@ -20580,10 +20386,8 @@ export namespace Prisma {
   export type LessonUpdateWithoutSubjectInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    day?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Teacher?: TeacherUpdateOneRequiredWithoutLessonNestedInput
@@ -20594,10 +20398,8 @@ export namespace Prisma {
   export type LessonUncheckedUpdateWithoutSubjectInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    day?: StringFieldUpdateOperationsInput | string
     teacherId?: StringFieldUpdateOperationsInput | string
     streamId?: StringFieldUpdateOperationsInput | string
     timeSlotId?: StringFieldUpdateOperationsInput | string
@@ -20608,10 +20410,8 @@ export namespace Prisma {
   export type LessonUncheckedUpdateManyWithoutSubjectInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    day?: StringFieldUpdateOperationsInput | string
     teacherId?: StringFieldUpdateOperationsInput | string
     streamId?: StringFieldUpdateOperationsInput | string
     timeSlotId?: StringFieldUpdateOperationsInput | string
@@ -20622,10 +20422,8 @@ export namespace Prisma {
   export type LessonCreateManyTimeSlotInput = {
     id?: string
     name: string
-    description: string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day: number
+    description?: string | null
+    day: string
     teacherId: string
     subjectId: string
     streamId: string
@@ -20636,10 +20434,8 @@ export namespace Prisma {
   export type LessonUpdateWithoutTimeSlotInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    day?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Teacher?: TeacherUpdateOneRequiredWithoutLessonNestedInput
@@ -20650,10 +20446,8 @@ export namespace Prisma {
   export type LessonUncheckedUpdateWithoutTimeSlotInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    day?: StringFieldUpdateOperationsInput | string
     teacherId?: StringFieldUpdateOperationsInput | string
     subjectId?: StringFieldUpdateOperationsInput | string
     streamId?: StringFieldUpdateOperationsInput | string
@@ -20664,10 +20458,8 @@ export namespace Prisma {
   export type LessonUncheckedUpdateManyWithoutTimeSlotInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    materials?: NullableJsonNullValueInput | InputJsonValue
-    assignment?: NullableJsonNullValueInput | InputJsonValue
-    day?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    day?: StringFieldUpdateOperationsInput | string
     teacherId?: StringFieldUpdateOperationsInput | string
     subjectId?: StringFieldUpdateOperationsInput | string
     streamId?: StringFieldUpdateOperationsInput | string

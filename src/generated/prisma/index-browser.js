@@ -246,8 +246,6 @@ exports.Prisma.LessonScalarFieldEnum = {
   id: 'id',
   name: 'name',
   description: 'description',
-  materials: 'materials',
-  assignment: 'assignment',
   day: 'day',
   teacherId: 'teacherId',
   subjectId: 'subjectId',
@@ -270,11 +268,6 @@ exports.Prisma.SortOrder = {
 };
 
 exports.Prisma.JsonNullValueInput = {
-  JsonNull: Prisma.JsonNull
-};
-
-exports.Prisma.NullableJsonNullValueInput = {
-  DbNull: Prisma.DbNull,
   JsonNull: Prisma.JsonNull
 };
 

@@ -179,12 +179,10 @@ model Subject {
 }
 
 model Lesson {
-  id          String @id @default(cuid())
+  id          String  @id @default(cuid())
   name        String
-  description String
-  materials   Json?
-  assignment  Json?
-  day         Int
+  description String?
+  day         String
 
   teacherId String
   Teacher   Teacher @relation(fields: [teacherId], references: [id])
@@ -200,12 +198,15 @@ model Lesson {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@unique([teacherId, timeSlotId])
+  @@unique([streamId, timeSlotId])
 }
 
 model TimeSlot {
   id        String   @id @default(uuid())
-  startTime DateTime
-  endTime   DateTime
+  startTime String
+  endTime   String
   name      String
   lessons   Lesson[]
 

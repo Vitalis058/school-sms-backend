@@ -1,8 +1,8 @@
 import express from "express";
-import { createLesson } from "../controllers/lesson.controller";
+import { createLesson, getLessons } from "../controllers/lesson.controller";
 
 const router = express.Router();
 
-router.route("/").post(createLesson);
+router.route("/").post(createLesson).get(getLessons);
 
 export default router;
