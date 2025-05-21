@@ -4376,7 +4376,6 @@ export namespace Prisma {
     employmentType: $Enums.EmploymentType | null
     joiningDate: Date | null
     position: string | null
-    department: string | null
     certifications: string | null
     skills: string | null
     languages: string | null
@@ -4408,7 +4407,6 @@ export namespace Prisma {
     employmentType: $Enums.EmploymentType | null
     joiningDate: Date | null
     position: string | null
-    department: string | null
     certifications: string | null
     skills: string | null
     languages: string | null
@@ -4441,7 +4439,6 @@ export namespace Prisma {
     employmentType: number
     joiningDate: number
     position: number
-    department: number
     previousEmployments: number
     certifications: number
     skills: number
@@ -4476,7 +4473,6 @@ export namespace Prisma {
     employmentType?: true
     joiningDate?: true
     position?: true
-    department?: true
     certifications?: true
     skills?: true
     languages?: true
@@ -4508,7 +4504,6 @@ export namespace Prisma {
     employmentType?: true
     joiningDate?: true
     position?: true
-    department?: true
     certifications?: true
     skills?: true
     languages?: true
@@ -4541,7 +4536,6 @@ export namespace Prisma {
     employmentType?: true
     joiningDate?: true
     position?: true
-    department?: true
     previousEmployments?: true
     certifications?: true
     skills?: true
@@ -4648,7 +4642,6 @@ export namespace Prisma {
     employmentType: $Enums.EmploymentType
     joiningDate: Date
     position: string
-    department: string
     previousEmployments: JsonValue
     certifications: string | null
     skills: string | null
@@ -4699,7 +4692,6 @@ export namespace Prisma {
     employmentType?: boolean
     joiningDate?: boolean
     position?: boolean
-    department?: boolean
     previousEmployments?: boolean
     certifications?: boolean
     skills?: boolean
@@ -4738,7 +4730,6 @@ export namespace Prisma {
     employmentType?: boolean
     joiningDate?: boolean
     position?: boolean
-    department?: boolean
     previousEmployments?: boolean
     certifications?: boolean
     skills?: boolean
@@ -4773,7 +4764,6 @@ export namespace Prisma {
     employmentType?: boolean
     joiningDate?: boolean
     position?: boolean
-    department?: boolean
     previousEmployments?: boolean
     certifications?: boolean
     skills?: boolean
@@ -4808,7 +4798,6 @@ export namespace Prisma {
     employmentType?: boolean
     joiningDate?: boolean
     position?: boolean
-    department?: boolean
     previousEmployments?: boolean
     certifications?: boolean
     skills?: boolean
@@ -4819,7 +4808,7 @@ export namespace Prisma {
     departmentId?: boolean
   }
 
-  export type TeacherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "dateOfBirth" | "gender" | "email" | "phone" | "alternatePhone" | "address" | "city" | "state" | "zipCode" | "emergencyContactName" | "emergencyContactPhone" | "emergencyContactRelationship" | "highestQualification" | "specialization" | "teachingExperience" | "gradesCanTeach" | "employmentType" | "joiningDate" | "position" | "department" | "previousEmployments" | "certifications" | "skills" | "languages" | "additionalNotes" | "createdAt" | "updatedAt" | "departmentId", ExtArgs["result"]["teacher"]>
+  export type TeacherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "dateOfBirth" | "gender" | "email" | "phone" | "alternatePhone" | "address" | "city" | "state" | "zipCode" | "emergencyContactName" | "emergencyContactPhone" | "emergencyContactRelationship" | "highestQualification" | "specialization" | "teachingExperience" | "gradesCanTeach" | "employmentType" | "joiningDate" | "position" | "previousEmployments" | "certifications" | "skills" | "languages" | "additionalNotes" | "createdAt" | "updatedAt" | "departmentId", ExtArgs["result"]["teacher"]>
   export type TeacherInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Stream?: boolean | Teacher$StreamArgs<ExtArgs>
     Department?: boolean | Teacher$DepartmentArgs<ExtArgs>
@@ -4865,7 +4854,6 @@ export namespace Prisma {
       employmentType: $Enums.EmploymentType
       joiningDate: Date
       position: string
-      department: string
       previousEmployments: Prisma.JsonValue
       certifications: string | null
       skills: string | null
@@ -5323,7 +5311,6 @@ export namespace Prisma {
     readonly employmentType: FieldRef<"Teacher", 'EmploymentType'>
     readonly joiningDate: FieldRef<"Teacher", 'DateTime'>
     readonly position: FieldRef<"Teacher", 'String'>
-    readonly department: FieldRef<"Teacher", 'String'>
     readonly previousEmployments: FieldRef<"Teacher", 'Json'>
     readonly certifications: FieldRef<"Teacher", 'String'>
     readonly skills: FieldRef<"Teacher", 'String'>
@@ -13820,7 +13807,6 @@ export namespace Prisma {
     employmentType: 'employmentType',
     joiningDate: 'joiningDate',
     position: 'position',
-    department: 'department',
     previousEmployments: 'previousEmployments',
     certifications: 'certifications',
     skills: 'skills',
@@ -14341,7 +14327,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFilter<"Teacher"> | $Enums.EmploymentType
     joiningDate?: DateTimeFilter<"Teacher"> | Date | string
     position?: StringFilter<"Teacher"> | string
-    department?: StringFilter<"Teacher"> | string
     previousEmployments?: JsonFilter<"Teacher">
     certifications?: StringNullableFilter<"Teacher"> | string | null
     skills?: StringNullableFilter<"Teacher"> | string | null
@@ -14379,7 +14364,6 @@ export namespace Prisma {
     employmentType?: SortOrder
     joiningDate?: SortOrder
     position?: SortOrder
-    department?: SortOrder
     previousEmployments?: SortOrder
     certifications?: SortOrderInput | SortOrder
     skills?: SortOrderInput | SortOrder
@@ -14420,7 +14404,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFilter<"Teacher"> | $Enums.EmploymentType
     joiningDate?: DateTimeFilter<"Teacher"> | Date | string
     position?: StringFilter<"Teacher"> | string
-    department?: StringFilter<"Teacher"> | string
     previousEmployments?: JsonFilter<"Teacher">
     certifications?: StringNullableFilter<"Teacher"> | string | null
     skills?: StringNullableFilter<"Teacher"> | string | null
@@ -14458,7 +14441,6 @@ export namespace Prisma {
     employmentType?: SortOrder
     joiningDate?: SortOrder
     position?: SortOrder
-    department?: SortOrder
     previousEmployments?: SortOrder
     certifications?: SortOrderInput | SortOrder
     skills?: SortOrderInput | SortOrder
@@ -14498,7 +14480,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeWithAggregatesFilter<"Teacher"> | $Enums.EmploymentType
     joiningDate?: DateTimeWithAggregatesFilter<"Teacher"> | Date | string
     position?: StringWithAggregatesFilter<"Teacher"> | string
-    department?: StringWithAggregatesFilter<"Teacher"> | string
     previousEmployments?: JsonWithAggregatesFilter<"Teacher">
     certifications?: StringNullableWithAggregatesFilter<"Teacher"> | string | null
     skills?: StringNullableWithAggregatesFilter<"Teacher"> | string | null
@@ -15272,7 +15253,6 @@ export namespace Prisma {
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
     position: string
-    department: string
     previousEmployments: JsonNullValueInput | InputJsonValue
     certifications?: string | null
     skills?: string | null
@@ -15309,7 +15289,6 @@ export namespace Prisma {
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
     position: string
-    department: string
     previousEmployments: JsonNullValueInput | InputJsonValue
     certifications?: string | null
     skills?: string | null
@@ -15346,7 +15325,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     position?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
     previousEmployments?: JsonNullValueInput | InputJsonValue
     certifications?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15383,7 +15361,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     position?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
     previousEmployments?: JsonNullValueInput | InputJsonValue
     certifications?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15420,7 +15397,6 @@ export namespace Prisma {
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
     position: string
-    department: string
     previousEmployments: JsonNullValueInput | InputJsonValue
     certifications?: string | null
     skills?: string | null
@@ -15454,7 +15430,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     position?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
     previousEmployments?: JsonNullValueInput | InputJsonValue
     certifications?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15487,7 +15462,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     position?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
     previousEmployments?: JsonNullValueInput | InputJsonValue
     certifications?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16412,7 +16386,6 @@ export namespace Prisma {
     employmentType?: SortOrder
     joiningDate?: SortOrder
     position?: SortOrder
-    department?: SortOrder
     previousEmployments?: SortOrder
     certifications?: SortOrder
     skills?: SortOrder
@@ -16445,7 +16418,6 @@ export namespace Prisma {
     employmentType?: SortOrder
     joiningDate?: SortOrder
     position?: SortOrder
-    department?: SortOrder
     certifications?: SortOrder
     skills?: SortOrder
     languages?: SortOrder
@@ -16477,7 +16449,6 @@ export namespace Prisma {
     employmentType?: SortOrder
     joiningDate?: SortOrder
     position?: SortOrder
-    department?: SortOrder
     certifications?: SortOrder
     skills?: SortOrder
     languages?: SortOrder
@@ -18443,7 +18414,6 @@ export namespace Prisma {
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
     position: string
-    department: string
     previousEmployments: JsonNullValueInput | InputJsonValue
     certifications?: string | null
     skills?: string | null
@@ -18479,7 +18449,6 @@ export namespace Prisma {
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
     position: string
-    department: string
     previousEmployments: JsonNullValueInput | InputJsonValue
     certifications?: string | null
     skills?: string | null
@@ -18644,7 +18613,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     position?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
     previousEmployments?: JsonNullValueInput | InputJsonValue
     certifications?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18680,7 +18648,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     position?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
     previousEmployments?: JsonNullValueInput | InputJsonValue
     certifications?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18873,7 +18840,6 @@ export namespace Prisma {
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
     position: string
-    department: string
     previousEmployments: JsonNullValueInput | InputJsonValue
     certifications?: string | null
     skills?: string | null
@@ -18909,7 +18875,6 @@ export namespace Prisma {
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
     position: string
-    department: string
     previousEmployments: JsonNullValueInput | InputJsonValue
     certifications?: string | null
     skills?: string | null
@@ -19016,7 +18981,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFilter<"Teacher"> | $Enums.EmploymentType
     joiningDate?: DateTimeFilter<"Teacher"> | Date | string
     position?: StringFilter<"Teacher"> | string
-    department?: StringFilter<"Teacher"> | string
     previousEmployments?: JsonFilter<"Teacher">
     certifications?: StringNullableFilter<"Teacher"> | string | null
     skills?: StringNullableFilter<"Teacher"> | string | null
@@ -19066,7 +19030,6 @@ export namespace Prisma {
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
     position: string
-    department: string
     previousEmployments: JsonNullValueInput | InputJsonValue
     certifications?: string | null
     skills?: string | null
@@ -19102,7 +19065,6 @@ export namespace Prisma {
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
     position: string
-    department: string
     previousEmployments: JsonNullValueInput | InputJsonValue
     certifications?: string | null
     skills?: string | null
@@ -19265,7 +19227,6 @@ export namespace Prisma {
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
     position: string
-    department: string
     previousEmployments: JsonNullValueInput | InputJsonValue
     certifications?: string | null
     skills?: string | null
@@ -19301,7 +19262,6 @@ export namespace Prisma {
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
     position: string
-    department: string
     previousEmployments: JsonNullValueInput | InputJsonValue
     certifications?: string | null
     skills?: string | null
@@ -19432,7 +19392,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     position?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
     previousEmployments?: JsonNullValueInput | InputJsonValue
     certifications?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19468,7 +19427,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     position?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
     previousEmployments?: JsonNullValueInput | InputJsonValue
     certifications?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20090,7 +20048,6 @@ export namespace Prisma {
     employmentType: $Enums.EmploymentType
     joiningDate: Date | string
     position: string
-    department: string
     previousEmployments: JsonNullValueInput | InputJsonValue
     certifications?: string | null
     skills?: string | null
@@ -20137,7 +20094,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     position?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
     previousEmployments?: JsonNullValueInput | InputJsonValue
     certifications?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20173,7 +20129,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     position?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
     previousEmployments?: JsonNullValueInput | InputJsonValue
     certifications?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20209,7 +20164,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     position?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
     previousEmployments?: JsonNullValueInput | InputJsonValue
     certifications?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20300,7 +20254,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     position?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
     previousEmployments?: JsonNullValueInput | InputJsonValue
     certifications?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20336,7 +20289,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     position?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
     previousEmployments?: JsonNullValueInput | InputJsonValue
     certifications?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20372,7 +20324,6 @@ export namespace Prisma {
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     position?: StringFieldUpdateOperationsInput | string
-    department?: StringFieldUpdateOperationsInput | string
     previousEmployments?: JsonNullValueInput | InputJsonValue
     certifications?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: NullableStringFieldUpdateOperationsInput | string | null

@@ -177,7 +177,6 @@ exports.Prisma.TeacherScalarFieldEnum = {
   employmentType: 'employmentType',
   joiningDate: 'joiningDate',
   position: 'position',
-  department: 'department',
   previousEmployments: 'previousEmployments',
   certifications: 'certifications',
   skills: 'skills',

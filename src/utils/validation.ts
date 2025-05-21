@@ -51,7 +51,7 @@ export const TeacherEnrollmentSchema = z.object({
     required_error: "Joining date is required",
   }),
   position: z.string().min(1, "Position is required"),
-  department: z.string().min(1, "Department is required"),
+  departmentId: z.string().min(1, "Department is required"),
 
   previousEmployments: z.array(
     z.object({

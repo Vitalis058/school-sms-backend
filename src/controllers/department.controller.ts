@@ -1,17 +1,18 @@
 import { NextFunction, Request, Response } from "express";
-import { catchAsync } from "../utils/catchAsync";
-import { AppError } from "../utils/AppError";
-import { prisma } from "../utils/Prisma";
-import {
-  DepartmentCreationSchema,
-  GradeCreationSchema,
-} from "../utils/validation";
 import slugify from "slugify";
+import { AppError } from "../utils/AppError";
+import { catchAsync } from "../utils/catchAsync";
+import { prisma } from "../utils/Prisma";
+import { DepartmentCreationSchema } from "../utils/validation";
 
 //get the grades
 export const getDepartments = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const departments = await prisma.department.findMany();
+    const departments = await prisma.department.findMany({
+      include: {
+        _count: true,
+      },
+    });
 
     res.status(200).json({
       success: true,
@@ -36,12 +37,12 @@ export const createDepartment = catchAsync(
       }),
     };
 
-    const newClass = await prisma.department.create({
+    const newDepart = await prisma.department.create({
       data,
     });
 
     res.status(201).json({
-      data: newClass,
+      data: newDepart,
       success: true,
     });
   }

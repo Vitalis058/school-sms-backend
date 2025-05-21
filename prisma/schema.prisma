@@ -85,7 +85,6 @@ model Teacher {
   employmentType EmploymentType
   joiningDate    DateTime
   position       String
-  department     String
 
   // Previous Employment
   previousEmployments Json
