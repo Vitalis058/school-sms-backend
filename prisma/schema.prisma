@@ -210,7 +210,6 @@ model TimeSlot {
   lessons   Lesson[]
 
   @@unique([startTime, endTime])
-  @@map("time_slot")
 }
 
 enum ContactMethod {
