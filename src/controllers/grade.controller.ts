@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
-import { catchAsync } from "../utils/catchAsync";
+import slugify from "slugify";
 import { AppError } from "../utils/AppError";
+import { catchAsync } from "../utils/catchAsync";
 import { prisma } from "../utils/Prisma";
 import { GradeCreationSchema } from "../utils/validation";
-import slugify from "slugify";
 
 //get the grades
 export const getGrades = catchAsync(
@@ -30,10 +30,7 @@ export const getGrades = catchAsync(
       };
     });
 
-    res.status(200).json({
-      success: true,
-      data: grades,
-    });
+    res.status(200).json(grades);
   }
 );
 

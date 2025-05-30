@@ -1,19 +1,13 @@
 import { NextFunction, Request, Response } from "express";
-import { catchAsync } from "../utils/catchAsync";
 import { AppError } from "../utils/AppError";
+import { catchAsync } from "../utils/catchAsync";
 import { prisma } from "../utils/Prisma";
-import {
-  ParentsEnrollmentSchema,
-  StudentEnrollmentSchema,
-} from "../utils/validation";
+import { ParentsEnrollmentSchema } from "../utils/validation";
 
 export const getParents = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const parents = await prisma.guardian.findMany();
-    res.status(200).json({
-      success: true,
-      data: parents,
-    });
+    res.status(200).json(parents);
   }
 );
 
@@ -35,9 +29,6 @@ export const createParent = catchAsync(
       data: validatedData.data,
     });
 
-    res.status(201).json({
-      data: parent,
-      success: true,
-    });
+    res.status(201).json(parent);
   }
 );

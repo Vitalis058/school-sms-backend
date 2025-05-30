@@ -27,8 +27,5 @@ export const createTimeSlot = catchAsync(
 export const getTimeSlots = catchAsync(async (req: Request, res: Response) => {
   const timeSlots = await prisma.timeSlot.findMany();
 
-  res.status(200).json({
-    success: true,
-    data: timeSlots,
-  });
+  res.status(200).json(timeSlots);
 });

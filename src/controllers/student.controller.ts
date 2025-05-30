@@ -1,16 +1,13 @@
 import { NextFunction, Request, Response } from "express";
-import { catchAsync } from "../utils/catchAsync";
 import { AppError } from "../utils/AppError";
+import { catchAsync } from "../utils/catchAsync";
 import { prisma } from "../utils/Prisma";
 import { StudentEnrollmentSchema } from "../utils/validation";
 
 export const getStudents = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const students = await prisma.student.findMany();
-    res.status(200).json({
-      success: true,
-      data: students,
-    });
+    res.status(200).json(students);
   }
 );
 

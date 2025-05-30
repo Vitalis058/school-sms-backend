@@ -1,24 +1,21 @@
 import { NextFunction, Request, Response } from "express";
-import { catchAsync } from "../utils/catchAsync";
+import slugify from "slugify";
 import { AppError } from "../utils/AppError";
+import { catchAsync } from "../utils/catchAsync";
 import { prisma } from "../utils/Prisma";
 import { StreamCreationSchema } from "../utils/validation";
-import slugify from "slugify";
 
-//get the classes
-export const getStream = catchAsync(
+//get the streams
+export const getStreams = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const streams = await prisma.stream.findMany({
       include: {},
     });
-    res.status(200).json({
-      success: true,
-      data: streams,
-    });
+    res.status(200).json(streams);
   }
 );
 
-//get the streams
+//get streams related to a class
 export const getGradeStreams = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const param = req.params.id;
@@ -51,13 +48,11 @@ export const getGradeStreams = catchAsync(
       };
     });
 
-    res.status(200).json({
-      data: streams,
-    });
+    res.status(200).json(streams);
   }
 );
 
-//create class
+//create stream
 export const createStream = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const validatedData = StreamCreationSchema.safeParse(req.body);

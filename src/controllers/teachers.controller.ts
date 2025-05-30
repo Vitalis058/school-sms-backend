@@ -11,10 +11,7 @@ export const getTeachers = catchAsync(
         Department: true,
       },
     });
-    res.status(200).json({
-      success: true,
-      data: teachers,
-    });
+    res.status(200).json(teachers);
   }
 );
 

@@ -5,15 +5,12 @@ import { catchAsync } from "../utils/catchAsync";
 import { prisma } from "../utils/Prisma";
 import { DepartmentCreationSchema } from "../utils/validation";
 
-//get the grades
+//get departments
 export const getDepartments = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const departments = await prisma.department.findMany();
 
-    res.status(200).json({
-      success: true,
-      data: departments,
-    });
+    res.status(200).json(departments);
   }
 );
 
@@ -37,10 +34,7 @@ export const createDepartment = catchAsync(
       data,
     });
 
-    res.status(201).json({
-      data: newDepart,
-      success: true,
-    });
+    res.status(201).json(newDepart);
   }
 );
 
@@ -62,9 +56,6 @@ export const getDepartment = catchAsync(
       return;
     }
 
-    res.status(200).json({
-      success: true,
-      data: department,
-    });
+    res.status(200).json(department);
   }
 );

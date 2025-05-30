@@ -1,18 +1,14 @@
 import { NextFunction, Request, Response } from "express";
-import { catchAsync } from "../utils/catchAsync";
-import { AppError } from "../utils/AppError";
-import { prisma } from "../utils/Prisma";
 import slugify from "slugify";
+import { catchAsync } from "../utils/catchAsync";
+import { prisma } from "../utils/Prisma";
 
 //get the grades
 export const getSubjects = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const subjects = await prisma.subject.findMany();
 
-    res.status(200).json({
-      success: true,
-      data: subjects,
-    });
+    res.status(200).json(subjects);
   }
 );
 
@@ -28,9 +24,6 @@ export const createSubject = catchAsync(
       data,
     });
 
-    res.status(201).json({
-      data: newSubject,
-      success: true,
-    });
+    res.status(201).json(newSubject);
   }
 );

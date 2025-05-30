@@ -46,7 +46,7 @@ app.use("/api/v1/parents", parentRoutes);
 app.use("/api/v1/subjects", subjectRoutes);
 app.use("/api/v1/departments", departmentRoutes);
 app.use("/api/v1/lessons", lessonRoutes);
-app.use("/api/v1/time-slot", timeSlotRoutes);
+app.use("/api/v1/timeslots", timeSlotRoutes);
 
 //handle unhanded routes
 app.all("/*splat", (req: Request, res: Response, next: NextFunction) => {
