@@ -9,14 +9,24 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  username  String   @unique
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  username  String    @unique
+  firstName String
+  lastName  String
   image     String?
   password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-  role      Role     @default(STUDENT)
+  isActive  Boolean   @default(true)
+  lastLogin DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  role      Role      @default(STUDENT)
+
+  // Relations
+  leaveRequests     LeaveRequest[]
+  announcements     Announcement[]
+  requestedBookings VehicleBooking[] @relation("BookingRequestedBy")
+  approvedBookings  VehicleBooking[] @relation("BookingApprovedBy")
 
   @@map("user")
 }
@@ -212,6 +222,46 @@ model TimeSlot {
   @@unique([startTime, endTime])
 }
 
+model LeaveRequest {
+  id              Int         @id @default(autoincrement())
+  userId          Int
+  user            User        @relation(fields: [userId], references: [id])
+  leaveType       LeaveType
+  startDate       DateTime
+  endDate         DateTime
+  reason          String
+  status          LeaveStatus @default(PENDING)
+  appliedDate     DateTime    @default(now())
+  approvedBy      Int?
+  approvedDate    DateTime?
+  rejectionReason String?
+  attachments     String[]    @default([])
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  @@map("leave_request")
+}
+
+model Announcement {
+  id             Int       @id @default(autoincrement())
+  title          String
+  content        String
+  type           String    @default("GENERAL")
+  priority       String    @default("MEDIUM")
+  targetAudience String[]
+  isActive       Boolean   @default(true)
+  publishDate    DateTime  @default(now())
+  expiryDate     DateTime?
+  createdBy      Int
+  createdByUser  User      @relation(fields: [createdBy], references: [id])
+  attachments    String[]  @default([])
+  readBy         Int[]     @default([])
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@map("announcement")
+}
+
 enum ContactMethod {
   phone
   email
@@ -235,4 +285,225 @@ enum Role {
   TEACHER
   STUDENT
   STAFF
+  DRIVER
+}
+
+enum LeaveType {
+  SICK
+  ANNUAL
+  PERSONAL
+  MATERNITY
+  PATERNITY
+  EMERGENCY
+}
+
+enum LeaveStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+// Transport Management Models
+model Driver {
+  id               String       @id @default(uuid())
+  firstName        String
+  lastName         String
+  email            String       @unique
+  phone            String
+  licenseNumber    String       @unique
+  licenseExpiry    DateTime
+  dateOfBirth      DateTime
+  address          String
+  emergencyContact String
+  emergencyPhone   String
+  hireDate         DateTime
+  status           DriverStatus @default(ACTIVE)
+  experience       Int // years
+  image            String?
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  // Relations
+  Vehicle            Vehicle?
+  MaintenanceReports MaintenanceReport[]
+  VehicleBookings    VehicleBooking[]
+
+  @@map("driver")
+}
+
+model Vehicle {
+  id                 String        @id @default(uuid())
+  make               String
+  model              String
+  year               Int
+  plateNumber        String        @unique
+  vin                String        @unique
+  color              String
+  fuelType           FuelType
+  capacity           Int // number of passengers
+  mileage            Int
+  lastServiceDate    DateTime?
+  nextServiceDate    DateTime?
+  insuranceExpiry    DateTime
+  registrationExpiry DateTime
+  status             VehicleStatus @default(AVAILABLE)
+  driverId           String?       @unique
+  purchaseDate       DateTime
+  purchasePrice      Float
+  currentValue       Float?
+  image              String?
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+
+  // Relations
+  Driver             Driver?             @relation(fields: [driverId], references: [id])
+  MaintenanceReports MaintenanceReport[]
+  VehicleBookings    VehicleBooking[]
+
+  @@map("vehicle")
+}
+
+model VehicleBooking {
+  id           String        @id @default(uuid())
+  vehicleId    String
+  driverId     String
+  requestedBy  Int // user ID (teacher/admin)
+  purpose      String
+  destination  String
+  startDate    DateTime
+  endDate      DateTime
+  startTime    String
+  endTime      String
+  passengers   Int
+  status       BookingStatus @default(PENDING)
+  approvedBy   Int? // admin user ID
+  approvalDate DateTime?
+  notes        String?
+  mileageStart Int?
+  mileageEnd   Int?
+  fuelUsed     Float?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  // Relations
+  Vehicle         Vehicle @relation(fields: [vehicleId], references: [id])
+  Driver          Driver  @relation(fields: [driverId], references: [id])
+  RequestedByUser User    @relation("BookingRequestedBy", fields: [requestedBy], references: [id])
+  ApprovedByUser  User?   @relation("BookingApprovedBy", fields: [approvedBy], references: [id])
+
+  @@map("vehicle_booking")
+}
+
+model MaintenanceReport {
+  id               String            @id @default(uuid())
+  vehicleId        String
+  driverId         String
+  type             MaintenanceType
+  title            String
+  description      String
+  serviceDate      DateTime
+  cost             Float
+  serviceProvider  String
+  mileageAtService Int
+  nextServiceDue   DateTime?
+  partsReplaced    String[]          @default([])
+  status           MaintenanceStatus @default(SCHEDULED)
+  priority         Priority          @default(MEDIUM)
+  attachments      String[]          @default([])
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  // Relations
+  Vehicle Vehicle @relation(fields: [vehicleId], references: [id])
+  Driver  Driver  @relation(fields: [driverId], references: [id])
+
+  @@map("maintenance_report")
+}
+
+// Transport Enums
+enum DriverStatus {
+  ACTIVE
+  INACTIVE
+  ON_LEAVE
+  SUSPENDED
+}
+
+enum FuelType {
+  PETROL
+  DIESEL
+  ELECTRIC
+  HYBRID
+}
+
+enum VehicleStatus {
+  AVAILABLE
+  IN_USE
+  MAINTENANCE
+  OUT_OF_SERVICE
+}
+
+enum BookingStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  COMPLETED
+  CANCELLED
+}
+
+enum MaintenanceType {
+  ROUTINE
+  REPAIR
+  INSPECTION
+  EMERGENCY
+}
+
+enum MaintenanceStatus {
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+// System Settings Models
+model SystemSettings {
+  id        String   @id @default(uuid())
+  category  String   @unique // general, academic, library, transport, etc.
+  settings  Json // JSON object containing all settings for this category
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("system_settings")
+}
+
+model SystemLog {
+  id        String   @id @default(uuid())
+  level     String // INFO, WARN, ERROR
+  category  String // SYSTEM, BACKUP, SECURITY, EMAIL, etc.
+  message   String
+  details   Json? // Additional details as JSON
+  timestamp DateTime @default(now())
+
+  @@map("system_log")
+}
+
+model SystemHealth {
+  id              String    @id @default(uuid())
+  status          String // healthy, warning, error
+  uptime          Float // in seconds
+  memoryUsage     Json // memory usage details
+  databaseStatus  String // connected, disconnected
+  serviceStatuses Json // status of various services
+  lastBackup      DateTime?
+  maintenanceMode Boolean   @default(false)
+  systemVersion   String    @default("1.0.0")
+  timestamp       DateTime  @default(now())
+
+  @@map("system_health")
 }

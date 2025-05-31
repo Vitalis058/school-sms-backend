@@ -7,14 +7,19 @@ import passport from "passport";
 import adminRoutes from "./routes/admin.route";
 import authRoutes from "./routes/auth.route";
 import departmentRoutes from "./routes/department.routes";
+import financeRoutes from "./routes/finance.route";
 import gradeRoutes from "./routes/grade.route";
 import lessonRoutes from "./routes/lesson.route";
+import libraryRoutes from "./routes/library.route";
 import parentRoutes from "./routes/parent.route";
+import performanceRoutes from "./routes/performance.route";
 import streamRoutes from "./routes/stream.route";
 import studentRoutes from "./routes/student.route";
 import subjectRoutes from "./routes/subject.route";
+import systemRoutes from "./routes/system.route";
 import teacherRoutes from "./routes/teacher.route";
 import timeSlotRoutes from "./routes/time_slot.route";
+import transportRoutes from "./routes/transport.route";
 
 import cors from "cors";
 import { errorController } from "./controllers/error.controller";
@@ -29,10 +34,12 @@ app.use(morgan("common"));
 app.use(express.json());
 app.use(passport.initialize());
 
-//api routes
-app.get("/health", (req: Request, res: Response) => {
+// Add /api/health endpoint for consistency
+app.get("/api/health", (req: Request, res: Response) => {
   res.status(200).json({
     message: "the server is working",
+    status: "healthy",
+    timestamp: new Date().toISOString(),
   });
 });
 
@@ -47,6 +54,11 @@ app.use("/api/v1/subjects", subjectRoutes);
 app.use("/api/v1/departments", departmentRoutes);
 app.use("/api/v1/lessons", lessonRoutes);
 app.use("/api/v1/timeslots", timeSlotRoutes);
+app.use("/api/v1/finance", financeRoutes);
+app.use("/api/v1/performance", performanceRoutes);
+app.use("/api/v1/transport", transportRoutes);
+app.use("/api/v1/library", libraryRoutes);
+app.use("/api/v1/system", systemRoutes);
 
 //handle unhanded routes
 app.all("/*splat", (req: Request, res: Response, next: NextFunction) => {
@@ -55,3 +67,6 @@ app.all("/*splat", (req: Request, res: Response, next: NextFunction) => {
 });
 
 app.use(errorController);
+
+// Export as default for compatibility
+export default app;

@@ -1,16 +1,45 @@
 import z from "zod";
 
+// Role enum for validation
+export const RoleEnum = z.enum(["ADMIN", "TEACHER", "STUDENT", "STAFF"]);
+
 //sign up schema
 export const SignupSchema = z.object({
   username: z.string().min(3, "minimum of 3 characters"),
   email: z.string().min(1, "email is required").email("Enter a valid email"),
   password: z.string().min(8, "password requires a minimum of 8 characters"),
+  role: RoleEnum.optional().default("STUDENT"),
 });
 
 //sign in schema
 export const SigninSchema = z.object({
   username: z.string().min(3, "minimum of 3 characters"),
   password: z.string().min(8, "password requires a minimum of 8 characters"),
+});
+
+// Change password schema
+export const ChangePasswordSchema = z.object({
+  currentPassword: z.string().min(1, "Current password is required"),
+  newPassword: z.string().min(8, "New password requires a minimum of 8 characters"),
+});
+
+// Reset password schema
+export const ResetPasswordSchema = z.object({
+  email: z.string().email("Enter a valid email"),
+});
+
+// Update profile schema
+export const UpdateProfileSchema = z.object({
+  username: z.string().min(3, "minimum of 3 characters").optional(),
+  email: z.string().email("Enter a valid email").optional(),
+  image: z.string().url("Enter a valid image URL").optional(),
+});
+
+// Permission validation
+export const PermissionSchema = z.object({
+  resource: z.string(),
+  action: z.enum(["create", "read", "update", "delete"]),
+  conditions: z.record(z.any()).optional(),
 });
 
 //teacher enrollment schema

@@ -124,8 +124,12 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
   username: 'username',
+  firstName: 'firstName',
+  lastName: 'lastName',
   image: 'image',
   password: 'password',
+  isActive: 'isActive',
+  lastLogin: 'lastLogin',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   role: 'role'
@@ -261,12 +265,169 @@ exports.Prisma.TimeSlotScalarFieldEnum = {
   name: 'name'
 };
 
+exports.Prisma.LeaveRequestScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  leaveType: 'leaveType',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  reason: 'reason',
+  status: 'status',
+  appliedDate: 'appliedDate',
+  approvedBy: 'approvedBy',
+  approvedDate: 'approvedDate',
+  rejectionReason: 'rejectionReason',
+  attachments: 'attachments',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AnnouncementScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  content: 'content',
+  type: 'type',
+  priority: 'priority',
+  targetAudience: 'targetAudience',
+  isActive: 'isActive',
+  publishDate: 'publishDate',
+  expiryDate: 'expiryDate',
+  createdBy: 'createdBy',
+  attachments: 'attachments',
+  readBy: 'readBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DriverScalarFieldEnum = {
+  id: 'id',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  phone: 'phone',
+  licenseNumber: 'licenseNumber',
+  licenseExpiry: 'licenseExpiry',
+  dateOfBirth: 'dateOfBirth',
+  address: 'address',
+  emergencyContact: 'emergencyContact',
+  emergencyPhone: 'emergencyPhone',
+  hireDate: 'hireDate',
+  status: 'status',
+  experience: 'experience',
+  image: 'image',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.VehicleScalarFieldEnum = {
+  id: 'id',
+  make: 'make',
+  model: 'model',
+  year: 'year',
+  plateNumber: 'plateNumber',
+  vin: 'vin',
+  color: 'color',
+  fuelType: 'fuelType',
+  capacity: 'capacity',
+  mileage: 'mileage',
+  lastServiceDate: 'lastServiceDate',
+  nextServiceDate: 'nextServiceDate',
+  insuranceExpiry: 'insuranceExpiry',
+  registrationExpiry: 'registrationExpiry',
+  status: 'status',
+  driverId: 'driverId',
+  purchaseDate: 'purchaseDate',
+  purchasePrice: 'purchasePrice',
+  currentValue: 'currentValue',
+  image: 'image',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.VehicleBookingScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  driverId: 'driverId',
+  requestedBy: 'requestedBy',
+  purpose: 'purpose',
+  destination: 'destination',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  passengers: 'passengers',
+  status: 'status',
+  approvedBy: 'approvedBy',
+  approvalDate: 'approvalDate',
+  notes: 'notes',
+  mileageStart: 'mileageStart',
+  mileageEnd: 'mileageEnd',
+  fuelUsed: 'fuelUsed',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MaintenanceReportScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  driverId: 'driverId',
+  type: 'type',
+  title: 'title',
+  description: 'description',
+  serviceDate: 'serviceDate',
+  cost: 'cost',
+  serviceProvider: 'serviceProvider',
+  mileageAtService: 'mileageAtService',
+  nextServiceDue: 'nextServiceDue',
+  partsReplaced: 'partsReplaced',
+  status: 'status',
+  priority: 'priority',
+  attachments: 'attachments',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SystemSettingsScalarFieldEnum = {
+  id: 'id',
+  category: 'category',
+  settings: 'settings',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SystemLogScalarFieldEnum = {
+  id: 'id',
+  level: 'level',
+  category: 'category',
+  message: 'message',
+  details: 'details',
+  timestamp: 'timestamp'
+};
+
+exports.Prisma.SystemHealthScalarFieldEnum = {
+  id: 'id',
+  status: 'status',
+  uptime: 'uptime',
+  memoryUsage: 'memoryUsage',
+  databaseStatus: 'databaseStatus',
+  serviceStatuses: 'serviceStatuses',
+  lastBackup: 'lastBackup',
+  maintenanceMode: 'maintenanceMode',
+  systemVersion: 'systemVersion',
+  timestamp: 'timestamp'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
 };
 
 exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
   JsonNull: Prisma.JsonNull
 };
 
@@ -289,7 +450,8 @@ exports.Role = exports.$Enums.Role = {
   ADMIN: 'ADMIN',
   TEACHER: 'TEACHER',
   STUDENT: 'STUDENT',
-  STAFF: 'STAFF'
+  STAFF: 'STAFF',
+  DRIVER: 'DRIVER'
 };
 
 exports.Gender = exports.$Enums.Gender = {
@@ -310,6 +472,71 @@ exports.ContactMethod = exports.$Enums.ContactMethod = {
   both: 'both'
 };
 
+exports.LeaveType = exports.$Enums.LeaveType = {
+  SICK: 'SICK',
+  ANNUAL: 'ANNUAL',
+  PERSONAL: 'PERSONAL',
+  MATERNITY: 'MATERNITY',
+  PATERNITY: 'PATERNITY',
+  EMERGENCY: 'EMERGENCY'
+};
+
+exports.LeaveStatus = exports.$Enums.LeaveStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
+
+exports.DriverStatus = exports.$Enums.DriverStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE',
+  ON_LEAVE: 'ON_LEAVE',
+  SUSPENDED: 'SUSPENDED'
+};
+
+exports.FuelType = exports.$Enums.FuelType = {
+  PETROL: 'PETROL',
+  DIESEL: 'DIESEL',
+  ELECTRIC: 'ELECTRIC',
+  HYBRID: 'HYBRID'
+};
+
+exports.VehicleStatus = exports.$Enums.VehicleStatus = {
+  AVAILABLE: 'AVAILABLE',
+  IN_USE: 'IN_USE',
+  MAINTENANCE: 'MAINTENANCE',
+  OUT_OF_SERVICE: 'OUT_OF_SERVICE'
+};
+
+exports.BookingStatus = exports.$Enums.BookingStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+};
+
+exports.MaintenanceType = exports.$Enums.MaintenanceType = {
+  ROUTINE: 'ROUTINE',
+  REPAIR: 'REPAIR',
+  INSPECTION: 'INSPECTION',
+  EMERGENCY: 'EMERGENCY'
+};
+
+exports.MaintenanceStatus = exports.$Enums.MaintenanceStatus = {
+  SCHEDULED: 'SCHEDULED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+};
+
+exports.Priority = exports.$Enums.Priority = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH',
+  URGENT: 'URGENT'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Student: 'Student',
@@ -320,7 +547,16 @@ exports.Prisma.ModelName = {
   Department: 'Department',
   Subject: 'Subject',
   Lesson: 'Lesson',
-  TimeSlot: 'TimeSlot'
+  TimeSlot: 'TimeSlot',
+  LeaveRequest: 'LeaveRequest',
+  Announcement: 'Announcement',
+  Driver: 'Driver',
+  Vehicle: 'Vehicle',
+  VehicleBooking: 'VehicleBooking',
+  MaintenanceReport: 'MaintenanceReport',
+  SystemSettings: 'SystemSettings',
+  SystemLog: 'SystemLog',
+  SystemHealth: 'SystemHealth'
 };
 
 /**

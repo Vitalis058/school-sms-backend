@@ -8,7 +8,8 @@
     "build": "npx prisma generate && tsc",
     "start": "node dist/server.js",
     "prisma:migrate:dev": "npx prisma migrate dev",
-    "prisma:migrate:deploy": "npx prisma migrate deploy"
+    "prisma:migrate:deploy": "npx prisma migrate deploy",
+    "seed": "npx ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,10 @@
   "type": "commonjs",
   "dependencies": {
     "@prisma/client": "^6.8.2",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.9",
     "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
@@ -45,6 +49,7 @@
     "eslint": "^9.24.0",
     "globals": "^16.0.0",
     "prisma": "^6.8.2",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.29.1"
   }
